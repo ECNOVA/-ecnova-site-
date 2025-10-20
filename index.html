@@ -4,76 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ECNOVA — Deflationary Engine</title>
+  <link rel="canonical" href="https://ecnova.io"/>
   <meta name="description" content="ECNOVA — deflationary economic engine on Solana. Community-powered, treasury-backed, calm growth.">
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ecnova.io">
+  <meta property="og:title" content="ECNOVA — Deflationary Engine">
+  <meta property="og:description" content="Calm, transparent, community‑powered mechanics for value creation.">
+  <meta property="og:image" content="https://ecnova.io/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ECNOVA — Deflationary Engine">
+  <meta name="twitter:description" content="Deflationary economic engine on Solana.">
+  <meta name="twitter:image" content="https://ecnova.io/assets/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/og-image.png">
   <style>
-    :root {
-      --bg: #06090d;
-      --bg2:#0b0f14;
-      --text:#EAF2FF;
-      --muted:#9fb0c7;
-      --violet:#7C3AED;
-      --green:#21f3a3; /* более сочный зелёный */
-      --green-soft:#6EE7B7;
-      --card:#0f1721;
-      --border: rgba(255,255,255,.12);
-      --glow: 0 0 40px rgba(33,243,163,.18), 0 0 90px rgba(124,58,237,.12);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
-    body{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.22), transparent 60%),
-        radial-gradient(1000px 520px at 120% 110%, rgba(33,243,163,.18), transparent 60%),
-        radial-gradient(800px 480px at -20% 120%, rgba(33,243,163,.10), transparent 60%),
-        var(--bg2);
-      padding:28px 18px 60px;
-    }
+    :root{--bg:#06090d;--bg2:#0b0f14;--text:#EAF2FF;--muted:#9fb0c7;--violet:#7C3AED;--green:#21f3a3;--card:#0f1721;--border:rgba(255,255,255,.12);--glow:0 0 40px rgba(33,243,163,.18),0 0 90px rgba(124,58,237,.12);}
+    *{box-sizing:border-box} html,body{height:100%;margin:0}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;color:var(--text);
+      background:radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.22), transparent 60%),radial-gradient(1000px 520px at 120% 110%, rgba(33,243,163,.18), transparent 60%),radial-gradient(800px 480px at -20% 120%, rgba(33,243,163,.10), transparent 60%),var(--bg2);
+      padding:28px 18px 60px;}
     .wrap{max-width:1100px;margin:0 auto}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:clamp(22px,4vw,52px);
-      box-shadow:var(--glow);
-      backdrop-filter:blur(10px);
-    }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));border:1px solid var(--border);border-radius:24px;padding:clamp(22px,4vw,52px);box-shadow:var(--glow);backdrop-filter:blur(10px);}
     .brand{display:flex;align-items:center;gap:16px;margin:0 0 18px}
     .brand img{width:74px;height:74px;border-radius:18px;object-fit:cover;box-shadow:0 0 24px rgba(33,243,163,.25)}
-    h1{
-      font-size:clamp(30px,6.8vw,62px);line-height:1.06;margin:0;
-      background: linear-gradient(90deg, var(--green), var(--violet));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      text-shadow: 0 0 18px rgba(33,243,163,.25);
-    }
+    h1{font-size:clamp(30px,6.8vw,62px);line-height:1.06;margin:0;background:linear-gradient(90deg, var(--green), var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 18px rgba(33,243,163,.25);}
     .lang{margin-left:auto;display:flex;gap:8px}
-    .lang button{
-      background:transparent;color:var(--text);border:1px solid var(--border);
-      padding:8px 12px;border-radius:10px;cursor:pointer;
-      box-shadow:0 0 16px rgba(124,58,237,.18) inset;
-    }
+    .lang button{background:transparent;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:10px;cursor:pointer;box-shadow:0 0 16px rgba(124,58,237,.18) inset;}
     .tagline{color:var(--muted);font-size:clamp(14px,2.6vw,18px);margin:10px 0 26px;max-width:74ch}
     .cta{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
-    .btn{
-      border:1px solid var(--border);color:var(--text);
-      background:linear-gradient(135deg, rgba(124,58,237,.28), rgba(33,243,163,.12));
-      padding:12px 18px;border-radius:14px;font-weight:600;text-decoration:none;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, filter .12s ease;
-      display:inline-flex;align-items:center;gap:10px;filter:saturate(1.1);
-    }
+    .btn{border:1px solid var(--border);color:var(--text);background:linear-gradient(135deg, rgba(124,58,237,.28), rgba(33,243,163,.12));padding:12px 18px;border-radius:14px;font-weight:600;text-decoration:none;transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, filter .12s ease;display:inline-flex;align-items:center;gap:10px;filter:saturate(1.1);}
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.28);box-shadow:0 0 26px rgba(33,243,163,.25)}
     .btn.secondary{background:linear-gradient(135deg, rgba(33,243,163,.26), rgba(124,58,237,.10))}
     .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .tile{
-      padding:16px;border:1px solid var(--border);border-radius:16px;background:rgba(15,23,33,.7);min-height:110px;
-      box-shadow:0 0 24px rgba(124,58,237,.08) inset;
-    }
-    .tile h3{margin:0 0 8px;font-size:16px}
-    .tile p{margin:0;color:var(--muted);font-size:14px}
-    .section{margin-top:26px}
-    .section h2{font-size:22px;margin:0 0 12px}
+    .tile{padding:16px;border:1px solid var(--border);border-radius:16px;background:rgba(15,23,33,.7);min-height:110px;box-shadow:0 0 24px rgba(124,58,237,.08) inset;}
+    .tile h3{margin:0 0 8px;font-size:16px} .tile p{margin:0;color:var(--muted);font-size:14px}
+    .section{margin-top:26px} .section h2{font-size:22px;margin:0 0 12px}
     .support{border:1px dashed rgba(255,255,255,.18);border-radius:16px;padding:16px;background:rgba(124,58,237,.08)}
     .badge{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);margin-left:8px}
     .addr{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;user-select:all;word-break:break-all}
@@ -81,14 +46,9 @@
     .copy{cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:6px 10px;background:rgba(33,243,163,.10)}
     .copy:hover{border-color:rgba(255,255,255,.28)}
     footer{margin-top:30px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    @media (max-width: 980px){.grid{grid-template-columns:1fr}}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}}
     [data-i18n]{display:none} .show{display:block}
-    /* subtle animated glow line */
-    .glowline{
-      margin:26px 0;height:1px;border:0;background:linear-gradient(90deg, transparent, rgba(33,243,163,.6), rgba(124,58,237,.6), transparent);
-      filter: blur(0.2px);
-      box-shadow: 0 0 22px rgba(33,243,163,.25), 0 0 22px rgba(124,58,237,.2);
-    }
+    .glowline{margin:26px 0;height:1px;border:0;background:linear-gradient(90deg, transparent, rgba(33,243,163,.6), rgba(124,58,237,.6), transparent);filter: blur(.2px);box-shadow:0 0 22px rgba(33,243,163,.25), 0 0 22px rgba(124,58,237,.2);}
   </style>
 </head>
 <body>
@@ -112,13 +72,11 @@
         <a class="btn secondary" href="https://t.me/ecnovaDAO" target="_blank" rel="noopener">Telegram</a>
         <a class="btn" href="https://v3.squads.so/vault/assets/NHBaV1duNGJ4VUU1TEtESzQ5WlNoWkV0dHFFWGpVNjZHOU5xQWdDbkN6VUQ=" target="_blank" rel="noopener">DAO Treasury (Squads)</a>
         <a class="btn secondary" href="https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener">Explorer (Solscan)</a>
+        <a class="btn" href="#contact">Contact</a>
       </div>
-
-      <!-- Убрали аудиоплеер, пока музыка неактивна -->
 
       <hr class="glowline"/>
 
-      <!-- Highlights -->
       <section class="grid section">
         <div class="tile">
           <h3 data-i18n id="h1-en" class="show">Deflationary Model</h3>
@@ -126,14 +84,12 @@
           <p data-i18n id="p1-en" class="show">Rule‑based supply mechanics protecting the downside and rewarding long‑term holders.</p>
           <p data-i18n id="p1-ru">Правила эмиссии/сжигания, снижающие риск падения и поощряющие долгосрочных участников.</p>
         </div>
-
         <div class="tile">
           <h3 data-i18n id="h2-en" class="show">First Engineers (NFT)</h3>
           <h3 data-i18n id="h2-ru">Первые инженеры (NFT)</h3>
-          <p data-i18n id="p2-en" class="show">100 founding engineers collect and assemble the Engine NFT set — parts, tools, and core modules. Participation unlocks early governance roles.</p>
+          <p data-i18n id="p2-en" class="show">100 founding engineers assemble the Engine NFT set — parts, tools, and core modules. Participation unlocks early governance roles.</p>
           <p data-i18n id="p2-ru">100 первых инженеров собирают набор NFT‑деталей «Двигателя» — узлы, инструменты, базовые модули. Участие открывает ранние роли в управлении.</p>
         </div>
-
         <div class="tile">
           <h3 data-i18n id="h3-en" class="show">Education & Grants</h3>
           <h3 data-i18n id="h3-ru">Обучение и гранты</h3>
@@ -145,31 +101,17 @@
       <section class="section">
         <h2 data-i18n id="what-en" class="show">What ECNOVA Is</h2>
         <h2 data-i18n id="what-ru">Что такое ECNOVA</h2>
-        <p class="tagline show" data-i18n id="whatp-en">
-          ECNOVA is a disciplined economic engine. We value quiet growth over hype. Mechanics > promises.
-          The community co‑creates the system, the DAO steers the treasury, and every module is built for clarity and durability.
-        </p>
-        <p class="tagline" data-i18n id="whatp-ru">
-          ECNOVA — дисциплинированный экономический двигатель. Нам ближе тихий рост, а не хайп. Механика важнее обещаний.
-          Сообщество создаёт систему, DAO управляет казной, а каждый модуль строится для ясности и долговечности.
-        </p>
+        <p class="tagline show" data-i18n id="whatp-en">ECNOVA is a disciplined economic engine. We value quiet growth over hype. Mechanics > promises. The community co‑creates the system, the DAO steers the treasury, and every module is built for clarity and durability.</p>
+        <p class="tagline" data-i18n id="whatp-ru">ECNOVA — дисциплинированный экономический двигатель. Нам ближе тихий рост, а не хайп. Механика важнее обещаний. Сообщество создаёт систему, DAO управляет казной, а каждый модуль строится для ясности и долговечности.</p>
       </section>
 
       <section class="section support">
         <h2 data-i18n id="legal-en" class="show">Legal & Disclaimer</h2>
         <h2 data-i18n id="legal-ru">Правовая информация и дисклеймер</h2>
-        <p class="tagline show" data-i18n id="ld1-en">
-          ECNOVA does not offer financial advice. Nothing on this site constitutes an offer to sell or a solicitation to buy any asset. Participants act on their own behalf and at their own risk.
-        </p>
-        <p class="tagline" data-i18n id="ld1-ru">
-          ECNOVA не оказывает инвестиционных рекомендаций. Ничто на сайте не является офертой или приглашением к покупке какого‑либо актива. Участники действуют самостоятельно и на свой риск.
-        </p>
-        <p class="tagline show" data-i18n id="ld2-en">
-          Contributions to the DAO Treasury are voluntary and non‑refundable. There are no profit guarantees or expectations. Please DYOR.
-        </p>
-        <p class="tagline" data-i18n id="ld2-ru">
-          Взносы в казну DAO добровольные и невозвратные. Нет гарантий прибыли или ожиданий доходности. Пожалуйста, проводите собственный анализ (DYOR).
-        </p>
+        <p class="tagline show" data-i18n id="ld1-en">ECNOVA does not offer financial advice. Nothing on this site constitutes an offer to sell or a solicitation to buy any asset. Participants act on their own behalf and at their own risk.</p>
+        <p class="tagline" data-i18n id="ld1-ru">ECNOVA не оказывает инвестиционных рекомендаций. Ничто на сайте не является офертой или приглашением к покупке какого‑либо актива. Участники действуют самостоятельно и на свой риск.</p>
+        <p class="tagline show" data-i18n id="ld2-en">Contributions to the DAO Treasury are voluntary and non‑refundable. There are no profit guarantees or expectations. Please DYOR.</p>
+        <p class="tagline" data-i18n id="ld2-ru">Взносы в казну DAO добровольные и невозвратные. Нет гарантий прибыли или ожиданий доходности. Пожалуйста, проводите собственный анализ (DYOR).</p>
       </section>
 
       <section class="section">
@@ -188,9 +130,19 @@
         </div>
       </section>
 
+      <section class="section" id="contact">
+        <h2 data-i18n id="contact-en" class="show">Contacts</h2>
+        <h2 data-i18n id="contact-ru">Контакты</h2>
+        <p class="tagline show" data-i18n id="contactp-en">Email us — we respond thoughtfully and without hype.</p>
+        <p class="tagline" data-i18n id="contactp-ru">Пишите на почту — отвечаем вдумчиво, без лишнего шума.</p>
+        <div class="cta">
+          <a class="btn" href="mailto:ecnova.project@gmail.com" target="_blank" rel="noopener">Email: ecnova.project@gmail.com</a>
+        </div>
+      </section>
+
       <footer>
         <span>© ECNOVA, 2025</span>
-        <span>Contact: founder@ecnova.io</span>
+        <span>Contact: ecnova.project@gmail.com</span>
       </footer>
     </main>
   </div>
@@ -208,14 +160,13 @@
     function setLang(lang) {
       const isRU = lang === 'ru';
       document.querySelectorAll('[data-i18n]').forEach(el => el.classList.remove('show'));
-      const ids = [
-        'tagline','h1','h2','h3','p1','p2','p3','what','whatp','legal','ld1','ld2','sup','supp'
-      ];
+      const ids = ['tagline','h1','h2','h3','p1','p2','p3','what','whatp','legal','ld1','ld2','sup','supp','contact','contactp'];
       ids.forEach(id => {
         const el = document.getElementById(id + '-' + (isRU ? 'ru' : 'en'));
         if (el) el.classList.add('show');
       });
     }
   </script>
+  <noscript>JavaScript required for language toggle.</noscript>
 </body>
 </html>
