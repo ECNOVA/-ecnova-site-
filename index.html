@@ -1,155 +1,257 @@
 <!DOCTYPE html>
-<html lang='ru'>
+<html lang="ru">
 <head>
-  <meta charset='utf-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ECNOVA — Deflationary Engine</title>
-  <meta name='description' content='ECNOVA — deflationary economic engine on Solana. Community-powered, treasury-backed, calm growth.'>
-  <link rel='icon' type='image/svg+xml' href='assets/favicon.svg'>
-  <link rel='apple-touch-icon' href='assets/og-image.png'>
+  <meta name="description" content="ECNOVA — deflationary economic engine on Solana. Community-powered, treasury-backed, calm growth.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/og-image.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ECNOVA — Deflationary Engine">
+  <meta property="og:description" content="Calm, transparent, community-powered mechanics for value creation.">
+  <meta property="og:image" content="assets/og-image.png">
   <style>
-    :root{--bg:#071012;--text:#FFFFFF;--muted:#A7BECD;--violet:#6F2FE3;--green:#26FFB0;--green-2:#12D39A;--card:#0c1620;--border:rgba(255,255,255,.14);--glow:0 0 40px rgba(38,255,176,.18),0 0 90px rgba(111,47,227,.10);}
-    *{box-sizing:border-box} html,body{height:100%;margin:0}
-    body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg);overflow-x:hidden;}
-    .bg-green{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(1300px 700px at 10% -10%, rgba(111,47,227,.16), transparent 60%),radial-gradient(1200px 720px at 115% 120%, rgba(38,255,176,.32), transparent 60%),radial-gradient(900px 620px at -20% 120%, rgba(18,211,154,.30), transparent 60%),conic-gradient(from 0deg at 60% 40%, rgba(38,255,176,.18), transparent 20%, rgba(18,211,154,.16) 55%, transparent 80%);filter:saturate(1.25);}
-    .bg-waves{position:fixed;inset:-10% -10% -10% -10%;z-index:-3;pointer-events:none;background:repeating-linear-gradient(135deg, rgba(38,255,176,.08) 0 12px, transparent 12px 32px),radial-gradient(80% 60% at 70% 10%, rgba(38,255,176,.12), transparent 60%);mix-blend-mode:screen;animation:waves 22s linear infinite alternate;opacity:.9;}
-    @keyframes waves{0%{transform:translate3d(0,0,0) scale(1);filter:blur(10px)}100%{transform:translate3d(-2%,1.5%,0) scale(1.05);filter:blur(14px)}}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 80px} .card{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));border:1px solid var(--border);border-radius:24px;padding:clamp(22px,4vw,52px);box-shadow:var(--glow);backdrop-filter:blur(10px);}
-    .brand{display:flex;align-items:center;gap:16px;margin:0 0 18px} .brand img{width:74px;height:74px;border-radius:18px;object-fit:cover;box-shadow:0 0 24px rgba(38,255,176,.28)}
-    h1{font-size:clamp(30px,6.8vw,62px);line-height:1.06;margin:0;background:linear-gradient(90deg,var(--green),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 22px rgba(38,255,176,.30);animation:titleGlow 4.5s ease-in-out infinite alternate;}
-    @keyframes titleGlow{0%{text-shadow:0 0 16px rgba(38,255,176,.22),0 0 0 rgba(111,47,227,0)}100%{text-shadow:0 0 28px rgba(38,255,176,.40),0 0 18px rgba(111,47,227,.16)}}
-    .lang{margin-left:auto;display:flex;gap:8px} .lang button{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:10px;cursor:pointer;box-shadow:0 0 16px rgba(111,47,227,.18) inset;}
-    .tagline{color:var(--muted);font-size:clamp(14px,2.6vw,18px);margin:10px 0 26px;max-width:74ch} .cta{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
-    .btn{border:1px solid var(--border);color:#FFFFFF;background:linear-gradient(135deg, rgba(111,47,227,.26), rgba(38,255,176,.14));padding:12px 18px;border-radius:14px;font-weight:700;text-decoration:none;transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, filter .12s ease;display:inline-flex;align-items:center;gap:10px;filter:saturate(1.15);}
-    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.34);box-shadow:0 0 34px rgba(38,255,176,.30),0 0 26px rgba(111,47,227,.18);filter:saturate(1.25);}
-    .btn.secondary{background:linear-gradient(135deg, rgba(38,255,176,.26), rgba(111,47,227,.12))}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .tile{padding:16px;border:1px solid var(--border);border-radius:16px;background:rgba(11,20,28,.78);min-height:110px;box-shadow:0 0 24px rgba(111,47,227,.08) inset;transition:transform .12s ease, box-shadow .2s ease;}
-    .tile:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(38,255,176,.20) inset}
-    .tile h3{margin:0 0 8px;font-size:16px} .tile p{margin:0;color:var(--muted);font-size:14px}
-    .section{margin-top:26px} .section h2{font-size:22px;margin:0 0 12px}
-    .support{border:1px dashed rgba(255,255,255,.22);border-radius:16px;padding:16px;background:rgba(111,47,227,.10)}
-    .addr{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;user-select:all;word-break:break-all}
-    .addr-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .copy{cursor:pointer;border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 12px;background:rgba(38,255,176,.16);color:#FFFFFF;font-weight:700;box-shadow:0 0 18px rgba(38,255,176,.22);}
-    .copy:hover{border-color:#FFFFFF;box-shadow:0 0 28px rgba(38,255,176,.32)}
-    footer{margin-top:36px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .to-top{position:fixed;right:18px;bottom:18px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(38,255,176,.14);color:#FFFFFF;text-decoration:none;font-weight:700;backdrop-filter:blur(6px);box-shadow:0 0 24px rgba(38,255,176,.24);opacity:0;transform:translateY(10px);transition:.2s ease}
-    .to-top.show{opacity:1;transform:translateY(0)}
-    @media (max-width:980px){.grid{grid-template-columns:1fr}}
-    [data-i18n]{display:none} .show{display:block}
+    :root {
+      --bg:#071012; --text:#FFFFFF; --muted:#A7BECD;
+      --violet:#6F2FE3; --green:#26FFB0; --green-2:#12D39A;
+      --card:#0c1620; --border:rgba(255,255,255,.14);
+      --glow:0 0 40px rgba(38,255,176,.18), 0 0 90px rgba(111,47,227,.10);
+    }
+    * { box-sizing:border-box }
+    html,body { height:100%; margin:0 }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text); background: var(--bg); overflow-x: hidden;
+    }
+    .bg-green {
+      position: fixed; inset: 0; z-index: -2; pointer-events:none;
+      background:
+        radial-gradient(1300px 700px at 10% -10%, rgba(111,47,227,.16), transparent 60%),
+        radial-gradient(1200px 720px at 115% 120%, rgba(38,255,176,.35), transparent 60%),
+        radial-gradient(900px 620px at -20% 120%, rgba(18,211,154,.32), transparent 60%),
+        conic-gradient(from 0deg at 60% 40%, rgba(38,255,176,.20), transparent 20%, rgba(18,211,154,.18) 55%, transparent 80%);
+      filter: saturate(1.25);
+    }
+    .bg-waves {
+      position: fixed; inset: -10% -10% -10% -10%; z-index: -3; pointer-events:none;
+      background:
+        repeating-linear-gradient(135deg, rgba(38,255,176,.10) 0 12px, transparent 12px 32px),
+        radial-gradient(80% 60% at 70% 10%, rgba(38,255,176,.14), transparent 60%);
+      mix-blend-mode: screen;
+      animation: waves 22s linear infinite alternate;
+      opacity:.9;
+    }
+    @keyframes waves {
+      0% { transform: translate3d(0,0,0) scale(1); filter: blur(10px) }
+      100% { transform: translate3d(-2%,1.5%,0) scale(1.05); filter: blur(14px) }
+    }
+    .wrap { max-width:1100px; margin:0 auto; padding:28px 18px 80px }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      border: 1px solid var(--border); border-radius: 24px;
+      padding: clamp(22px,4vw,52px); box-shadow: var(--glow); backdrop-filter: blur(10px);
+    }
+    .brand { display:flex; align-items:center; gap:16px; margin:0 0 18px }
+    .brand img { width:74px; height:74px; border-radius:18px; object-fit:cover; box-shadow:0 0 24px rgba(38,255,176,.28) }
+    h1 {
+      font-size: clamp(30px,6.8vw,62px); line-height:1.06; margin:0;
+      background: linear-gradient(90deg, var(--green), var(--violet));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 0 22px rgba(38,255,176,.30);
+      animation: titleGlow 4.5s ease-in-out infinite alternate;
+    }
+    @keyframes titleGlow {
+      0% { text-shadow: 0 0 16px rgba(38,255,176,.22), 0 0 0 rgba(111,47,227,0) }
+      100% { text-shadow: 0 0 28px rgba(38,255,176,.40), 0 0 18px rgba(111,47,227,.16) }
+    }
+    .lang { margin-left:auto; display:flex; gap:8px }
+    .lang button {
+      background: rgba(255,255,255,.06); color: var(--text); border:1px solid var(--border);
+      padding: 8px 12px; border-radius: 10px; cursor: pointer;
+      box-shadow: 0 0 16px rgba(111,47,227,.18) inset;
+    }
+    .tagline { color: var(--muted); font-size: clamp(14px,2.6vw,18px); margin: 10px 0 26px; max-width: 74ch }
+    .cta { display:flex; flex-wrap:wrap; gap:12px; margin:0 0 22px }
+    .btn {
+      border: 1px solid var(--border); color: #FFFFFF;
+      background: linear-gradient(135deg, rgba(111,47,227,.26), rgba(38,255,176,.18));
+      padding: 12px 18px; border-radius: 14px; font-weight: 700; text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, filter .12s ease;
+      display: inline-flex; align-items: center; gap: 10px; filter: saturate(1.15);
+    }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.34); box-shadow: 0 0 34px rgba(38,255,176,.32), 0 0 26px rgba(111,47,227,.18); filter: saturate(1.25) }
+    .btn.secondary { background: linear-gradient(135deg, rgba(38,255,176,.30), rgba(111,47,227,.12)) }
+    .grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:16px }
+    .tile {
+      padding:16px; border:1px solid var(--border); border-radius:16px;
+      background: rgba(11,20,28,.80); min-height: 110px;
+      box-shadow: 0 0 24px rgba(111,47,227,.10) inset;
+      transition: transform .12s ease, box-shadow .2s ease;
+    }
+    .tile:hover { transform: translateY(-2px); box-shadow: 0 0 36px rgba(38,255,176,.22) inset }
+    .tile h3 { margin:0 0 8px; font-size:16px }
+    .tile p { margin:0; color:var(--muted); font-size:14px }
+    .section { margin-top:26px }
+    .section h2 { font-size:22px; margin:0 0 12px }
+    .support { border:1px dashed rgba(255,255,255,.22); border-radius:16px; padding:16px; background: rgba(111,47,227,.10) }
+    .addr { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; user-select: all; word-break: break-all }
+    .addr-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+    .copy {
+      cursor:pointer; border:1px solid rgba(255,255,255,.30); border-radius:10px; padding:8px 12px;
+      background: rgba(38,255,176,.22); color:#FFFFFF; font-weight:700;
+      box-shadow: 0 0 18px rgba(38,255,176,.26);
+    }
+    .copy:hover { border-color:#FFFFFF; box-shadow: 0 0 28px rgba(38,255,176,.36) }
+    footer { margin-top:36px; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap }
+    .to-top {
+      position: fixed; right: 18px; bottom: 18px; padding:10px 14px; border-radius:12px;
+      border:1px solid var(--border); background: rgba(38,255,176,.18); color: #FFFFFF;
+      text-decoration:none; font-weight:700; backdrop-filter: blur(6px);
+      box-shadow: 0 0 24px rgba(38,255,176,.28); opacity: 0; transform: translateY(10px); transition: .2s ease;
+    }
+    .to-top.show { opacity: 1; transform: translateY(0) }
+    @media (max-width:980px) { .grid { grid-template-columns: 1fr } }
+    [data-i18n] { display:none } .show { display:block }
   </style>
 </head>
 <body>
-  <div class='bg-green' id='bgGreen'></div>
-  <div class='bg-waves'></div>
-
-  <div class='wrap'>
-    <main class='card' role='main' aria-label='ECNOVA landing' id='top'>
-      <div class='brand'>
-        <img src='assets/logo.png' alt='ECNOVA logo'>
+  <div class="bg-green" id="bgGreen"></div>
+  <div class="bg-waves"></div>
+  <div class="wrap">
+    <main class="card" role="main" aria-label="ECNOVA landing" id="top">
+      <div class="brand">
+        <img src="assets/logo.png" alt="ECNOVA logo">
         <div>
           <h1>ECNOVA</h1>
-          <div id='tagline-en' class='tagline show' data-i18n>Deflationary Engine on Solana — calm, transparent, community‑powered mechanics for value creation.</div>
-          <div id='tagline-ru' class='tagline' data-i18n>Дефляционный «двигатель» на Solana — спокойная, прозрачная, управляемая сообществом механика создания ценности.</div>
+          <div id="tagline-en" class="tagline show" data-i18n>Deflationary Engine on Solana — calm, transparent, community-powered mechanics for value creation.</div>
+          <div id="tagline-ru" class="tagline" data-i18n>Дефляционный «двигатель» на Solana — спокойная, прозрачная, управляемая сообществом механика создания ценности.</div>
         </div>
-        <div class='lang'>
+        <div class="lang">
           <button onclick="setLang('en')">EN</button>
           <button onclick="setLang('ru')">RU</button>
         </div>
       </div>
-
-      <div class='cta'>
-        <a class='btn' href='https://x.com/EcnovaDAO' target='_blank' rel='noopener'>Twitter / X</a>
-        <a class='btn secondary' href='https://t.me/ecnovaDAO' target='_blank' rel='noopener'>Telegram</a>
-        <a class='btn' href='https://v3.squads.so/vault/assets/NHBaV1duNGJ4VUU1TEtESzQ5WlNoWkV0dHFFWGpVNjZHOU5xQWdDbkN6VUQ=' target='_blank' rel='noopener'>DAO Treasury (Squads)</a>
-        <a class='btn secondary' href='https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM' target='_blank' rel='noopener'>Explorer (Solscan)</a>
-        <a class='btn' href='#contact'>Contact</a>
+      <div class="cta">
+        <a class="btn" href="https://x.com/EcnovaDAO" target="_blank" rel="noopener">Twitter / X</a>
+        <a class="btn secondary" href="https://t.me/ecnovaDAO" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn" href="https://v3.squads.so/vault/assets/NHBaV1duNGJ4VUU1TEtESzQ5WlNoWkV0dHFFWGpVNjZHOU5xQWdDbkN6VUQ=" target="_blank" rel="noopener">DAO Treasury (Squads)</a>
+        <a class="btn secondary" href="https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener">Explorer (Solscan)</a>
+        <a class="btn" href="#contact">Contact</a>
       </div>
-
-      <hr style='margin:26px 0;height:1px;border:0;background:linear-gradient(90deg,transparent,rgba(38,255,176,.65),rgba(111,47,227,.5),transparent);filter:blur(.2px);box-shadow:0 0 22px rgba(38,255,176,.28),0 0 22px rgba(111,47,227,.20);'/>
-
-      <section class='grid section'>
-        <div class='tile'>
-          <h3 data-i18n id='h1-en' class='show'>Deflationary Model</h3>
-          <h3 data-i18n id='h1-ru'>Дефляционная модель</h3>
-          <p data-i18n id='p1-en' class='show'>Rule‑based supply mechanics protecting the downside and rewarding long‑term holders.</p>
-          <p data-i18n id='p1-ru'>Правила эмиссии/сжигания, снижающие риск падения и поощряющие долгосрочных участников.</p>
+      <hr style="margin:26px 0;height:1px;border:0;background:linear-gradient(90deg,transparent,rgba(38,255,176,.70),rgba(111,47,227,.5),transparent);filter:blur(.2px);box-shadow:0 0 22px rgba(38,255,176,.32),0 0 22px rgba(111,47,227,.22);" />
+      <section class="grid section">
+        <div class="tile">
+          <h3 data-i18n id="h1-en" class="show">Deflationary Model</h3>
+          <h3 data-i18n id="h1-ru">Дефляционная модель</h3>
+          <p data-i18n id="p1-en" class="show">Rule-based supply mechanics protecting the downside and rewarding long-term holders.</p>
+          <p data-i18n id="p1-ru">Правила эмиссии/сжигания, снижающие риск падения и поощряющие долгосрочных участников.</p>
         </div>
-        <div class='tile'>
-          <h3 data-i18n id='h2-en' class='show'>First Engineers (NFT)</h3>
-          <h3 data-i18n id='h2-ru'>Первые инженеры (NFT)</h3>
-          <p data-i18n id='p2-en' class='show'>100 founding engineers assemble the Engine NFT set — parts, tools, and core modules. Participation unlocks early governance roles.</p>
-          <p data-i18n id='p2-ru'>100 первых инженеров собирают набор NFT‑деталей «Двигателя» — узлы, инструменты, базовые модули. Участие открывает ранние роли в управлении.</p>
+        <div class="tile">
+          <h3 data-i18n id="h2-en" class="show">First Engineers (NFT)</h3>
+          <h3 data-i18n id="h2-ru">Первые инженеры (NFT)</h3>
+          <p data-i18n id="p2-en" class="show">100 founding engineers assemble the Engine NFT set — parts, tools, and core modules. Participation unlocks early governance roles.</p>
+          <p data-i18n id="p2-ru">100 первых инженеров собирают набор NFT-деталей «Двигателя» — узлы, инструменты, базовые модули. Участие открывает ранние роли в управлении.</p>
         </div>
-        <div class='tile'>
-          <h3 data-i18n id='h3-en' class='show'>Education & Grants</h3>
-          <h3 data-i18n id='h3-ru'>Обучение и гранты</h3>
-          <p data-i18n id='p3-en' class='show'>We fund learning tracks for the next generations — technical, economic, and design. Grants are issued transparently from the DAO.</p>
-          <p data-i18n id='p3-ru'>Мы поддерживаем образовательные треки для новых поколений — техника, экономика, дизайн. Гранты выдаются прозрачно из казны DAO.</p>
+        <div class="tile">
+          <h3 data-i18n id="h3-en" class="show">Education & Grants</h3>
+          <h3 data-i18n id="h3-ru">Обучение и гранты</h3>
+          <p data-i18n id="p3-en" class="show">We fund learning tracks for the next generations — technical, economic, and design. Grants are issued transparently from the DAO.</p>
+          <p data-i18n id="p3-ru">Мы поддерживаем образовательные треки для новых поколений — техника, экономика, дизайн. Гранты выдаются прозрачно из казны DAO.</p>
         </div>
       </section>
-
-      <section class='section'>
-        <h2 data-i18n id='what-en' class='show'>What ECNOVA Is</h2>
-        <h2 data-i18n id='what-ru'>Что такое ECNOVA</h2>
-        <p class='tagline show' data-i18n id='whatp-en'>ECNOVA is a disciplined economic engine. We value quiet growth over hype. Mechanics > promises. The community co‑creates the system, the DAO steers the treasury, and every module is built for clarity and durability.</p>
-        <p class='tagline' data-i18n id='whatp-ru'>ECNOVA — дисциплинированный экономический двигатель. Нам ближе тихий рост, а не хайп. Механика важнее обещаний. Сообщество создаёт систему, DAO управляет казной, а каждый модуль строится для ясности и долговечности.</p>
+      <section class="section">
+        <h2 data-i18n id="what-en" class="show">What ECNOVA Is</h2>
+        <h2 data-i18n id="what-ru">Что такое ECNOVA</h2>
+        <p class="tagline show" data-i18n id="whatp-en">ECNOVA is a disciplined economic engine. We value quiet growth over hype. Mechanics > promises. The community co-creates the system, the DAO steers the treasury, and every module is built for clarity and durability.</p>
+        <p class="tagline" data-i18n id="whatp-ru">ECNOVA — дисциплинированный экономический двигатель. Нам ближе тихий рост, а не хайп. Механика важнее обещаний. Сообщество создаёт систему, DAO управляет казной, а каждый модуль строится для ясности и долговечности.</p>
       </section>
-
-      <section class='section support'>
-        <h2 data-i18n id='legal-en' class='show'>Legal & Disclaimer</h2>
-        <h2 data-i18n id='legal-ru'>Правовая информация и дисклеймер</h2>
-        <p class='tagline show' data-i18n id='ld1-en'>ECNOVA does not offer financial advice. Nothing on this site constitutes an offer to sell or a solicitation to buy any asset. Participants act on their own behalf and at their own risk.</p>
-        <p class='tagline' data-i18n id='ld1-ru'>ECNOVA не оказывает инвестиционных рекомендаций. Ничто на сайте не является офертой или приглашением к покупке какого‑либо актива. Участники действуют самостоятельно и на свой риск.</p>
-        <p class='tagline show' data-i18n id='ld2-en'>Contributions to the DAO Treasury are voluntary and non‑refundable. There are no profit guarantees or expectations. Please DYOR.</p>
-        <p class='tagline' data-i18n id='ld2-ru'>Взносы в казну DAO добровольные и невозвратные. Нет гарантий прибыли или ожиданий доходности. Пожалуйста, проводите собственный анализ (DYOR).</p>
+      <section class="section support">
+        <h2 data-i18n id="legal-en" class="show">Legal & Disclaimer</h2>
+        <h2 data-i18n id="legal-ru">Правовая информация и дисклеймер</h2>
+        <p class="tagline show" data-i18n id="ld1-en">ECNOVA does not offer financial advice. Nothing on this site constitutes an offer to sell or a solicitation to buy any asset. Participants act on their own behalf and at their own risk.</p>
+        <p class="tagline" data-i18n id="ld1-ru">ECNOVA не оказывает инвестиционных рекомендаций. Ничто на сайте не является офертой или приглашением к покупке какого-либо актива. Участники действуют самостоятельно и на свой риск.</p>
+        <p class="tagline show" data-i18n id="ld2-en">Contributions to the DAO Treasury are voluntary and non-refundable. There are no profit guarantees or expectations. Please DYOR.</p>
+        <p class="tagline" data-i18n id="ld2-ru">Взносы в казну DAO добровольные и невозвратные. Нет гарантий прибыли или ожиданий доходности. Пожалуйста, проводите собственный анализ (DYOR).</p>
       </section>
-
-      <section class='section'>
-        <h2 data-i18n id='sup-en' class='show'>Support the Engine</h2>
-        <h2 data-i18n id='sup-ru'>Поддержать «двигатель»</h2>
-        <p class='tagline show' data-i18n id='supp-en'>Add energy to the system — contributions go directly to the DAO Treasury on Solana.</p>
-        <p class='tagline' data-i18n id='supp-ru'>Добавь энергии системе — взносы поступают напрямую в казну DAO в сети Solana.</p>
-        <div class='cta'>
-          <a class='btn' href='https://v3.squads.so/vault/assets/NHBaV1duNGJ4VUU1TEtESzQ5WlNoWkV0dHFFWGpVNjZHOU5xQWdDbkN6VUQ=' target='_blank' rel='noopener'>Open DAO Treasury (Squads)</a>
-          <a class='btn secondary' href='https://solscan.io/account/7Tjoocug5Fj5hw3izadTsR4WjPqC3aRLoAoK1k6KfkFi' target='_blank' rel='noopener'>View on Solscan</a>
+      <section class="section">
+        <h2 data-i18n id="sup-en" class="show">Support the Engine</h2>
+        <h2 data-i18n id="sup-ru">Поддержать «двигатель»</h2>
+        <p class="tagline show" data-i18n id="supp-en">Add energy to the system — contributions go directly to the DAO Treasury on Solana.</p>
+        <p class="tagline" data-i18n id="supp-ru">Добавь энергии системе — взносы поступают напрямую в казну DAO в сети Solana.</p>
+        <div class="cta">
+          <a class="btn" href="https://v3.squads.so/vault/assets/NHBaV1duNGJ4VUU1TEtESzQ5WlNoWkV0dHFFWGpVNjZHOU5xQWdDbkN6VUQ=" target="_blank" rel="noopener">Open DAO Treasury (Squads)</a>
+          <a class="btn secondary" href="https://solscan.io/account/7Tjoocug5Fj5hw3izadTsR4WjPqC3aRLoAoK1k6KfkFi" target="_blank" rel="noopener">View on Solscan</a>
         </div>
-        <div class='addr-row'>
-          <div class='addr' id='daoaddr'>7Tjoocug5Fj5hw3izadTsR4WjPqC3aRLoAoK1k6KfkFi</div>
-          <span class='badge' style='border:1px solid #26FFB0; padding:4px 8px; border-radius:999px;'>Network: Solana (Mainnet)</span>
-          <button class='copy' onclick='copyAddr()'>Копировать адрес</button>
+        <div class="addr-row">
+          <div class="addr" id="daoaddr">7Tjoocug5Fj5hw3izadTsR4WjPqC3aRLoAoK1k6KfkFi</div>
+          <span class="badge" style="border:1px solid #26FFB0; padding:4px 8px; border-radius:999px;">Network: Solana (Mainnet)</span>
+          <button class="copy" id="copyAddrBtn" onclick="copyAddr()">Копировать адрес</button>
         </div>
       </section>
-
-      <section class='section' id='contact'>
-        <h2 data-i18n id='contact-en' class='show'>Contacts</h2>
-        <h2 data-i18n id='contact-ru'>Контакты</h2>
-        <p class='tagline show' data-i18n id='contactp-en'>Email us — we respond thoughtfully and without hype.</p>
-        <p class='tagline' data-i18n id='contactp-ru'>Пишите на почту — отвечаем вдумчиво, без лишнего шума.</p>
-        <div class='cta'>
-          <a class='btn' id='emailBtn' href='mailto:ecnova.project@gmail.com' target='_blank' rel='noopener'>Send Email</a>
-          <span class='addr' id='emailText'>ecnova.project@gmail.com</span>
-          <button class='copy' onclick='copyEmail()'>Копировать e‑mail</button>
+      <!-- White Paper placeholder -->
+      <section class="section">
+        <h2 data-i18n id="wp-en" class="show">White Paper</h2>
+        <h2 data-i18n id="wp-ru">White Paper</h2>
+        <div class="cta">
+          <a class="btn secondary" id="wpBtn" href="#" onclick="alertSoon(event)">White Paper (soon)</a>
         </div>
       </section>
-
+      <section class="section" id="contact">
+        <h2 data-i18n id="contact-en" class="show">Contacts</h2>
+        <h2 data-i18n id="contact-ru">Контакты</h2>
+        <p class="tagline show" data-i18n id="contactp-en">Email us — we respond thoughtfully and without hype.</p>
+        <p class="tagline" data-i18n id="contactp-ru">Пишите на почту — отвечаем вдумчиво, без лишнего шума.</p>
+        <div class="cta">
+          <a class="btn" id="emailBtn" href="mailto:ecnova.project@gmail.com" target="_blank" rel="noopener">Send Email</a>
+          <span class="addr" id="emailText">ecnova.project@gmail.com</span>
+          <button class="copy" id="copyEmailBtn" onclick="copyEmail()">Копировать e-mail</button>
+        </div>
+      </section>
       <footer>
         <span>© ECNOVA, 2025</span>
         <span>Contact: ecnova.project@gmail.com</span>
       </footer>
     </main>
   </div>
-
-  <a href='#top' class='to-top' id='toTop'>Back to top</a>
-
+  <a href="#top" class="to-top" id="toTop">Back to top</a>
   <script>
-    function setLang(lang){const isRU=lang==='ru';document.querySelectorAll('[data-i18n]').forEach(el=>el.classList.remove('show'));const ids=['tagline','h1','h2','h3','p1','p2','p3','what','whatp','legal','ld1','ld2','sup','supp','contact','contactp'];ids.forEach(id=>{const el=document.getElementById(id+'-'+(isRU?'ru':'en'));if(el)el.classList.add('show');});}
-    function copyAddr(){const el=document.createElement('textarea');el.value=document.getElementById('daoaddr').textContent.trim();document.body.appendChild(el);el.select();document.execCommand('copy');document.body.removeChild(el);alert('DAO address copied');}
-    function copyEmail(){const el=document.createElement('textarea');el.value=document.getElementById('emailText').textContent.trim();document.body.appendChild(el);el.select();document.execCommand('copy');document.body.removeChild(el);alert('Email copied');}
-    const bg=document.getElementById('bgGreen');const toTop=document.getElementById('toTop');window.addEventListener('scroll',()=>{const y=window.scrollY||window.pageYOffset;bg.style.backgroundPosition=`${y*-0.02}px ${y*0.05}px, ${y*0.03}px ${y*-0.07}px, ${y*-0.02}px ${y*0.03}px, center`;if(y>220)toTop.classList.add('show');else toTop.classList.remove('show');},{ passive:true });
+    function setLang(lang){
+      const isRU = lang === 'ru';
+      document.documentElement.lang = isRU ? 'ru' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => el.classList.remove('show'));
+      const ids = ['tagline','h1','h2','h3','p1','p2','p3','what','whatp','legal','ld1','ld2','sup','supp','contact','contactp','wp'];
+      ids.forEach(id => {
+        const el = document.getElementById(id + '-' + (isRU ? 'ru' : 'en'));
+        if (el) el.classList.add('show');
+      });
+      document.getElementById('copyAddrBtn').textContent = isRU ? 'Копировать адрес' : 'Copy Address';
+      document.getElementById('copyEmailBtn').textContent = isRU ? 'Копировать e-mail' : 'Copy Email';
+      document.getElementById('emailBtn').textContent    = isRU ? 'Отправить письмо' : 'Send Email';
+      document.getElementById('wpBtn').textContent       = isRU ? 'White Paper (скоро)' : 'White Paper (soon)';
+    }
+    function copyAddr(){
+      const el = document.createElement('textarea');
+      el.value = document.getElementById('daoaddr').textContent.trim();
+      document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+      alert('DAO address copied');
+    }
+    function copyEmail(){
+      const el = document.createElement('textarea');
+      el.value = document.getElementById('emailText').textContent.trim();
+      document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+      alert('Email copied');
+    }
+    function alertSoon(e){ e.preventDefault(); alert('White Paper — coming soon'); }
+    const bg = document.getElementById('bgGreen');
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY || window.pageYOffset;
+      bg.style.backgroundPosition =
+        `${y * -0.02}px ${y * 0.05}px, ${y * 0.03}px ${y * -0.07}px, ${y * -0.02}px ${y * 0.03}px, center`;
+      if (y > 220) toTop.classList.add('show'); else toTop.classList.remove('show');
+    }, { passive:true });
   </script>
-
   <noscript>Для переключения языка, копирования и фоновых эффектов требуется JavaScript.</noscript>
 </body>
 </html>
