@@ -4,56 +4,152 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ECNOVA — Deflationary Engine</title>
-  <link rel="canonical" href="https://ecnova.io"/>
   <meta name="description" content="ECNOVA — deflationary economic engine on Solana. Community-powered, treasury-backed, calm growth.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ecnova.io">
-  <meta property="og:title" content="ECNOVA — Deflationary Engine">
-  <meta property="og:description" content="Calm, transparent, community‑powered mechanics for value creation.">
-  <meta property="og:image" content="https://ecnova.io/assets/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ECNOVA — Deflationary Engine">
-  <meta name="twitter:description" content="Deflationary economic engine on Solana.">
-  <meta name="twitter:image" content="https://ecnova.io/assets/og-image.png">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="apple-touch-icon" href="assets/og-image.png">
   <style>
-    :root{--bg:#06090d;--bg2:#0b0f14;--text:#EAF2FF;--muted:#9fb0c7;--violet:#7C3AED;--green:#21f3a3;--card:#0f1721;--border:rgba(255,255,255,.12);--glow:0 0 40px rgba(33,243,163,.18),0 0 90px rgba(124,58,237,.12);}
-    *{box-sizing:border-box} html,body{height:100%;margin:0}
-    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;color:var(--text);
-      background:radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.22), transparent 60%),radial-gradient(1000px 520px at 120% 110%, rgba(33,243,163,.18), transparent 60%),radial-gradient(800px 480px at -20% 120%, rgba(33,243,163,.10), transparent 60%),var(--bg2);
-      padding:28px 18px 60px;}
-    .wrap{max-width:1100px;margin:0 auto}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));border:1px solid var(--border);border-radius:24px;padding:clamp(22px,4vw,52px);box-shadow:var(--glow);backdrop-filter:blur(10px);}
-    .brand{display:flex;align-items:center;gap:16px;margin:0 0 18px}
-    .brand img{width:74px;height:74px;border-radius:18px;object-fit:cover;box-shadow:0 0 24px rgba(33,243,163,.25)}
-    h1{font-size:clamp(30px,6.8vw,62px);line-height:1.06;margin:0;background:linear-gradient(90deg, var(--green), var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 18px rgba(33,243,163,.25);}
-    .lang{margin-left:auto;display:flex;gap:8px}
-    .lang button{background:transparent;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:10px;cursor:pointer;box-shadow:0 0 16px rgba(124,58,237,.18) inset;}
-    .tagline{color:var(--muted);font-size:clamp(14px,2.6vw,18px);margin:10px 0 26px;max-width:74ch}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
-    .btn{border:1px solid var(--border);color:var(--text);background:linear-gradient(135deg, rgba(124,58,237,.28), rgba(33,243,163,.12));padding:12px 18px;border-radius:14px;font-weight:600;text-decoration:none;transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, filter .12s ease;display:inline-flex;align-items:center;gap:10px;filter:saturate(1.1);}
-    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.28);box-shadow:0 0 26px rgba(33,243,163,.25)}
-    .btn.secondary{background:linear-gradient(135deg, rgba(33,243,163,.26), rgba(124,58,237,.10))}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .tile{padding:16px;border:1px solid var(--border);border-radius:16px;background:rgba(15,23,33,.7);min-height:110px;box-shadow:0 0 24px rgba(124,58,237,.08) inset;}
-    .tile h3{margin:0 0 8px;font-size:16px} .tile p{margin:0;color:var(--muted);font-size:14px}
-    .section{margin-top:26px} .section h2{font-size:22px;margin:0 0 12px}
-    .support{border:1px dashed rgba(255,255,255,.18);border-radius:16px;padding:16px;background:rgba(124,58,237,.08)}
-    .badge{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);margin-left:8px}
-    .addr{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;user-select:all;word-break:break-all}
-    .addr-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .copy{cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:6px 10px;background:rgba(33,243,163,.10)}
-    .copy:hover{border-color:rgba(255,255,255,.28)}
-    footer{margin-top:30px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    @media (max-width:980px){.grid{grid-template-columns:1fr}}
-    [data-i18n]{display:none} .show{display:block}
-    .glowline{margin:26px 0;height:1px;border:0;background:linear-gradient(90deg, transparent, rgba(33,243,163,.6), rgba(124,58,237,.6), transparent);filter: blur(.2px);box-shadow:0 0 22px rgba(33,243,163,.25), 0 0 22px rgba(124,58,237,.2);}
+    :root {
+      --bg: #081014;
+      --text: #EAF2FF;
+      --muted:#9fb0c7;
+      --violet:#7C3AED;
+      --green:#22F3A3;            /* сочнее зелёный */
+      --green-deep:#0cc28a;       /* глубокий зелёный тень */
+      --card:#0f1721;
+      --border: rgba(255,255,255,.12);
+      --glow: 0 0 40px rgba(34,243,163,.18), 0 0 90px rgba(124,58,237,.12);
+    }
+
+    * { box-sizing:border-box }
+    html, body { height:100%; margin:0 }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* ---------- GREEN FLOW BACKGROUND (многослойный, реагирует на скролл) ---------- */
+    .bg-layer {
+      position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.18), transparent 60%),
+        radial-gradient(1400px 800px at 120% 120%, rgba(34,243,163,.30), transparent 60%),
+        radial-gradient(900px 700px at -20% 120%, rgba(12,194,138,.25), transparent 60%);
+      filter: saturate(1.2);
+      transition: background-position .2s ease-out;
+    }
+    /* дополнительная зелёная «дымка» */
+    .bg-smoke {
+      position: fixed; inset: -10% -10% -10% -10%; z-index: -2; pointer-events:none;
+      background:
+        conic-gradient(from 0deg at 30% 40%, rgba(34,243,163,.18), transparent 30%, rgba(12,194,138,.18) 55%, transparent 80%),
+        radial-gradient(80% 55% at 70% 10%, rgba(34,243,163,.12), transparent 60%);
+      mix-blend-mode: screen;
+      animation: smoke 18s linear infinite alternate;
+      opacity: .9;
+    }
+    @keyframes smoke {
+      0% { transform: translate3d(0,0,0) scale(1); filter: blur(10px); }
+      100% { transform: translate3d(-2%,2%,0) scale(1.04); filter: blur(14px); }
+    }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 18px 80px; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(22px,4vw,52px);
+      box-shadow: var(--glow);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand { display:flex; align-items:center; gap:16px; margin: 0 0 18px; }
+    .brand img { width:74px; height:74px; border-radius:18px; object-fit:cover; box-shadow:0 0 24px rgba(34,243,163,.25) }
+    h1 {
+      font-size: clamp(30px,6.8vw,62px); line-height:1.06; margin:0;
+      background: linear-gradient(90deg, var(--green), var(--violet));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 0 22px rgba(34,243,163,.28);
+      animation: titleGlow 4.5s ease-in-out infinite alternate;
+    }
+    @keyframes titleGlow {
+      0% { text-shadow: 0 0 14px rgba(34,243,163,.20), 0 0 0 rgba(124,58,237,0); }
+      100% { text-shadow: 0 0 26px rgba(34,243,163,.36), 0 0 18px rgba(124,58,237,.18); }
+    }
+
+    .lang { margin-left: auto; display:flex; gap:8px; }
+    .lang button{
+      background: transparent; color: var(--text); border:1px solid var(--border);
+      padding: 8px 12px; border-radius: 10px; cursor: pointer;
+      box-shadow: 0 0 16px rgba(124,58,237,.18) inset;
+    }
+
+    .tagline { color: var(--muted); font-size: clamp(14px,2.6vw,18px); margin: 10px 0 26px; max-width: 74ch; }
+    .cta { display:flex; flex-wrap: wrap; gap: 12px; margin: 0 0 22px; }
+    .btn {
+      border: 1px solid var(--border); color: var(--text);
+      background: linear-gradient(135deg, rgba(124,58,237,.28), rgba(34,243,163,.12));
+      padding: 12px 18px; border-radius: 14px; font-weight: 600; text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, filter .12s ease;
+      display: inline-flex; align-items: center; gap: 10px; filter: saturate(1.15);
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.28);
+      box-shadow: 0 0 34px rgba(34,243,163,.28), 0 0 26px rgba(124,58,237,.18);
+      filter: saturate(1.25);
+    }
+    .btn.secondary { background: linear-gradient(135deg, rgba(34,243,163,.26), rgba(124,58,237,.10)); }
+
+    .grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:16px; }
+    .tile {
+      padding:16px; border:1px solid var(--border); border-radius:16px; background: rgba(15,23,33,.72); min-height: 110px;
+      box-shadow: 0 0 24px rgba(124,58,237,.08) inset;
+      transition: transform .12s ease, box-shadow .2s ease;
+    }
+    .tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px rgba(34,243,163,.18) inset;
+    }
+    .tile h3 { margin: 0 0 8px; font-size: 16px; }
+    .tile p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .section { margin-top: 26px; }
+    .section h2 { font-size: 22px; margin: 0 0 12px; }
+
+    .support { border: 1px dashed rgba(255,255,255,.18); border-radius: 16px; padding: 16px; background: rgba(124,58,237,.08); }
+    .badge { display:inline-block; font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.22); margin-left:8px }
+    .addr { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; user-select: all; word-break: break-all; }
+    .addr-row { display:flex; gap: 10px; flex-wrap: wrap; align-items:center; }
+    .copy { cursor:pointer; border:1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 6px 10px; background: rgba(34,243,163,.10); }
+    .copy:hover { border-color: rgba(255,255,255,.28); }
+
+    footer { margin-top: 36px; color: var(--muted); font-size: 13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+
+    /* Back to top */
+    .to-top {
+      position: fixed; right: 18px; bottom: 18px; padding:10px 14px; border-radius:12px;
+      border:1px solid var(--border); background: rgba(34,243,163,.12); color: var(--text);
+      text-decoration:none; font-weight:600; backdrop-filter: blur(6px);
+      box-shadow: 0 0 24px rgba(34,243,163,.18);
+      opacity: 0; transform: translateY(10px); transition: .2s ease;
+    }
+    .to-top.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
+
+    /* i18n visibility */
+    [data-i18n] { display:none }
+    .show { display:block }
   </style>
 </head>
 <body>
+  <div class="bg-layer" id="bgLayer"></div>
+  <div class="bg-smoke"></div>
+
   <div class="wrap">
-    <main class="card" role="main" aria-label="ECNOVA landing">
+    <main class="card" role="main" aria-label="ECNOVA landing" id="top">
       <div class="brand">
         <img src="assets/logo.png" alt="ECNOVA logo">
         <div>
@@ -75,7 +171,7 @@
         <a class="btn" href="#contact">Contact</a>
       </div>
 
-      <hr class="glowline"/>
+      <hr style="margin:26px 0; height:1px; border:0; background:linear-gradient(90deg, transparent, rgba(34,243,163,.6), rgba(124,58,237,.6), transparent); filter: blur(.2px); box-shadow:0 0 22px rgba(34,243,163,.25), 0 0 22px rgba(124,58,237,.2);" />
 
       <section class="grid section">
         <div class="tile">
@@ -84,12 +180,14 @@
           <p data-i18n id="p1-en" class="show">Rule‑based supply mechanics protecting the downside and rewarding long‑term holders.</p>
           <p data-i18n id="p1-ru">Правила эмиссии/сжигания, снижающие риск падения и поощряющие долгосрочных участников.</p>
         </div>
+
         <div class="tile">
           <h3 data-i18n id="h2-en" class="show">First Engineers (NFT)</h3>
           <h3 data-i18n id="h2-ru">Первые инженеры (NFT)</h3>
           <p data-i18n id="p2-en" class="show">100 founding engineers assemble the Engine NFT set — parts, tools, and core modules. Participation unlocks early governance roles.</p>
           <p data-i18n id="p2-ru">100 первых инженеров собирают набор NFT‑деталей «Двигателя» — узлы, инструменты, базовые модули. Участие открывает ранние роли в управлении.</p>
         </div>
+
         <div class="tile">
           <h3 data-i18n id="h3-en" class="show">Education & Grants</h3>
           <h3 data-i18n id="h3-ru">Обучение и гранты</h3>
@@ -147,16 +245,10 @@
     </main>
   </div>
 
+  <a href="#top" class="to-top" id="toTop">Back to top</a>
+
   <script>
-    function copyAddr() {
-      const el = document.createElement('textarea');
-      el.value = document.getElementById('daoaddr').textContent.trim();
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      alert('DAO address copied');
-    }
+    // RU/EN toggle
     function setLang(lang) {
       const isRU = lang === 'ru';
       document.querySelectorAll('[data-i18n]').forEach(el => el.classList.remove('show'));
@@ -166,7 +258,26 @@
         if (el) el.classList.add('show');
       });
     }
+    // Copy DAO address
+    function copyAddr() {
+      const el = document.createElement('textarea');
+      el.value = document.getElementById('daoaddr').textContent.trim();
+      document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+      alert('DAO address copied');
+    }
+    // Scroll reactive background + back-to-top
+    const bg = document.getElementById('bgLayer');
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY || window.pageYOffset;
+      const x = window.innerWidth;
+      // смещаем радиальные градиенты по скроллу — "зелёные разводы"
+      bg.style.backgroundPosition = `${y * -0.02}px ${y * 0.04}px, ${y * 0.03}px ${y * -0.06}px, ${y * -0.015}px ${y * 0.02}px`;
+      // показать кнопку наверх
+      if (y > 200) toTop.classList.add('show'); else toTop.classList.remove('show');
+    }, { passive: true });
   </script>
-  <noscript>JavaScript required for language toggle.</noscript>
+
+  <noscript>JavaScript required for language toggle and background motion.</noscript>
 </body>
 </html>
