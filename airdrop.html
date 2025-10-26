@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ECNOVA AirDrop — Proof-of-Learning</title>
+  <title>ECNOVA AirDrop — Proof of Learning</title>
   <meta name="description" content="ECNOVA — Time-as-Proof Protocol на Solana. AirDrop ECNOVA — это механизм обучения: учись, получай поинты времени и конвертируй их в токены ECNOVA." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="ECNOVA AirDrop — Proof-of-Learning" />
+  <meta property="og:title" content="ECNOVA AirDrop — Proof of Learning" />
   <meta property="og:description" content="Изучай блокчейн и время — зарабатывай поинты ECNOVA. Время = ценность, знание = участие." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ecnova.io/airdrop" />
@@ -18,160 +18,70 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==============================
-       ECNOVA AirDrop — Proof-of-Learning
-       - Minimal, readable, responsive
-       - Soft glow accents (#00ffcc, #7d3cff) on deep dark background #0e0e0e
-       ============================== */
-    :root {
-      --bg: #0e0e0e;
-      --accent: #00ffcc;
-      --secondary: #7d3cff;
-      --text: #ffffff;
-      --muted: #cfcfcf;
-      --card: #151515;
-      --stroke: #242424;
-      --radius: 14px;
-      --shadow-lg: 0 0 30px rgba(0,255,204,0.18);
-      --shadow-btn: 0 0 20px rgba(0,255,204,0.55);
+    :root{
+      --bg:#0e0e0e; --accent:#00ffcc; --secondary:#7d3cff;
+      --text:#ffffff; --muted:#cfcfcf; --card:#151515; --stroke:#242424;
+      --radius:14px; --shadow-lg:0 0 30px rgba(0,255,204,0.18); --shadow-btn:0 0 20px rgba(0,255,204,0.55);
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      /* Ambient turquoise halo to keep the page alive but calm */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial;
+      color:var(--text); background:var(--bg); line-height:1.6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       background-image:
         radial-gradient(1200px 500px at 50% -10%, rgba(0,255,204,0.18), rgba(0,255,204,0) 60%),
         radial-gradient(800px 320px at 90% -20%, rgba(125,60,255,0.12), rgba(125,60,255,0) 60%);
-      background-repeat: no-repeat;
+      background-repeat:no-repeat;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(1100px,92vw); margin:0 auto}
 
-    .container { width: min(1100px, 92vw); margin: 0 auto; }
+    header{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px); background:rgba(14,14,14,0.75); border-bottom:1px solid var(--stroke)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .logo{font-weight:700; letter-spacing:.5px; font-size:20px; color:var(--text)}
+    .logo .dot{color:var(--accent)}
+    nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0}
+    nav a{color:var(--text); padding:8px 10px; border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,0.06); text-decoration:none}
+    .lang{display:flex; gap:10px}
+    .lang button{
+      background:transparent; border:1px solid var(--stroke); color:var(--text);
+      padding:6px 10px; border-radius:10px; cursor:pointer; transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    .lang button.active{border-color:var(--accent); color:var(--accent); box-shadow:var(--shadow-lg)}
 
-    /* Header */
-    header {
-      position: sticky; top: 0; z-index: 40;
-      backdrop-filter: blur(10px);
-      background: rgba(14,14,14,0.75);
-      border-bottom: 1px solid var(--stroke);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
-    .logo { font-weight: 700; letter-spacing: .5px; font-size: 20px; color: var(--text); }
-    .logo .dot { color: var(--accent); }
-    nav ul { display: flex; gap: 18px; list-style: none; padding: 0; margin: 0; }
-    nav a { color: var(--text); padding: 8px 10px; border-radius: 10px; }
-    nav a:hover { background: rgba(255,255,255,0.06); text-decoration: none; }
-    .lang { display: flex; gap: 10px; }
-    .lang button {
-      background: transparent; border: 1px solid var(--stroke); color: var(--text);
-      padding: 6px 10px; border-radius: 10px; cursor: default;
-    }
-    .lang button.active { border-color: var(--accent); color: var(--accent); box-shadow: var(--shadow-lg); }
+    .hero{position:relative; padding:72px 0 24px; border-bottom:1px solid var(--stroke);
+      background: radial-gradient(1600px 360px at 50% -70px, rgba(125,60,255,0.12), transparent 70%),
+                  radial-gradient(1400px 480px at 50% -30px, rgba(0,255,204,0.18), transparent 70%); overflow:hidden}
+    .hero h1{margin:0 0 10px; font-size:clamp(26px,6vw,42px); text-shadow:0 0 10px var(--accent)}
+    .hero p.lead{color:var(--muted); margin:0 0 18px; font-size:clamp(16px,3.5vw,18px)}
 
-    /* Hero */
-    .hero {
-      position: relative;
-      padding: 72px 0 36px;
-      border-bottom: 1px solid var(--stroke);
-      background:
-        radial-gradient(1600px 360px at 50% -70px, rgba(125,60,255,0.12), transparent 70%),
-        radial-gradient(1400px 480px at 50% -30px, rgba(0,255,204,0.18), transparent 70%);
-      overflow: hidden;
+    .btn-cta{
+      display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:12px;
+      border:1px solid var(--accent); color:#0e0e0e; background:var(--accent); font-weight:700; letter-spacing:.2px;
+      transition:transform .06s ease, box-shadow .25s ease, background .25s ease, color .25s ease; text-decoration:none
     }
-    .hero h1 {
-      margin: 0 0 8px;
-      font-size: clamp(26px, 6vw, 42px);
-      text-shadow: 0 0 10px var(--accent);
-    }
-    .hero p.lead {
-      color: var(--muted);
-      margin: 0 0 18px;
-      font-size: clamp(16px, 3.5vw, 18px);
-    }
-    .desc {
-      margin: 12px 0 0;
-      color: var(--text);
-    }
+    .btn-cta:hover{transform:translateY(-1px); box-shadow:0 0 20px var(--accent), 0 0 40px rgba(0,255,204,0.25); animation:pulseGlow 1.8s ease-in-out infinite}
+    @keyframes pulseGlow{0%,100%{box-shadow:0 0 16px rgba(0,255,204,0.65),0 0 34px rgba(0,255,204,0.20)} 50%{box-shadow:0 0 26px rgba(0,255,204,0.85),0 0 54px rgba(0,255,204,0.30)}}
+    @media (prefers-reduced-motion:reduce){.btn-cta:hover{animation:none}}
 
-    /* Sections */
-    section { padding: 40px 0; border-bottom: 1px solid var(--stroke); }
-    section:last-of-type { border-bottom: none; }
-    .section-title {
-      margin: 0 0 14px; font-size: clamp(20px, 4vw, 28px);
-      text-shadow: 0 0 10px var(--accent);
-    }
-    .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    }
-    ol.steps {
-      margin: 0; padding-left: 22px;
-    }
-    .facts {
-      list-style: none; margin: 0; padding: 0;
-    }
-    .facts li::before {
-      content: '• ';
-      color: var(--accent);
-    }
+    section{padding:40px 0; border-bottom:1px solid var(--stroke)}
+    section:last-of-type{border-bottom:none}
+    .section-title{margin:0 0 14px; font-size:clamp(20px,4vw,28px); text-shadow:0 0 10px var(--accent)}
+    .grid-2{display:grid; grid-template-columns:1.1fr 0.9fr; gap:18px}
+    .card{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:18px; box-shadow:0 10px 30px rgba(0,0,0,0.35)}
+    ol.steps{margin:0; padding-left:22px}
+    .facts{list-style:none; margin:0; padding:0}
+    .facts li::before{content:'• '; color:var(--accent)}
+    .cta-wrap{display:grid; place-items:center; padding:18px 0 6px}
+    .disclaimer{font-size:13px; color:var(--muted); border-top:1px dashed var(--stroke); padding-top:14px; margin-top:8px}
 
-    /* CTA Button */
-    .cta-wrap { display: grid; place-items: center; padding: 18px 0 6px; }
-    .btn-cta {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 14px 20px;
-      border-radius: 12px;
-      border: 1px solid var(--accent);
-      color: #0e0e0e;
-      background: var(--accent);
-      font-weight: 700;
-      letter-spacing: .2px;
-      transition: transform .06s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
-      text-decoration: none;
-    }
-    .btn-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 20px var(--accent), 0 0 40px rgba(0,255,204,0.25);
-      animation: pulseGlow 1.8s ease-in-out infinite;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 16px rgba(0,255,204,0.65), 0 0 34px rgba(0,255,204,0.20); }
-      50%      { box-shadow: 0 0 26px rgba(0,255,204,0.85), 0 0 54px rgba(0,255,204,0.30); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .btn-cta:hover { animation: none; }
-    }
+    footer{padding:26px 0 32px; color:var(--muted)}
+    .footer-row{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
 
-    /* Disclaimer */
-    .disclaimer {
-      font-size: 13px; color: var(--muted);
-      border-top: 1px dashed var(--stroke);
-      padding-top: 14px; margin-top: 8px;
-    }
-
-    /* Footer */
-    footer { padding: 26px 0 32px; color: var(--muted); }
-    footer .links a { color: var(--muted); }
-    footer .links a:hover { color: var(--accent); }
-    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      nav ul { display: none; }
-    }
+    @media(max-width:900px){.grid-2{grid-template-columns:1fr} nav ul{display:none}}
   </style>
 </head>
 <body>
@@ -181,16 +91,16 @@
       <div class="logo">ECNOVA<span class="dot">.</span></div>
       <nav aria-label="Primary">
         <ul>
-          <li><a href="/">Главная</a></li>
-          <li><a href="/whitepaper.pdf">Белая бумага</a></li>
-          <li><a href="/#contacts">Контакты</a></li>
-          <li><a href="/dao">DAO</a></li>
+          <li><a href="/" data-i18n="nav.home">Главная</a></li>
+          <li><a href="/whitepaper.pdf" data-i18n="nav.wp">Белая бумага</a></li>
+          <li><a href="/#contacts" data-i18n="nav.contacts">Контакты</a></li>
+          <li><a href="/dao" data-i18n="nav.dao">DAO</a></li>
         </ul>
       </nav>
       <div class="lang" aria-label="Language switcher">
-        <button type="button" class="active" aria-pressed="true">RU</button>
-        <button type="button" aria-pressed="false">EN</button>
-        <button type="button" aria-pressed="false">IT</button>
+        <button type="button" class="active" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="it" aria-pressed="false">IT</button>
       </div>
     </div>
   </header>
@@ -198,13 +108,16 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1>AirDrop ECNOVA — Proof-of-Learning.</h1>
-      <p class="lead">Изучай блокчейн и время — зарабатывай поинты ECNOVA.</p>
+      <h1 data-i18n="hero.title">AirDrop ECNOVA — Proof of Learning</h1>
+      <p class="lead" data-i18n="hero.subtitle">Изучай блокчейн и время — зарабатывай поинты ECNOVA.</p>
+      <div class="cta-wrap">
+        <a class="btn-cta" href="https://ecnova.io/airdrop-register" target="_blank" rel="noopener" data-i18n="hero.cta">Принять участие в AirDrop</a>
+      </div>
       <div class="desc">
-        <p>AirDrop ECNOVA — это новая форма участия в экономике времени.</p>
-        <p>Вы изучаете основы блокчейна и Solana, проходите небольшие тесты и получаете поинты времени.</p>
-        <p>Эти поинты конвертируются в временные NFT и токены ECNOVA.</p>
-        <p>Участие бесплатное — нужен только кошелёк Solana.</p>
+        <p data-i18n="desc.p1">AirDrop ECNOVA — это не раздача, а механизм обучения: учись, получай поинты времени и конвертируй их в токены ECNOVA.</p>
+        <p data-i18n="desc.p2">AirDrop ECNOVA — это новая форма участия в экономике времени.</p>
+        <p data-i18n="desc.p3">Вы изучаете основы блокчейна и Solana, проходите небольшие тесты и получаете поинты времени.</p>
+        <p data-i18n="desc.p4">Эти поинты конвертируются в временные NFT и токены ECNOVA. Участие бесплатное — нужен только кошелёк Solana.</p>
       </div>
     </div>
   </section>
@@ -213,27 +126,26 @@
   <section>
     <div class="container grid-2">
       <div class="card">
-        <h2 class="section-title">Как это работает</h2>
+        <h2 class="section-title" data-i18n="how.title">Как это работает</h2>
         <ol class="steps">
-          <li>Подключите кошелёк (Solana Phantom или Solflare).</li>
-          <li>Пройдите мини-курс по блокчейну и протоколу ECNOVA.</li>
-          <li>Получите поинты времени (Time Points).</li>
-          <li>После кампании поинты будут автоматически обменяны на токены ECNOVA.</li>
+          <li data-i18n="how.s1">Подключите кошелёк (Solana Phantom или Solflare).</li>
+          <li data-i18n="how.s2">Пройдите мини-курс по блокчейну и протоколу ECNOVA.</li>
+          <li data-i18n="how.s3">Получите поинты времени (Time Points).</li>
+          <li data-i18n="how.s4">После кампании поинты будут автоматически обменяны на токены ECNOVA.</li>
         </ol>
       </div>
       <div class="card">
-        <h2 class="section-title">Дата и условия</h2>
+        <h2 class="section-title" data-i18n="facts.title">Дата и условия</h2>
         <ul class="facts">
-          <li>Дата старта: [указать дату позже].</li>
-          <li>Количество доступных слотов: ограничено.</li>
-          <li>Пригласите друзей — получите дополнительные поинты времени.</li>
+          <li data-i18n="facts.f1">Дата старта: [указать дату позже].</li>
+          <li data-i18n="facts.f2">Количество доступных слотов: ограничено.</li>
+          <li data-i18n="facts.f3">Пригласите друзей — получите дополнительные поинты времени.</li>
         </ul>
         <div class="cta-wrap">
-          <a class="btn-cta" href="https://ecnova.io/airdrop-register" target="_blank" rel="noopener">Принять участие в AirDrop</a>
+          <a class="btn-cta" href="https://ecnova.io/airdrop-register" target="_blank" rel="noopener" data-i18n="facts.cta">Принять участие в AirDrop</a>
         </div>
-        <div class="disclaimer">
-          ⚠️ ECNOVA никогда не запрашивает seed-фразы или приватные ключи.
-          Участвуйте только через официальный сайт https://ecnova.io.
+        <div class="disclaimer" data-i18n="disclaimer">
+          ⚠️ ECNOVA никогда не запрашивает seed-фразы или приватные ключи. Участвуйте только через официальный сайт https://ecnova.io.
         </div>
       </div>
     </div>
@@ -243,12 +155,123 @@
   <footer>
     <div class="container footer-row">
       <div>© ECNOVA Protocol, 2025 — Execution as Trust.</div>
-      <div class="links">
-        <a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
-        <a href="/terms.html">Terms of Use</a> &nbsp;|&nbsp;
-        <a href="/legal.html">Legal &amp; Disclaimer</a>
-      </div>
     </div>
   </footer>
+
+  <script>
+    // Simple i18n switcher: RU/EN/IT
+    const translations = {
+      ru: {
+        'nav.home':'Главная',
+        'nav.wp':'Белая бумага',
+        'nav.contacts':'Контакты',
+        'nav.dao':'DAO',
+
+        'hero.title':'AirDrop ECNOVA — Proof of Learning',
+        'hero.subtitle':'Изучай блокчейн и время — зарабатывай поинты ECNOVA.',
+        'hero.cta':'Принять участие в AirDrop',
+
+        'desc.p1':'AirDrop ECNOVA — это не раздача, а механизм обучения: учись, получай поинты времени и конвертируй их в токены ECNOVA.',
+        'desc.p2':'AirDrop ECNOVA — это новая форма участия в экономике времени.',
+        'desc.p3':'Вы изучаете основы блокчейна и Solana, проходите небольшие тесты и получаете поинты времени.',
+        'desc.p4':'Эти поинты конвертируются в временные NFT и токены ECNOVA. Участие бесплатное — нужен только кошелёк Solana.',
+
+        'how.title':'Как это работает',
+        'how.s1':'Подключите кошелёк (Solana Phantom или Solflare).',
+        'how.s2':'Пройдите мини-курс по блокчейну и протоколу ECNOVA.',
+        'how.s3':'Получите поинты времени (Time Points).',
+        'how.s4':'После кампании поинты будут автоматически обменяны на токены ECNOVA.',
+
+        'facts.title':'Дата и условия',
+        'facts.f1':'Дата старта: [указать дату позже].',
+        'facts.f2':'Количество доступных слотов: ограничено.',
+        'facts.f3':'Пригласите друзей — получите дополнительные поинты времени.',
+        'facts.cta':'Принять участие в AirDrop',
+
+        'disclaimer':'⚠️ ECNOVA никогда не запрашивает seed-фразы или приватные ключи. Участвуйте только через официальный сайт https://ecnova.io.'
+      },
+      en: {
+        'nav.home':'Home',
+        'nav.wp':'White Paper',
+        'nav.contacts':'Contacts',
+        'nav.dao':'DAO',
+
+        'hero.title':'AirDrop ECNOVA — Proof of Learning',
+        'hero.subtitle':'Learn blockchain and time — earn ECNOVA points.',
+        'hero.cta':'Join AirDrop',
+
+        'desc.p1':'ECNOVA AirDrop is not a giveaway but a learning mechanism: learn, earn time points, and convert them into ECNOVA tokens.',
+        'desc.p2':'The ECNOVA AirDrop is a new way to participate in the time economy.',
+        'desc.p3':'You study blockchain and Solana basics, complete short quizzes, and earn time points.',
+        'desc.p4':'These points convert into temporal NFTs and ECNOVA tokens. Participation is free — you only need a Solana wallet.',
+
+        'how.title':'How it Works',
+        'how.s1':'Connect wallet (Solana Phantom or Solflare).',
+        'how.s2':'Complete a mini-course on blockchain and the ECNOVA protocol.',
+        'how.s3':'Earn Time Points.',
+        'how.s4':'After the campaign, points will be automatically converted into ECNOVA tokens.',
+
+        'facts.title':'Dates & Conditions',
+        'facts.f1':'Start date: [to be announced].',
+        'facts.f2':'Available slots: limited.',
+        'facts.f3':'Invite friends — earn additional time points.',
+        'facts.cta':'Join AirDrop',
+
+        'disclaimer':'⚠️ ECNOVA never asks for seed phrases or private keys. Participate only via the official website https://ecnova.io.'
+      },
+      it: {
+        'nav.home':'Home',
+        'nav.wp':'White Paper',
+        'nav.contacts':'Contatti',
+        'nav.dao':'DAO',
+
+        'hero.title':'AirDrop ECNOVA — Proof of Learning',
+        'hero.subtitle':'Studia la blockchain e il tempo — guadagna punti ECNOVA.',
+        'hero.cta':'Partecipa all’ AirDrop',
+
+        'desc.p1':'L’ AirDrop di ECNOVA non è una distribuzione, ma un meccanismo di apprendimento: studia, ottieni punti tempo e converti in token ECNOVA.',
+        'desc.p2':'L’ AirDrop ECNOVA è un nuovo modo di partecipare all’economia del tempo.',
+        'desc.p3':'Studi le basi della blockchain e di Solana, completi brevi quiz e ottieni punti tempo.',
+        'desc.p4':'Questi punti si trasformano in NFT temporali e token ECNOVA. La partecipazione è gratuita — serve solo un wallet Solana.',
+
+        'how.title':'Come funziona',
+        'how.s1':'Collega il wallet (Solana Phantom o Solflare).',
+        'how.s2':'Completa il mini‑corso su blockchain e sul protocollo ECNOVA.',
+        'how.s3':'Ottieni Time Points.',
+        'how.s4':'Al termine della campagna, i punti verranno convertiti automaticamente in token ECNOVA.',
+
+        'facts.title':'Data e condizioni',
+        'facts.f1':'Data di inizio: [da indicare più tardi].',
+        'facts.f2':'Slot disponibili: limitati.',
+        'facts.f3':'Invita gli amici — ottieni punti tempo extra.',
+        'facts.cta':'Partecipa all’ AirDrop',
+
+        'disclaimer':'⚠️ ECNOVA non chiede mai frasi seed o chiavi private. Partecipa solo tramite il sito ufficiale https://ecnova.io.'
+      }
+    };
+
+    function setLang(lang){
+      const dict = translations[lang] || translations['ru'];
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(node=>{
+        const key = node.getAttribute('data-i18n');
+        if (dict[key]) node.textContent = dict[key];
+      });
+      // toggle active state
+      document.querySelectorAll('.lang button').forEach(btn=>{
+        const isActive = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    }
+
+    // init listeners
+    document.querySelectorAll('.lang button').forEach(btn=>{
+      btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-lang')));
+    });
+
+    // default
+    setLang('ru');
+  </script>
 </body>
 </html>
