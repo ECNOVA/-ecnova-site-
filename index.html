@@ -1,211 +1,570 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
+  <!-- Meta basics -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ECNOVA — Deflationary Engine</title>
-  <meta name="description" content="ECNOVA — deflationary economic engine on Solana. Community-powered, treasury-backed, calm growth.">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="apple-touch-icon" href="assets/og-image.png">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="ECNOVA — Deflationary Engine">
-  <meta property="og:description" content="Calm, transparent, community-powered mechanics for value creation.">
-  <meta property="og:image" content="assets/og-image.png">
+
+  <title>ECNOVA — Execution as Trust</title>
+  <meta name="description" content="ECNOVA — time-as-proof протокол на Solana. Исполнение — валюта. Время — свидетель. Создай временную ячейку и наблюдай исполнение." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ECNOVA — Execution as Trust" />
+  <meta property="og:description" content="ECNOVA — time-as-proof протокол на Solana. Исполнение — валюта. Время — свидетель." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ecnova.example/" />
+  <meta property="og:image" content="https://ecnova.example/og-image.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    :root { --bg:#071012; --text:#FFFFFF; --muted:#A7BECD; --violet:#6F2FE3; --green:#26FFB0; --green-2:#12D39A; --card:#0c1620; --border:rgba(255,255,255,.14); --glow:0 0 40px rgba(38,255,176,.18), 0 0 90px rgba(111,47,227,.10); }
-    * { box-sizing:border-box } html,body { height:100%; margin:0 }
-    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color: var(--text); background: var(--bg); overflow-x: hidden; }
-    .bg-green { position: fixed; inset: 0; z-index: -2; pointer-events:none;
-      background: radial-gradient(1300px 700px at 10% -10%, rgba(111,47,227,.16), transparent 60%),
-                  radial-gradient(1200px 720px at 115% 120%, rgba(38,255,176,.35), transparent 60%),
-                  radial-gradient(900px 620px at -20% 120%, rgba(18,211,154,.32), transparent 60%),
-                  conic-gradient(from 0deg at 60% 40%, rgba(38,255,176,.20), transparent 20%, rgba(18,211,154,.18) 55%, transparent 80%);
-      filter: saturate(1.25);
+    /* ==============================
+       ECNOVA — Embedded CSS (responsive, minimal)
+       Notes: color variables and small utility classes
+       ============================== */
+    :root {
+      --accent: #00ffcc;
+      --secondary: #7d3cff;
+      --bg: #0e0e0e;
+      --text: #e6e6e6;
+      --muted: #a9a9a9;
+      --card: #151515;
+      --stroke: #242424;
+      --shadow: 0 20px 40px rgba(0,0,0,0.4);
+      --radius: 14px;
     }
-    .bg-waves { position: fixed; inset: -10% -10% -10% -10%; z-index: -3; pointer-events:none;
-      background: repeating-linear-gradient(135deg, rgba(38,255,176,.10) 0 12px, transparent 12px 32px),
-                  radial-gradient(80% 60% at 70% 10%, rgba(38,255,176,.14), transparent 60%);
-      mix-blend-mode: screen; animation: waves 22s linear infinite alternate; opacity:.9;
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    @keyframes waves { 0% { transform: translate3d(0,0,0) scale(1); filter: blur(10px) } 100% { transform: translate3d(-2%,1.5%,0) scale(1.05); filter: blur(14px) } }
-    .wrap { max-width:1100px; margin:0 auto; padding:28px 18px 80px }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); border: 1px solid var(--border); border-radius: 24px; padding: clamp(22px,4vw,52px); box-shadow: var(--glow); backdrop-filter: blur(10px); }
-    .brand { display:flex; align-items:center; gap:16px; margin:0 0 18px } .brand img { width:74px; height:74px; border-radius:18px; object-fit:cover; box-shadow:0 0 24px rgba(38,255,176,.28) }
-    h1 { font-size: clamp(30px,6.8vw,62px); line-height:1.06; margin:0; background: linear-gradient(90deg, var(--green), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 22px rgba(38,255,176,.30); animation: titleGlow 4.5s ease-in-out infinite alternate; }
-    @keyframes titleGlow { 0% { text-shadow: 0 0 16px rgba(38,255,176,.22), 0 0 0 rgba(111,47,227,0) } 100% { text-shadow: 0 0 28px rgba(38,255,176,.40), 0 0 18px rgba(111,47,227,.16) } }
-    .lang { margin-left:auto; display:flex; gap:8px } .lang button { background: rgba(255,255,255,.06); color: var(--text); border:1px solid var(--border); padding: 8px 12px; border-radius: 10px; cursor: pointer; box-shadow: 0 0 16px rgba(111,47,227,.18) inset; }
-    .tagline { color: var(--muted); font-size: clamp(14px,2.6vw,18px); margin: 10px 0 26px; max-width: 74ch } .cta { display:flex; flex-wrap:wrap; gap:12px; margin:0 0 22px }
-    .btn { border: 1px solid var(--border); color: #FFFFFF; background: linear-gradient(135deg, rgba(111,47,227,.26), rgba(38,255,176,.18)); padding: 12px 18px; border-radius: 14px; font-weight: 700; text-decoration: none; transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, filter .12s ease; display: inline-flex; align-items: center; gap: 10px; filter: saturate(1.15); }
-    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.34); box-shadow: 0 0 34px rgba(38,255,176,.32), 0 0 26px rgba(111,47,227,.18); filter: saturate(1.25) }
-    .btn.secondary { background: linear-gradient(135deg, rgba(38,255,176,.30), rgba(111,47,227,.12)) }
-    .grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:16px }
-    .tile { padding:16px; border:1px solid var(--border); border-radius:16px; background: rgba(11,20,28,.80); min-height: 110px; box-shadow: 0 0 24px rgba(111,47,227,.10) inset; transition: transform .12s ease, box-shadow .2s ease; }
-    .tile:hover { transform: translateY(-2px); box-shadow: 0 0 36px rgba(38,255,176,.22) inset }
-    .tile h3 { margin:0 0 8px; font-size:16px } .tile p { margin:0; color:var(--muted); font-size:14px }
-    .section { margin-top:26px } .section h2 { font-size:22px; margin:0 0 12px }
-    .support { border:1px dashed rgba(255,255,255,.22); border-radius:16px; padding:16px; background: rgba(111,47,227,.10) }
-    .addr { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; user-select: all; word-break: break-all }
-    .addr-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center }
-    .copy { cursor:pointer; border:1px solid rgba(255,255,255,.30); border-radius:10px; padding:8px 12px; background: rgba(38,255,176,.22); color:#FFFFFF; font-weight:700; box-shadow: 0 0 18px rgba(38,255,176,.26); }
-    .copy:hover { border-color:#FFFFFF; box-shadow: 0 0 28px rgba(38,255,176,.36) }
-    footer { margin-top:36px; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap }
-    .to-top { position: fixed; right: 18px; bottom: 18px; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background: rgba(38,255,176,.18); color: #FFFFFF; text-decoration:none; font-weight:700; backdrop-filter: blur(6px); box-shadow: 0 0 24px rgba(38,255,176,.28); opacity: 0; transform: translateY(10px); transition: .2s ease }
-    .to-top.show { opacity: 1; transform: translateY(0) }
-    @media (max-width:980px) { .grid { grid-template-columns: 1fr } }
-    [data-i18n] { display:none } .show { display:block }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 0 0;
+    }
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(14,14,14,0.7);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-size: 20px;
+      color: var(--text);
+    }
+    .logo .dot {
+      color: var(--accent);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    nav a {
+      color: var(--text);
+      font-weight: 500;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+    }
+    nav a:hover { background: rgba(255,255,255,0.06); text-decoration: none; }
+    .lang {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px;
+    }
+    .lang button {
+      background: transparent; border: 1px solid var(--stroke); color: var(--text);
+      padding: 6px 10px; border-radius: 10px; cursor: pointer;
+    }
+    .lang button.active { border-color: var(--accent); color: var(--accent); }
+    /* Hero */
+    .hero {
+      padding: 64px 0 40px;
+      background:
+        radial-gradient(1200px 400px at 50% -50%, rgba(0,255,204,0.18) 0, transparent 60%),
+        radial-gradient(800px 300px at 90% -30%, rgba(125,60,255,0.12) 0, transparent 60%);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 6vw, 44px);
+      letter-spacing: 0.2px;
+    }
+    .hero p {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: clamp(16px, 3.5vw, 18px);
+    }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 18px; border-radius: 12px; border: 1px solid var(--stroke);
+      color: var(--text); background: #111;
+      transition: transform .04s ease, border-color .2s ease, background .2s ease;
+      cursor: pointer; text-decoration: none; font-weight: 600;
+    }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn.primary { background: linear-gradient(90deg, var(--accent), var(--secondary)); color: #0b0b0b; border: none; }
+    .btn.secondary { background: #151515; }
+    .btn.ghost { background: transparent; }
+    /* Sections */
+    section { padding: 48px 0; border-bottom: 1px solid var(--stroke); }
+    section:last-of-type { border-bottom: none; }
+    .section-title {
+      font-size: clamp(22px, 4.5vw, 30px);
+      margin: 0 0 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .muted { color: var(--muted); }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .flow > * + * { margin-top: 10px; }
+    /* Timeline / How it works */
+    .flow-steps {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+      font-weight: 600;
+    }
+    .arrow { color: var(--secondary); opacity: 0.9; }
+    /* Contacts */
+    .contacts-list {
+      display: grid; gap: 10px; margin: 8px 0 0; padding: 0; list-style: none;
+    }
+    /* Subscribe form */
+    .subscribe {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;
+    }
+    .subscribe input[type="email"] {
+      flex: 1 1 260px;
+      background: #121212; border: 1px solid var(--stroke); color: var(--text);
+      padding: 12px 14px; border-radius: 10px; outline: none;
+    }
+    /* Wallet block */
+    .wallet-block {
+      display: grid; grid-template-columns: 1.6fr 1fr; gap: 18px; align-items: center;
+    }
+    .wallet-line {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      background: #121212; border: 1px solid var(--stroke); padding: 12px; border-radius: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    }
+    .wallet-line code { user-select: all; }
+    .qr {
+      display: flex; align-items: center; justify-content: center;
+      padding: 10px; background: #121212; border: 1px solid var(--stroke); border-radius: 12px;
+    }
+    /* Footer */
+    footer {
+      padding: 26px 0 32px;
+      color: var(--muted);
+    }
+    footer .links a { color: var(--muted); }
+    footer .links a:hover { color: var(--accent); }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    /* Responsive */
+    @media (max-width: 860px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .wallet-block { grid-template-columns: 1fr; }
+      nav ul { display: none; } /* keep it minimal: hide big menu on mobile */
+    }
   </style>
 </head>
 <body>
-  <div class="bg-green" id="bgGreen"></div>
-  <div class="bg-waves"></div>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container nav">
+      <div class="logo">ECNOVA<span class="dot">.</span></div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#home" data-i18n="nav.home">Главная</a></li>
+          <li><a href="#about" data-i18n="nav.about">О проекте</a></li>
+          <li><a href="#whitepaper" data-i18n="nav.wp">Белая бумага</a></li>
+          <li><a href="#contacts" data-i18n="nav.contacts">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="lang" aria-label="Language switcher">
+        <button type="button" class="active" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="it" aria-pressed="false">IT</button>
+      </div>
+    </div>
+  </header>
 
-  <div class="wrap">
-    <main class="card" role="main" aria-label="ECNOVA landing" id="top">
-      <div class="brand">
-        <img src="assets/logo.png" alt="ECNOVA logo">
-        <div>
-          <h1>ECNOVA</h1>
-          <div id="tagline-en" class="tagline show" data-i18n>Deflationary Engine on Solana — calm, transparent, community-powered mechanics for value creation.</div>
-          <div id="tagline-ru" class="tagline" data-i18n>Дефляционный «двигатель» на Solana — спокойная, прозрачная, управляемая сообществом механика создания ценности.</div>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1 data-i18n="hero.title">Execution as Trust — Time-as-Proof Protocol on Solana</h1>
+      <p class="muted" data-i18n="hero.subtitle">ECNOVA позволяет фиксировать обязательства во времени — создай ячейку и наблюдай исполнение.</p>
+      <div class="actions">
+        <a class="btn primary" href="/coming-soon.html" data-i18n="hero.cta1">Зайти в гости</a>
+        <button class="btn secondary" onclick="remember()" data-i18n="hero.cta2">Положи это на полку памяти</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Что такое ECNOVA -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about.title">Что такое ECNOVA</h2>
+      <div class="card flow">
+        <p data-i18n="about.text">
+          ECNOVA — протокол времени, который превращает исполнение в доказательство. В основе — Time Cells — временные ячейки, где каждое действие имеет дедлайн и исполняется кодом на Solana.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как это работает -->
+  <section id="how">
+    <div class="container">
+      <h2 class="section-title" data-i18n="how.title">Как это работает</h2>
+      <div class="card">
+        <p class="flow-steps" data-i18n="how.scheme">
+          Схема:
+          <span>&nbsp;Создай ячейку</span>
+          <span class="arrow">→</span>
+          <span>Внеси условия</span>
+          <span class="arrow">→</span>
+          <span>Дождись дедлайна</span>
+          <span class="arrow">→</span>
+          <span>Код фиксирует исполнение</span>
+          <span class="arrow">→</span>
+          <span>Время становится доказательством.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Преимущества ECNOVA -->
+  <section id="benefits">
+    <div class="container">
+      <h2 class="section-title" data-i18n="benefits.title">Преимущества ECNOVA</h2>
+      <div class="grid-3">
+        <div class="card">
+          <strong data-i18n="benefits.a1t">Исполнение — время работает само.</strong>
         </div>
-        <div class="lang">
-          <button onclick="setLang('en')">EN</button>
-          <button onclick="setLang('ru')">RU</button>
+        <div class="card">
+          <strong data-i18n="benefits.a2t">Прозрачность — всё он-чейн и открыто.</strong>
+        </div>
+        <div class="card">
+          <strong data-i18n="benefits.a3t">Дефляция — каждое исполнение сжигает часть токенов ECNOVA.</strong>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="cta">
-        <a class="btn" href="https://x.com/EcnovaDAO" target="_blank" rel="noopener">Twitter / X</a>
-        <a class="btn secondary" href="https://t.me/ecnovaDAO" target="_blank" rel="noopener">Telegram</a>
-        <a class="btn" href="https://v3.squads.so/vault/assets/NHBaV1duNGJ4VUU1TEtESzQ5WlNoWkV0dHFFWGpVNjZHOU5xQWdDbkN6VUQ=" target="_blank" rel="noopener">DAO Treasury (Squads)</a>
-        <a class="btn secondary" href="https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener">Explorer (Solscan)</a>
-        <a class="btn" href="#contact">Contact</a>
+  <!-- AirDrop — Обучайся, чтобы зарабатывать -->
+  <section id="airdrop">
+    <div class="container">
+      <h2 id="learn" class="section-title" data-i18n="air.title">AirDrop — Обучайся, чтобы зарабатывать</h2>
+      <div class="card flow">
+        <p data-i18n="air.text">
+          ECNOVA AirDrop — это Proof-of-Learning: изучай блокчейн и идею времени, проходи короткие задания и получай поинты ECNOVA, которые превращаются во временные NFT.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="/airdrop.html" data-i18n="air.cta1">Начать обучение и участвовать в AirDrop</a>
+          <a class="btn ghost" href="/#learn" data-i18n="air.cta2">Узнать подробнее о Proof-of-Learning</a>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <hr style="margin:26px 0;height:1px;border:0;background:linear-gradient(90deg,transparent,rgba(38,255,176,.70),rgba(111,47,227,.5),transparent);filter:blur(.2px);box-shadow:0 0 22px rgba(38,255,176,.32),0 0 22px rgba(111,47,227,.22);" />
+  <!-- Белая бумага -->
+  <section id="whitepaper">
+    <div class="container">
+      <h2 class="section-title" data-i18n="wp.title">Белая бумага</h2>
+      <div class="card flow">
+        <p data-i18n="wp.text">Полная техническая и философская спецификация ECNOVA доступна для скачивания.</p>
+        <a class="btn secondary" href="/whitepaper.pdf" download data-i18n="wp.cta">Скачать White Paper (PDF)</a>
+      </div>
+    </div>
+  </section>
 
-      <section class="grid section">
-        <div class="tile">
-          <h3 data-i18n id="h1-en" class="show">Deflationary Model</h3>
-          <h3 data-i18n id="h1-ru">Дефляционная модель</h3>
-          <p data-i18n id="p1-en" class="show">Rule-based supply mechanics protecting the downside and rewarding long-term holders.</p>
-          <p data-i18n id="p1-ru">Правила эмиссии/сжигания, снижающие риск падения и поощряющие долгосрочных участников.</p>
+  <!-- Контакты и сообщество -->
+  <section id="contacts">
+    <div class="container">
+      <h2 class="section-title" data-i18n="contacts.title">Контакты и сообщество</h2>
+      <div class="grid-2">
+        <div class="card">
+          <ul class="contacts-list">
+            <li><strong>Email:</strong> <a href="mailto:ecnova.project@gmail.com">ecnova.project@gmail.com</a></li>
+            <li><strong>Telegram:</strong> <a href="https://t.me/EcnovaDAO" target="_blank" rel="noopener">https://t.me/EcnovaDAO</a></li>
+            <li><strong>Twitter / X:</strong> <a href="https://x.com/EcnovaDAO" target="_blank" rel="noopener">https://x.com/EcnovaDAO</a></li>
+          </ul>
+          <form class="subscribe" onsubmit="subscribe(event)">
+            <input type="email" id="email" required placeholder="Ваш email" data-i18n-placeholder="subscribe.placeholder" />
+            <button class="btn" type="submit" data-i18n="subscribe.btn">Подписаться на новости</button>
+          </form>
         </div>
-        <div class="tile">
-          <h3 data-i18n id="h2-en" class="show">First Engineers (NFT)</h3>
-          <h3 data-i18n id="h2-ru">Первые инженеры (NFT)</h3>
-          <p data-i18n id="p2-en" class="show">100 founding engineers assemble the Engine NFT set — parts, tools, and core modules. Participation unlocks early governance roles.</p>
-          <p data-i18n id="p2-ru">100 первых инженеров собирают набор NFT-деталей «Двигателя» — узлы, инструменты, базовые модули. Участие открывает ранние роли в управлении.</p>
+        <div class="card">
+          <h3 class="flow" style="margin-top:0;" data-i18n="energy.title">Добавить энергию ECNOVA</h3>
+          <p class="muted" data-i18n="energy.text1">Любой участник может добавить немного энергии в систему ECNOVA.</p>
+          <p class="muted" data-i18n="energy.text2">Средства направляются на развитие протокола, инфраструктуру и аудит.</p>
+          
+          <div class="wallet-block">
+            <div class="wallet-line">
+              <strong style="margin-right:6px;" data-i18n="energy.addrlabel">Адрес Solana:</strong>
+              <code id="wallet-address">DumR1fSvHVJz9nYw1ZkvdYinLX4hNzdoMS4Xph3KSfqC</code>
+              <button class="btn" style="margin-left:auto;" onclick="copyWallet()" data-i18n="energy.copy">Скопировать адрес</button>
+            </div>
+            <div class="qr" aria-label="QR Code">
+              <!-- External QR API for minimal JS footprint -->
+              <img id="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&format=svg&data=DumR1fSvHVJz9nYw1ZkvdYinLX4hNzdoMS4Xph3KSfqC" alt="QR-code ECNOVA wallet" width="180" height="180" />
+            </div>
+          </div>
+          <p class="muted" style="margin-top:12px;" data-i18n="energy.disclaimer">Подпись-дисклеймер: Не является инвестиционным предложением. Все переводы добровольны.</p>
         </div>
-        <div class="tile">
-          <h3 data-i18n id="h3-en" class="show">Education & Grants</h3>
-          <h3 data-i18n id="h3-ru">Обучение и гранты</h3>
-          <p data-i18n id="p3-en" class="show">We fund learning tracks for the next generations — technical, economic, and design. Grants are issued transparently from the DAO.</p>
-          <p data-i18n id="p3-ru">Мы поддерживаем образовательные треки для новых поколений — техника, экономика, дизайн. Гранты выдаются прозрачно из казны DAO.</p>
-        </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section class="section">
-        <h2 data-i18n id="what-en" class="show">What ECNOVA Is</h2>
-        <h2 data-i18n id="what-ru">Что такое ECNOVA</h2>
-        <p class="tagline show" data-i18n id="whatp-en">ECNOVA is a disciplined economic engine. We value quiet growth over hype. Mechanics > promises. The community co-creates the system, the DAO steers the treasury, and every module is built for clarity and durability.</p>
-        <p class="tagline" data-i18n id="whatp-ru">ECNOVA — дисциплинированный экономический двигатель. Нам ближе тихий рост, а не хайп. Механика важнее обещаний. Сообщество создаёт систему, DAO управляет казной, а каждый модуль строится для ясности и долговечности.</p>
-      </section>
-
-      <!-- White Paper ABOVE Contacts -->
-      <section class="section">
-        <h2 data-i18n id="wp-en" class="show">White Paper</h2>
-        <h2 data-i18n id="wp-ru">White Paper</h2>
-        <div class="cta">
-          <a class="btn secondary" id="wpBtn" href="#" onclick="alertSoon(event)">White Paper (soon)</a>
-        </div>
-      </section>
-
-      <section class="section support">
-        <h2 data-i18n id="legal-en" class="show">Legal & Disclaimer</h2>
-        <h2 data-i18n id="legal-ru">Правовая информация и дисклеймер</h2>
-        <p class="tagline show" data-i18n id="ld1-en">ECNOVA does not offer financial advice. Nothing on this site constitutes an offer to sell or a solicitation to buy any asset. Participants act on their own behalf and at their own risk.</p>
-        <p class="tagline" data-i18n id="ld1-ru">ECNOVA не оказывает инвестиционных рекомендаций. Ничто на сайте не является офертой или приглашением к покупке какого-либо актива. Участники действуют самостоятельно и на свой риск.</p>
-        <p class="tagline show" data-i18n id="ld2-en">Contributions to the DAO Treasury are voluntary and non-refundable. There are no profit guarantees or expectations. Please DYOR.</p>
-        <p class="tagline" data-i18n id="ld2-ru">Взносы в казну DAO добровольные и невозвратные. Нет гарантий прибыли или ожиданий доходности. Пожалуйста, проводите собственный анализ (DYOR).</p>
-      </section>
-
-      <section class="section">
-        <h2 data-i18n id="sup-en" class="show">Support the Engine</h2>
-        <h2 data-i18n id="sup-ru">Поддержать «двигатель»</h2>
-        <p class="tagline show" data-i18n id="supp-en">Add energy to the system — contributions go directly to the DAO Treasury on Solana.</p>
-        <p class="tagline" data-i18n id="supp-ru">Добавь энергии системе — взносы поступают напрямую в казну DAO в сети Solana.</p>
-        <div class="cta">
-          <a class="btn" href="https://v3.squads.so/vault/assets/NHBaV1duNGJ4VUU1TEtESzQ5WlNoWkV0dHFFWGpVNjZHOU5xQWdDbkN6VUQ=" target="_blank" rel="noopener">Open DAO Treasury (Squads)</a>
-          <a class="btn secondary" href="https://solscan.io/account/7Tjoocug5Fj5hw3izadTsR4WjPqC3aRLoAoK1k6KfkFi" target="_blank" rel="noopener">View on Solscan</a>
-        </div>
-        <div class="addr-row">
-          <div class="addr" id="daoaddr">7Tjoocug5Fj5hw3izadTsR4WjPqC3aRLoAoK1k6KfkFi</div>
-          <span class="badge" style="border:1px solid #26FFB0; padding:4px 8px; border-radius:999px;">Network: Solana (Mainnet)</span>
-          <button class="copy" id="copyAddrBtn" onclick="copyAddr()">Copy Address</button>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <h2 data-i18n id="contact-en" class="show">Contacts</h2>
-        <h2 data-i18n id="contact-ru">Контакты</h2>
-        <p class="tagline show" data-i18n id="contactp-en">Email us — we respond thoughtfully and without hype.</p>
-        <p class="tagline" data-i18n id="contactp-ru">Пишите на почту — отвечаем вдумчиво, без лишнего шума.</p>
-        <div class="cta">
-          <a class="btn" id="emailBtn" href="mailto:ecnova.project@gmail.com" target="_blank" rel="noopener">Send Email</a>
-          <span class="addr" id="emailText">ecnova.project@gmail.com</span>
-          <button class="copy" id="copyEmailBtn" onclick="copyEmail()">Copy Email</button>
-        </div>
-      </section>
-
-      <footer>
-        <span>© ECNOVA, 2025</span>
-        <span>Contact: ecnova.project@gmail.com</span>
-      </footer>
-    </main>
-  </div>
-
-  <a href="#top" class="to-top" id="toTop">Back to top</a>
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-row">
+      <div>© ECNOVA Protocol, 2025 — Execution as Trust.</div>
+      <div class="links">
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a> &nbsp;|&nbsp;
+        <a href="#" data-i18n="footer.terms">Terms of Use</a> &nbsp;|&nbsp;
+        <a href="#" data-i18n="footer.legal">Legal &amp; Disclaimer</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    function setLang(lang){
-      const isRU = lang === 'ru';
-      document.documentElement.lang = isRU ? 'ru' : 'en';
-      document.querySelectorAll('[data-i18n]').forEach(el => el.classList.remove('show'));
-      const ids = ['tagline','h1','h2','h3','p1','p2','p3','what','whatp','legal','ld1','ld2','sup','supp','contact','contactp','wp'];
-      ids.forEach(id => {
-        const el = document.getElementById(id + '-' + (isRU ? 'ru' : 'en'));
-        if (el) el.classList.add('show');
+    // ==============================
+    // Minimal JS:
+    // - Alerts for "memory shelf" + subscribe confirmation
+    // - Copy wallet address to clipboard
+    // - Tiny i18n switcher for EN | RU | IT (EN is English, not Italian)
+    // ==============================
+
+    // Memory shelf alert (exact phrasing required)
+    function remember() {
+      alert('Сохранено во времени ECNOVA — вы всегда сможете вернуться к этому моменту.');
+    }
+
+    // Subscribe alert
+    function subscribe(e) {
+      e.preventDefault();
+      var email = document.getElementById('email').value.trim();
+      if (!email) return;
+      alert('Спасибо! Вы подписаны на новости ECNOVA.');
+      e.target.reset();
+    }
+
+    // Copy wallet address
+    function copyWallet() {
+      var addr = document.getElementById('wallet-address').textContent.trim();
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(addr).then(function(){
+          alert('Адрес скопирован.');
+        }, function(){ fallbackCopy(addr); });
+      } else {
+        fallbackCopy(addr);
+      }
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); alert('Адрес скопирован.'); }
+        catch (err) { alert('Скопируйте вручную: ' + text); }
+        finally { document.body.removeChild(ta); }
+      }
+    }
+
+    // Simple i18n dictionary (keys map to text nodes)
+    // NOTE: Russian must exactly match the provided phrases.
+    var I18N = {
+      ru: {
+        'nav.home':'Главная',
+        'nav.about':'О проекте',
+        'nav.wp':'Белая бумага',
+        'nav.contacts':'Контакты',
+        'hero.title':'Execution as Trust — Time-as-Proof Protocol on Solana',
+        'hero.subtitle':'ECNOVA позволяет фиксировать обязательства во времени — создай ячейку и наблюдай исполнение.',
+        'hero.cta1':'Зайти в гости',
+        'hero.cta2':'Положи это на полку памяти',
+        'about.title':'Что такое ECNOVA',
+        'about.text':'ECNOVA — протокол времени, который превращает исполнение в доказательство. В основе — Time Cells — временные ячейки, где каждое действие имеет дедлайн и исполняется кодом на Solana.',
+        'how.title':'Как это работает',
+        'how.scheme':'Схема: Создай ячейку → Внеси условия → Дождись дедлайна → Код фиксирует исполнение → Время становится доказательством.',
+        'benefits.title':'Преимущества ECNOVA',
+        'benefits.a1t':'Исполнение — время работает само.',
+        'benefits.a2t':'Прозрачность — всё он-чейн и открыто.',
+        'benefits.a3t':'Дефляция — каждое исполнение сжигает часть токенов ECNOVA.',
+        'air.title':'AirDrop — Обучайся, чтобы зарабатывать',
+        'air.text':'ECNOVA AirDrop — это Proof-of-Learning: изучай блокчейн и идею времени, проходи короткие задания и получай поинты ECNOVA, которые превращаются во временные NFT.',
+        'air.cta1':'Начать обучение и участвовать в AirDrop',
+        'air.cta2':'Узнать подробнее о Proof-of-Learning',
+        'wp.title':'Белая бумага',
+        'wp.text':'Полная техническая и философская спецификация ECNOVA доступна для скачивания.',
+        'wp.cta':'Скачать White Paper (PDF)',
+        'contacts.title':'Контакты и сообщество',
+        'subscribe.placeholder':'Ваш email',
+        'subscribe.btn':'Подписаться на новости',
+        'energy.title':'Добавить энергию ECNOVA',
+        'energy.text1':'Любой участник может добавить немного энергии в систему ECNOVA.',
+        'energy.text2':'Средства направляются на развитие протокола, инфраструктуру и аудит.',
+        'energy.addrlabel':'Адрес Solana:',
+        'energy.copy':'Скопировать адрес',
+        'energy.disclaimer':'Подпись-дисклеймер: Не является инвестиционным предложением. Все переводы добровольны.',
+        'footer.privacy':'Privacy Policy',
+        'footer.terms':'Terms of Use',
+        'footer.legal':'Legal & Disclaimer'
+      },
+      en: {
+        'nav.home':'Home',
+        'nav.about':'About',
+        'nav.wp':'White Paper',
+        'nav.contacts':'Contacts',
+        'hero.title':'Execution as Trust — Time-as-Proof Protocol on Solana',
+        'hero.subtitle':'ECNOVA lets you anchor commitments in time — create a cell and observe execution.',
+        'hero.cta1':'Enter as guest',
+        'hero.cta2':'Put this on the memory shelf',
+        'about.title':'What is ECNOVA',
+        'about.text':'ECNOVA is a time protocol that turns execution into proof. At its core are Time Cells — temporal vaults where every action has a deadline and is executed by code on Solana.',
+        'how.title':'How it Works',
+        'how.scheme':'Flow: Create a cell → Set conditions → Wait for the deadline → Code records execution → Time becomes proof.',
+        'benefits.title':'Why ECNOVA',
+        'benefits.a1t':'Execution — time does the work.',
+        'benefits.a2t':'Transparency — everything is on-chain and open.',
+        'benefits.a3t':'Deflation — each execution burns a portion of ECNOVA tokens.',
+        'air.title':'AirDrop — Learn to Earn',
+        'air.text':'ECNOVA AirDrop is Proof-of-Learning: study blockchain and the idea of time, complete short tasks and earn ECNOVA points that become temporal NFTs.',
+        'air.cta1':'Start learning & join the AirDrop',
+        'air.cta2':'Learn more about Proof-of-Learning',
+        'wp.title':'White Paper',
+        'wp.text':'The full technical and philosophical specification of ECNOVA is available for download.',
+        'wp.cta':'Download White Paper (PDF)',
+        'contacts.title':'Contacts & Community',
+        'subscribe.placeholder':'Your email',
+        'subscribe.btn':'Subscribe to updates',
+        'energy.title':'Add ECNOVA Energy',
+        'energy.text1':'Any participant can add some energy to the ECNOVA system.',
+        'energy.text2':'Funds go to protocol development, infrastructure, and audit.',
+        'energy.addrlabel':'Solana Address:',
+        'energy.copy':'Copy address',
+        'energy.disclaimer':'Disclaimer: This is not an investment offer. All transfers are voluntary.',
+        'footer.privacy':'Privacy Policy',
+        'footer.terms':'Terms of Use',
+        'footer.legal':'Legal & Disclaimer'
+      },
+      it: {
+        'nav.home':'Home',
+        'nav.about':'Progetto',
+        'nav.wp':'White Paper',
+        'nav.contacts':'Contatti',
+        'hero.title':'Esecuzione come Fiducia — Protocollo Time-as-Proof su Solana',
+        'hero.subtitle':'ECNOVA ti permette di ancorare gli impegni nel tempo — crea una cella e osserva l’esecuzione.',
+        'hero.cta1':'Entra come ospite',
+        'hero.cta2':'Mettilo sullo scaffale della memoria',
+        'about.title':'Che cos’è ECNOVA',
+        'about.text':'ECNOVA è un protocollo del tempo che trasforma l’esecuzione in prova. Al centro ci sono le Time Cells — celle temporali dove ogni azione ha una scadenza ed è eseguita dal codice su Solana.',
+        'how.title':'Come Funziona',
+        'how.scheme':'Schema: Crea una cella → Inserisci le condizioni → Attendi la scadenza → Il codice registra l’esecuzione → Il tempo diventa prova.',
+        'benefits.title':'Vantaggi di ECNOVA',
+        'benefits.a1t':'Esecuzione — il tempo lavora da solo.',
+        'benefits.a2t':'Trasparenza — tutto on-chain e aperto.',
+        'benefits.a3t':'Deflazione — ogni esecuzione brucia una parte dei token ECNOVA.',
+        'air.title':'AirDrop — Impara per Guadagnare',
+        'air.text':'ECNOVA AirDrop è Proof-of-Learning: studia la blockchain e l’idea del tempo, svolgi brevi attività e ottieni punti ECNOVA che diventano NFT temporali.',
+        'air.cta1':'Inizia ad imparare e partecipa all’AirDrop',
+        'air.cta2':'Scopri di più su Proof-of-Learning',
+        'wp.title':'White Paper',
+        'wp.text':'La specifica tecnica e filosofica completa di ECNOVA è disponibile per il download.',
+        'wp.cta':'Scarica il White Paper (PDF)',
+        'contacts.title':'Contatti e Community',
+        'subscribe.placeholder':'La tua email',
+        'subscribe.btn':'Iscriviti agli aggiornamenti',
+        'energy.title':'Aggiungi energia ECNOVA',
+        'energy.text1':'Chiunque può aggiungere un po’ di energia al sistema ECNOVA.',
+        'energy.text2':'I fondi sono destinati allo sviluppo del protocollo, all’infrastruttura e all’audit.',
+        'energy.addrlabel':'Indirizzo Solana:',
+        'energy.copy':'Copia indirizzo',
+        'energy.disclaimer':'Nota bene: non è un’offerta di investimento. Tutti i trasferimenti sono volontari.',
+        'footer.privacy':'Privacy Policy',
+        'footer.terms':'Terms of Use',
+        'footer.legal':'Legal & Disclaimer'
+      }
+    };
+
+    // Apply translation to all [data-i18n] & placeholder for [data-i18n-placeholder]
+    function setLang(lang) {
+      var dict = I18N[lang] || I18N['ru'];
+      document.documentElement.setAttribute('lang', lang);
+      // text nodes
+      document.querySelectorAll('[data-i18n]').forEach(function(node) {
+        var key = node.getAttribute('data-i18n');
+        if (dict[key]) node.textContent = dict[key];
       });
-      document.getElementById('copyAddrBtn').textContent = isRU ? 'Копировать адрес кошелька' : 'Copy Address';
-      document.getElementById('copyEmailBtn').textContent = isRU ? 'Копировать адрес e-mail' : 'Copy Email';
-      document.getElementById('emailBtn').textContent    = isRU ? 'Отправить письмо' : 'Send Email';
-      document.getElementById('wpBtn').textContent       = isRU ? 'White Paper (скоро)' : 'White Paper (soon)';
+      // placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(node){
+        var key = node.getAttribute('data-i18n-placeholder');
+        if (dict[key]) node.setAttribute('placeholder', dict[key]);
+      });
+      // mark buttons
+      document.querySelectorAll('.lang button').forEach(function(btn){
+        var active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      // Adjust QR alt if needed (not critical)
+      var qr = document.getElementById('qr');
+      if (qr) {
+        var altText = {'ru':'QR-code ECNOVA кошелёк','en':'QR-code ECNOVA wallet','it':'QR-code portafoglio ECNOVA'}[lang] || 'QR-code ECNOVA wallet';
+        qr.setAttribute('alt', altText);
+      }
     }
-    document.addEventListener('DOMContentLoaded', () => { setLang('en'); });
 
-    function copyAddr(){
-      const el = document.createElement('textarea');
-      el.value = document.getElementById('daoaddr').textContent.trim();
-      document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
-      alert('DAO address copied');
-    }
-    function copyEmail(){
-      const el = document.createElement('textarea');
-      el.value = document.getElementById('emailText').textContent.trim();
-      document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
-      alert('Email copied');
-    }
-    function alertSoon(e){ e.preventDefault(); alert('White Paper — coming soon'); }
+    // Init language switcher controls
+    document.querySelectorAll('.lang button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var lang = btn.getAttribute('data-lang');
+        setLang(lang);
+      });
+    });
 
-    const bg = document.getElementById('bgGreen'); const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY || window.pageYOffset;
-      bg.style.backgroundPosition = `${y * -0.02}px ${y * 0.05}px, ${y * 0.03}px ${y * -0.07}px, ${y * -0.02}px ${y * 0.03}px, center`;
-      if (y > 220) toTop.classList.add('show'); else toTop.classList.remove('show');
-    }, { passive:true });
+    // Keep RU as default on initial load (exact phrases).
+    setLang('ru');
   </script>
-
-  <noscript>JavaScript is required for language toggle, copy buttons, and background motion.</noscript>
 </body>
 </html>
