@@ -1,225 +1,119 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Meta basics -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>ECNOVA — Execution as Trust</title>
-  <meta name="description" content="ECNOVA — time-as-proof протокол на Solana. Исполнение — валюта. Время — свидетель. Создай временную ячейку и наблюдай исполнение." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="ECNOVA — Execution as Trust" />
-  <meta property="og:description" content="ECNOVA — time-as-proof протокол на Solana. Исполнение — валюта. Время — свидетель." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ecnova.example/" />
-  <meta property="og:image" content="https://ecnova.example/og-image.png" />
+  <meta name="description" content="ECNOVA — Execution as Trust. Time-as-Proof Protocol on Solana. Minimal, calm neon, multilingual site with Buy section and Roadmap." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     /* ==============================
-       ECNOVA — Embedded CSS (responsive, minimal)
-       Notes: color variables and small utility classes
+       ECNOVA · Full Website v2 (single-file)
+       - Dark time, neon trust
+       - RU / EN / IT with JS switch (no reload)
        ============================== */
-    :root {
-      --accent: #00ffcc;
-      --secondary: #7d3cff;
-      --bg: #0e0e0e;
-      --text: #e6e6e6;
-      --muted: #a9a9a9;
-      --card: #151515;
-      --stroke: #242424;
-      --shadow: 0 20px 40px rgba(0,0,0,0.4);
-      --radius: 14px;
+    :root{
+      --bg:#0e0e0e; --text:#ffffff; --muted:#d0d0d0;
+      --accent:#00ffcc; --purple:#7d3cff;
+      --card:#151515; --stroke:#242424;
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,0.35);
+      --glow:0 0 20px rgba(0,255,204,0.55);
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      background:var(--bg);
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      background-image:
+        radial-gradient(1200px 520px at 50% -12%, rgba(0,255,204,0.15), rgba(0,255,204,0) 60%),
+        radial-gradient(900px 360px at 90% -18%, rgba(125,60,255,0.12), rgba(125,60,255,0) 60%);
+      background-repeat:no-repeat;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container {
-      width: min(1100px, 92vw);
-      margin: 0 auto;
-      padding: 0 0;
-    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(1150px, 92vw); margin:0 auto}
+
     /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(14,14,14,0.7);
-      border-bottom: 1px solid var(--stroke);
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:blur(8px);
+      background:rgba(14,14,14,0.72); border-bottom:1px solid var(--stroke);
     }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 0;
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .logo{font-weight:700; letter-spacing:.5px; font-size:20px}
+    .logo .dot{color:var(--accent)}
+    nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0}
+    nav a{color:var(--text); padding:8px 10px; border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,0.06); text-decoration:none}
+    .lang{display:flex; gap:8px}
+    .lang button{
+      background:transparent; color:var(--text); border:1px solid var(--stroke);
+      padding:6px 10px; border-radius:10px; cursor:pointer;
+      transition:border-color .2s ease, box-shadow .2s ease, color .2s ease;
     }
-    .logo {
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      font-size: 20px;
-      color: var(--text);
-    }
-    .logo .dot {
-      color: var(--accent);
-    }
-    nav ul {
-      display: flex;
-      gap: 20px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    nav a {
-      color: var(--text);
-      font-weight: 500;
-      padding: 8px 10px;
-      border-radius: 10px;
-      transition: background 0.2s ease;
-    }
-    nav a:hover { background: rgba(255,255,255,0.06); text-decoration: none; }
-    .lang {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 14px;
-    }
-    .lang button {
-      background: transparent; border: 1px solid var(--stroke); color: var(--text);
-      padding: 6px 10px; border-radius: 10px; cursor: pointer;
-    }
-    .lang button.active { border-color: var(--accent); color: var(--accent); }
+    .lang button.active{border-color:var(--accent); color:var(--accent); box-shadow:0 0 20px rgba(0,255,204,0.25)}
+
     /* Hero */
-    .hero {
-      padding: 64px 0 40px;
-      background:
-        radial-gradient(1200px 400px at 50% -50%, rgba(0,255,204,0.18) 0, transparent 60%),
-        radial-gradient(800px 300px at 90% -30%, rgba(125,60,255,0.12) 0, transparent 60%);
-      border-bottom: 1px solid var(--stroke);
+    .hero{position:relative; padding:72px 0 34px; border-bottom:1px solid var(--stroke);
+      background: radial-gradient(1600px 360px at 50% -70px, rgba(125,60,255,0.12), transparent 70%),
+                  radial-gradient(1400px 480px at 50% -30px, rgba(0,255,204,0.18), transparent 70%);}
+    .hero h1{margin:0 0 8px; font-size:clamp(28px,6vw,44px); text-shadow:0 0 10px var(--accent)}
+    .hero p.lead{color:var(--muted); margin:0 0 18px; font-size:clamp(16px,3.4vw,18px)}
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 16px; border-radius:12px; border:1px solid var(--accent);
+      color:#0e0e0e; background:var(--accent); font-weight:700; letter-spacing:.2px;
+      transition:transform .06s ease, box-shadow .25s ease, background .25s ease, color .25s ease; text-decoration:none;
     }
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(28px, 6vw, 44px);
-      letter-spacing: 0.2px;
-    }
-    .hero p {
-      margin: 0 0 26px;
-      color: var(--muted);
-      font-size: clamp(16px, 3.5vw, 18px);
-    }
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 18px; border-radius: 12px; border: 1px solid var(--stroke);
-      color: var(--text); background: #111;
-      transition: transform .04s ease, border-color .2s ease, background .2s ease;
-      cursor: pointer; text-decoration: none; font-weight: 600;
-    }
-    .btn:hover { transform: translateY(-1px); text-decoration: none; }
-    .btn.primary { background: linear-gradient(90deg, var(--accent), var(--secondary)); color: #0b0b0b; border: none; }
-    .btn.secondary { background: #151515; }
-    .btn.ghost { background: transparent; }
+    .btn:hover{transform:translateY(-1px); box-shadow:var(--glow)}
+    .btn.secondary{background:transparent; color:var(--text)}
+    .btn.secondary:hover{box-shadow:var(--glow)}
+    .hero .motto{margin-top:18px; color:var(--muted); font-size:14px; opacity:0.9}
+
     /* Sections */
-    section { padding: 48px 0; border-bottom: 1px solid var(--stroke); }
-    section:last-of-type { border-bottom: none; }
-    .section-title {
-      font-size: clamp(22px, 4.5vw, 30px);
-      margin: 0 0 16px;
+    section{padding:46px 0; border-bottom:1px solid var(--stroke)}
+    section:last-of-type{border-bottom:none}
+    .section-title{margin:0 0 12px; font-size:clamp(22px,4.8vw,30px); text-shadow:0 0 10px var(--accent)}
+    .card{
+      background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
     }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-    .muted { color: var(--muted); }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .flow > * + * { margin-top: 10px; }
-    /* Timeline / How it works */
-    .flow-steps {
-      display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
-      font-weight: 600;
-    }
-    .arrow { color: var(--secondary); opacity: 0.9; }
-    /* Contacts */
-    .contacts-list {
-      display: grid; gap: 10px; margin: 8px 0 0; padding: 0; list-style: none;
-    }
-    /* Subscribe form */
-    .subscribe {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;
-    }
-    .subscribe input[type="email"] {
-      flex: 1 1 260px;
-      background: #121212; border: 1px solid var(--stroke); color: var(--text);
-      padding: 12px 14px; border-radius: 10px; outline: none;
-    }
-    /* Wallet block */
-    .wallet-block {
-      display: grid; grid-template-columns: 1.6fr 1fr; gap: 18px; align-items: center;
-    }
-    .wallet-line {
-      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-      background: #121212; border: 1px solid var(--stroke); padding: 12px; border-radius: 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    }
-    .wallet-line code { user-select: all; }
-    .qr {
-      display: flex; align-items: center; justify-content: center;
-      padding: 10px; background: #121212; border: 1px solid var(--stroke); border-radius: 12px;
-    }
+    .grid-2{display:grid; grid-template-columns:1.1fr 0.9fr; gap:18px}
+    .mini-links{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .mini-links a{color:var(--muted); border:1px solid var(--stroke); border-radius:10px; padding:6px 10px}
+    .mini-links a:hover{color:var(--accent); border-color:var(--accent)}
+
     /* Footer */
-    footer {
-      padding: 26px 0 32px;
-      color: var(--muted);
-    }
-    footer .links a { color: var(--muted); }
-    footer .links a:hover { color: var(--accent); }
-    .footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    footer{padding:28px 0 34px; color:var(--muted)}
+    .footer-row{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .social{display:flex; gap:14px; flex-wrap:wrap}
+    .footer-phrase{margin-top:8px; color:var(--muted); opacity:0.9}
+
     /* Responsive */
-    @media (max-width: 860px) {
-      .grid-3 { grid-template-columns: 1fr; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .wallet-block { grid-template-columns: 1fr; }
-      nav ul { display: none; } /* keep it minimal: hide big menu on mobile */
+    @media (max-width: 900px){
+      .grid-2{grid-template-columns:1fr}
+      nav ul{display:none}
     }
   </style>
 </head>
 <body>
-  <!-- Header / Navigation -->
   <header>
     <div class="container nav">
       <div class="logo">ECNOVA<span class="dot">.</span></div>
       <nav aria-label="Primary">
         <ul>
-          <li><a href="#home" data-i18n="nav.home">Главная</a></li>
-          <li><a href="#about" data-i18n="nav.about">О проекте</a></li>
-          <li><a href="#whitepaper" data-i18n="nav.wp">Белая бумага</a></li>
-          <li><a href="#contacts" data-i18n="nav.contacts">Контакты</a></li>
+          <li><a href="#home" data-i18n="nav.home" data-keep-lang="true">Главная</a></li>
+          <li><a href="#about" data-i18n="nav.about" data-keep-lang="true">О проекте</a></li>
+          <li><a href="#invest" data-i18n="nav.invest" data-keep-lang="true">Покупки</a></li>
+          <li><a href="#roadmap" data-i18n="nav.roadmap" data-keep-lang="true">Roadmap</a></li>
+          <li><a href="#contacts" data-i18n="nav.contacts" data-keep-lang="true">Контакты</a></li>
         </ul>
       </nav>
       <div class="lang" aria-label="Language switcher">
@@ -233,338 +127,214 @@
   <!-- Hero -->
   <section id="home" class="hero">
     <div class="container">
-      <h1 data-i18n="hero.title">Execution as Trust — Time-as-Proof Protocol on Solana</h1>
-      <p class="muted" data-i18n="hero.subtitle">ECNOVA позволяет фиксировать обязательства во времени — создай ячейку и наблюдай исполнение.</p>
+      <h1 data-i18n="hero.title">ECNOVA — Execution as Trust</h1>
+      <p class="lead" data-i18n="hero.subtitle">Time-as-Proof Protocol on Solana.</p>
       <div class="actions">
-        <a class="btn primary" href="/coming-soon.html" data-i18n="hero.cta1">Зайти в гости</a>
-        <button class="btn secondary" onclick="remember()" data-i18n="hero.cta2">Положи это на полку памяти</button>
+        <a class="btn secondary" href="#about" data-i18n="hero.cta.learn" data-keep-lang="true">Learn More</a>
+        <a class="btn" id="buy-now" href="buy.html" data-i18n="hero.cta.buy" data-keep-lang="true">Buy Now</a>
       </div>
+      <p class="motto" data-i18n="hero.motto">We don’t chase trends — we grow in time.</p>
     </div>
   </section>
 
-  <!-- Что такое ECNOVA -->
+  <!-- About -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title" data-i18n="about.title">Что такое ECNOVA</h2>
-      <div class="card flow">
-        <p data-i18n="about.text">
-          ECNOVA — протокол времени, который превращает исполнение в доказательство. В основе — Time Cells — временные ячейки, где каждое действие имеет дедлайн и исполняется кодом на Solana.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Как это работает -->
-  <section id="how">
-    <div class="container">
-      <h2 class="section-title" data-i18n="how.title">Как это работает</h2>
+      <h2 class="section-title" data-i18n="about.title">About ECNOVA</h2>
       <div class="card">
-        <p class="flow-steps" data-i18n="how.scheme">
-          Схема:
-          <span>&nbsp;Создай ячейку</span>
-          <span class="arrow">→</span>
-          <span>Внеси условия</span>
-          <span class="arrow">→</span>
-          <span>Дождись дедлайна</span>
-          <span class="arrow">→</span>
-          <span>Код фиксирует исполнение</span>
-          <span class="arrow">→</span>
-          <span>Время становится доказательством.</span>
+        <p data-i18n="about.text">
+          We build a mechanism of time, not a financial pyramid. ECNOVA is a space where execution becomes trust, and time becomes value.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Преимущества ECNOVA -->
-  <section id="benefits">
+  <!-- Invest / Buy -->
+  <section id="invest">
     <div class="container">
-      <h2 class="section-title" data-i18n="benefits.title">Преимущества ECNOVA</h2>
-      <div class="grid-3">
-        <div class="card">
-          <strong data-i18n="benefits.a1t">Исполнение — время работает само.</strong>
+      <h2 class="section-title" data-i18n="invest.title">Quiet Start. Limited Liquidity. Real Time.</h2>
+      <div class="card">
+        <p data-i18n="invest.p1">ECNOVA launches softly and deliberately.</p>
+        <p data-i18n="invest.p2">Liquidity in pairs is small — it’s not a bug, it’s deliberate scarcity.</p>
+        <p data-i18n="invest.p3">Those who buy now are early holders who value time over speculation.</p>
+        <p data-i18n="invest.p4">We make no promises of growth or yields. Only participation and trust.</p>
+
+        <div class="actions" style="margin-top:6px">
+          <a class="btn" href="buy.html" data-i18n="invest.cta" data-keep-lang="true">💱 Buy ECNOVA</a>
         </div>
-        <div class="card">
-          <strong data-i18n="benefits.a2t">Прозрачность — всё он-чейн и открыто.</strong>
-        </div>
-        <div class="card">
-          <strong data-i18n="benefits.a3t">Дефляция — каждое исполнение сжигает часть токенов ECNOVA.</strong>
+
+        <p style="margin-top:10px" data-i18n="invest.signature">If you understand it — you can buy. If not — you can wait. Time will show.</p>
+
+        <div class="mini-links">
+          <a href="https://jup.ag/tokens/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener" data-i18n="mini.jup">View on Jupiter</a>
+          <a href="https://raydium.io/liquidity-pools/?sort_by=liquidity&token=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener" data-i18n="mini.ray">Raydium Pool</a>
+          <a href="https://www.orca.so/pools?tokens=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener" data-i18n="mini.orca">Orca Pool</a>
+          <a href="https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener" data-i18n="mini.expl">Explorer</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AirDrop — Обучайся, чтобы зарабатывать -->
-  <section id="airdrop">
+  <!-- Roadmap -->
+  <section id="roadmap">
     <div class="container">
-      <h2 id="learn" class="section-title" data-i18n="air.title">AirDrop — Обучайся, чтобы зарабатывать</h2>
-      <div class="card flow">
-        <p data-i18n="air.text">
-          ECNOVA AirDrop — это Proof-of-Learning: изучай блокчейн и идею времени, проходи короткие задания и получай поинты ECNOVA, которые превращаются во временные NFT.
+      <h2 class="section-title" data-i18n="roadmap.title">ECNOVA Roadmap 2026 – 2028</h2>
+      <div class="card">
+        <p data-i18n="roadmap.desc">
+          A three-year trajectory from a manual start to an autonomous DAO with licensed time technology. The plan balances engineering realism and calm growth.
         </p>
         <div class="actions">
-          <a class="btn primary" href="/airdrop.html" data-i18n="air.cta1">Начать обучение и участвовать в AirDrop</a>
-          <a class="btn ghost" href="/#learn" data-i18n="air.cta2">Узнать подробнее о Proof-of-Learning</a>
+          <a class="btn" href="/docs/ECNOVA_Roadmap_2026-2028.pdf" target="_blank" rel="noopener" data-i18n="roadmap.btn" data-keep-lang="true">📘 Open Full Roadmap</a>
+          <a class="btn secondary" href="/docs/" target="_blank" rel="noopener" data-i18n="roadmap.repo">Open /docs/ section</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Белая бумага -->
-  <section id="whitepaper">
-    <div class="container">
-      <h2 class="section-title" data-i18n="wp.title">Белая бумага</h2>
-      <div class="card flow">
-        <p data-i18n="wp.text">Полная техническая и философская спецификация ECNOVA доступна для скачивания.</p>
-        <a class="btn secondary" href="/whitepaper.pdf" download data-i18n="wp.cta">Скачать White Paper (PDF)</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Контакты и сообщество -->
-  <section id="contacts">
-    <div class="container">
-      <h2 class="section-title" data-i18n="contacts.title">Контакты и сообщество</h2>
-      <div class="grid-2">
-        <div class="card">
-          <ul class="contacts-list">
-            <li><strong>Email:</strong> <a href="mailto:ecnova.project@gmail.com">ecnova.project@gmail.com</a></li>
-            <li><strong>Telegram:</strong> <a href="https://t.me/EcnovaDAO" target="_blank" rel="noopener">https://t.me/EcnovaDAO</a></li>
-            <li><strong>Twitter / X:</strong> <a href="https://x.com/EcnovaDAO" target="_blank" rel="noopener">https://x.com/EcnovaDAO</a></li>
-          </ul>
-          <form class="subscribe" onsubmit="subscribe(event)">
-            <input type="email" id="email" required placeholder="Ваш email" data-i18n-placeholder="subscribe.placeholder" />
-            <button class="btn" type="submit" data-i18n="subscribe.btn">Подписаться на новости</button>
-          </form>
-        </div>
-        <div class="card">
-          <h3 class="flow" style="margin-top:0;" data-i18n="energy.title">Добавить энергию ECNOVA</h3>
-          <p class="muted" data-i18n="energy.text1">Любой участник может добавить немного энергии в систему ECNOVA.</p>
-          <p class="muted" data-i18n="energy.text2">Средства направляются на развитие протокола, инфраструктуру и аудит.</p>
-          
-          <div class="wallet-block">
-            <div class="wallet-line">
-              <strong style="margin-right:6px;" data-i18n="energy.addrlabel">Адрес Solana:</strong>
-              <code id="wallet-address">DumR1fSvHVJz9nYw1ZkvdYinLX4hNzdoMS4Xph3KSfqC</code>
-              <button class="btn" style="margin-left:auto;" onclick="copyWallet()" data-i18n="energy.copy">Скопировать адрес</button>
-            </div>
-            <div class="qr" aria-label="QR Code">
-              <!-- External QR API for minimal JS footprint -->
-              <img id="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&format=svg&data=DumR1fSvHVJz9nYw1ZkvdYinLX4hNzdoMS4Xph3KSfqC" alt="QR-code ECNOVA wallet" width="180" height="180" />
-            </div>
-          </div>
-          <p class="muted" style="margin-top:12px;" data-i18n="energy.disclaimer">Подпись-дисклеймер: Не является инвестиционным предложением. Все переводы добровольны.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
+  <!-- Footer / Contacts -->
+  <footer id="contacts">
     <div class="container footer-row">
-      <div>© ECNOVA Protocol, 2025 — Execution as Trust.</div>
-      <div class="links">
-        <a href="#" data-i18n="footer.privacy">Privacy Policy</a> &nbsp;|&nbsp;
-        <a href="#" data-i18n="footer.terms">Terms of Use</a> &nbsp;|&nbsp;
-        <a href="#" data-i18n="footer.legal">Legal &amp; Disclaimer</a>
+      <div data-i18n="footer.copy">© ECNOVA Protocol, 2025 – Execution as Trust.</div>
+      <div class="social">
+        <a href="https://t.me/EcnovaDAO" target="_blank" rel="noopener" data-i18n="footer.tg">Telegram</a>
+        <a href="https://x.com/EcnovaDAO" target="_blank" rel="noopener" data-i18n="footer.x">X / Twitter</a>
+        <a href="/whitepaper.pdf" target="_blank" rel="noopener" data-i18n="footer.wp">White Paper</a>
+        <a href="mailto:ecnova.project@gmail.com" data-i18n="footer.contact">Contact</a>
       </div>
+    </div>
+    <div class="container">
+      <div class="footer-phrase" data-i18n="footer.phrase">“You can support ECNOVA — no promises, only trust.”</div>
     </div>
   </footer>
 
   <script>
-    // ==============================
-    // Minimal JS:
-    // - Alerts for "memory shelf" + subscribe confirmation
-    // - Copy wallet address to clipboard
-    // - Tiny i18n switcher for EN | RU | IT (EN is English, not Italian)
-    // ==============================
+    // ===== Multilingual switcher (RU / EN / IT), persistent and link-aware =====
+    const STORAGE_KEY = 'ecnova_lang';
+    const $ = (sel, ctx=document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
-    // Memory shelf alert (exact phrasing required)
-    function remember() {
-      alert('Сохранено во времени ECNOVA — вы всегда сможете вернуться к этому моменту.');
-    }
-
-    // Subscribe alert
-    function subscribe(e) {
-      e.preventDefault();
-      var email = document.getElementById('email').value.trim();
-      if (!email) return;
-      alert('Спасибо! Вы подписаны на новости ECNOVA.');
-      e.target.reset();
-    }
-
-    // Copy wallet address
-    function copyWallet() {
-      var addr = document.getElementById('wallet-address').textContent.trim();
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(addr).then(function(){
-          alert('Адрес скопирован.');
-        }, function(){ fallbackCopy(addr); });
-      } else {
-        fallbackCopy(addr);
-      }
-      function fallbackCopy(text) {
-        var ta = document.createElement('textarea');
-        ta.value = text; document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); alert('Адрес скопирован.'); }
-        catch (err) { alert('Скопируйте вручную: ' + text); }
-        finally { document.body.removeChild(ta); }
-      }
-    }
-
-    // Simple i18n dictionary (keys map to text nodes)
-    // NOTE: Russian must exactly match the provided phrases.
-    var I18N = {
-      ru: {
-        'nav.home':'Главная',
-        'nav.about':'О проекте',
-        'nav.wp':'Белая бумага',
-        'nav.contacts':'Контакты',
-        'hero.title':'Execution as Trust — Time-as-Proof Protocol on Solana',
-        'hero.subtitle':'ECNOVA позволяет фиксировать обязательства во времени — создай ячейку и наблюдай исполнение.',
-        'hero.cta1':'Зайти в гости',
-        'hero.cta2':'Положи это на полку памяти',
-        'about.title':'Что такое ECNOVA',
-        'about.text':'ECNOVA — протокол времени, который превращает исполнение в доказательство. В основе — Time Cells — временные ячейки, где каждое действие имеет дедлайн и исполняется кодом на Solana.',
-        'how.title':'Как это работает',
-        'how.scheme':'Схема: Создай ячейку → Внеси условия → Дождись дедлайна → Код фиксирует исполнение → Время становится доказательством.',
-        'benefits.title':'Преимущества ECNOVA',
-        'benefits.a1t':'Исполнение — время работает само.',
-        'benefits.a2t':'Прозрачность — всё он-чейн и открыто.',
-        'benefits.a3t':'Дефляция — каждое исполнение сжигает часть токенов ECNOVA.',
-        'air.title':'AirDrop — Обучайся, чтобы зарабатывать',
-        'air.text':'ECNOVA AirDrop — это Proof-of-Learning: изучай блокчейн и идею времени, проходи короткие задания и получай поинты ECNOVA, которые превращаются во временные NFT.',
-        'air.cta1':'Начать обучение и участвовать в AirDrop',
-        'air.cta2':'Узнать подробнее о Proof-of-Learning',
-        'wp.title':'Белая бумага',
-        'wp.text':'Полная техническая и философская спецификация ECNOVA доступна для скачивания.',
-        'wp.cta':'Скачать White Paper (PDF)',
-        'contacts.title':'Контакты и сообщество',
-        'subscribe.placeholder':'Ваш email',
-        'subscribe.btn':'Подписаться на новости',
-        'energy.title':'Добавить энергию ECNOVA',
-        'energy.text1':'Любой участник может добавить немного энергии в систему ECNOVA.',
-        'energy.text2':'Средства направляются на развитие протокола, инфраструктуру и аудит.',
-        'energy.addrlabel':'Адрес Solana:',
-        'energy.copy':'Скопировать адрес',
-        'energy.disclaimer':'Подпись-дисклеймер: Не является инвестиционным предложением. Все переводы добровольны.',
-        'footer.privacy':'Privacy Policy',
-        'footer.terms':'Terms of Use',
-        'footer.legal':'Legal & Disclaimer'
-      },
+    // Translations dictionary
+    const t = {
       en: {
-        'nav.home':'Home',
-        'nav.about':'About',
-        'nav.wp':'White Paper',
-        'nav.contacts':'Contacts',
-        'hero.title':'Execution as Trust — Time-as-Proof Protocol on Solana',
-        'hero.subtitle':'ECNOVA lets you anchor commitments in time — create a cell and observe execution.',
-        'hero.cta1':'Enter as guest',
-        'hero.cta2':'Put this on the memory shelf',
-        'about.title':'What is ECNOVA',
-        'about.text':'ECNOVA is a time protocol that turns execution into proof. At its core are Time Cells — temporal vaults where every action has a deadline and is executed by code on Solana.',
-        'how.title':'How it Works',
-        'how.scheme':'Flow: Create a cell → Set conditions → Wait for the deadline → Code records execution → Time becomes proof.',
-        'benefits.title':'Why ECNOVA',
-        'benefits.a1t':'Execution — time does the work.',
-        'benefits.a2t':'Transparency — everything is on-chain and open.',
-        'benefits.a3t':'Deflation — each execution burns a portion of ECNOVA tokens.',
-        'air.title':'AirDrop — Learn to Earn',
-        'air.text':'ECNOVA AirDrop is Proof-of-Learning: study blockchain and the idea of time, complete short tasks and earn ECNOVA points that become temporal NFTs.',
-        'air.cta1':'Start learning & join the AirDrop',
-        'air.cta2':'Learn more about Proof-of-Learning',
-        'wp.title':'White Paper',
-        'wp.text':'The full technical and philosophical specification of ECNOVA is available for download.',
-        'wp.cta':'Download White Paper (PDF)',
-        'contacts.title':'Contacts & Community',
-        'subscribe.placeholder':'Your email',
-        'subscribe.btn':'Subscribe to updates',
-        'energy.title':'Add ECNOVA Energy',
-        'energy.text1':'Any participant can add some energy to the ECNOVA system.',
-        'energy.text2':'Funds go to protocol development, infrastructure, and audit.',
-        'energy.addrlabel':'Solana Address:',
-        'energy.copy':'Copy address',
-        'energy.disclaimer':'Disclaimer: This is not an investment offer. All transfers are voluntary.',
-        'footer.privacy':'Privacy Policy',
-        'footer.terms':'Terms of Use',
-        'footer.legal':'Legal & Disclaimer'
+        'nav.home':'Home','nav.about':'About','nav.invest':'Invest','nav.roadmap':'Roadmap','nav.contacts':'Contacts',
+        'hero.title':'ECNOVA — Execution as Trust','hero.subtitle':'Time-as-Proof Protocol on Solana.',
+        'hero.cta.learn':'Learn More','hero.cta.buy':'Buy Now','hero.motto':'We don’t chase trends — we grow in time.',
+        'about.title':'About ECNOVA',
+        'about.text':'We build a mechanism of time, not a financial pyramid. ECNOVA is a space where execution becomes trust, and time becomes value.',
+        'invest.title':'Quiet Start. Limited Liquidity. Real Time.',
+        'invest.p1':'ECNOVA launches softly and deliberately.',
+        'invest.p2':'Liquidity in pairs is small — it’s not a bug, it’s deliberate scarcity.',
+        'invest.p3':'Those who buy now are early holders who value time over speculation.',
+        'invest.p4':'We make no promises of growth or yields. Only participation and trust.',
+        'invest.cta':'💱 Buy ECNOVA',
+        'invest.signature':'If you understand it — you can buy. If not — you can wait. Time will show.',
+        'mini.jup':'View on Jupiter','mini.ray':'Raydium Pool','mini.orca':'Orca Pool','mini.expl':'Explorer',
+        'roadmap.title':'ECNOVA Roadmap 2026 – 2028',
+        'roadmap.desc':'A three-year trajectory from a manual start to an autonomous DAO with licensed time technology. The plan balances engineering realism and calm growth.',
+        'roadmap.btn':'📘 Open Full Roadmap',
+        'roadmap.repo':'Open /docs/ section',
+        'footer.copy':'© ECNOVA Protocol, 2025 – Execution as Trust.',
+        'footer.tg':'Telegram','footer.x':'X / Twitter','footer.wp':'White Paper','footer.contact':'Contact',
+        'footer.phrase':'“You can support ECNOVA — no promises, only trust.”'
+      },
+      ru: {
+        'nav.home':'Главная','nav.about':'О проекте','nav.invest':'Покупки','nav.roadmap':'Roadmap','nav.contacts':'Контакты',
+        'hero.title':'ECNOVA — Execution as Trust','hero.subtitle':'Time-as-Proof Protocol on Solana.',
+        'hero.cta.learn':'Подробнее','hero.cta.buy':'Купить','hero.motto':'Мы не гоняемся за трендами — мы растём во времени.',
+        'about.title':'О проекте ECNOVA',
+        'about.text':'Мы строим механизм времени, а не финансовую пирамиду. ECNOVA — это пространство, где исполнение становится доверие, а время становится ценностью.',
+        'invest.title':'Тихий старт. Ограниченная ликвидность. Настоящее время.',
+        'invest.p1':'ECNOVA запускается мягко и осознанно.',
+        'invest.p2':'Ликвидность в парах невелика — это не ошибка, а осознанный дефицит.',
+        'invest.p3':'Те, кто покупает сейчас, — первые держатели, ценящие время, а не спекуляции.',
+        'invest.p4':'Мы не обещаем ростов и доходов. Только участие и доверие.',
+        'invest.cta':'💱 Купить ECNOVA',
+        'invest.signature':'Если вы это понимаете — можете купить. Если нет — можно подождать. Время покажет.',
+        'mini.jup':'Открыть на Jupiter','mini.ray':'Пул Raydium','mini.orca':'Пул Orca','mini.expl':'Explorer',
+        'roadmap.title':'ECNOVA Roadmap 2026 – 2028',
+        'roadmap.desc':'Трёхлетняя траектория от ручного старта к автономной DAO с лицензированной технологией времени. План опирается на инженерный реализм и спокойный рост.',
+        'roadmap.btn':'📘 Открыть полный Roadmap',
+        'roadmap.repo':'Открыть раздел /docs/',
+        'footer.copy':'© ECNOVA Protocol, 2025 – Execution as Trust.',
+        'footer.tg':'Telegram','footer.x':'X / Twitter','footer.wp':'White Paper','footer.contact':'Контакты',
+        'footer.phrase':'«Вы можете поддержать ECNOVA — без обещаний, но с доверием.»'
       },
       it: {
-        'nav.home':'Home',
-        'nav.about':'Progetto',
-        'nav.wp':'White Paper',
-        'nav.contacts':'Contatti',
-        'hero.title':'Esecuzione come Fiducia — Protocollo Time-as-Proof su Solana',
-        'hero.subtitle':'ECNOVA ti permette di ancorare gli impegni nel tempo — crea una cella e osserva l’esecuzione.',
-        'hero.cta1':'Entra come ospite',
-        'hero.cta2':'Mettilo sullo scaffale della memoria',
-        'about.title':'Che cos’è ECNOVA',
-        'about.text':'ECNOVA è un protocollo del tempo che trasforma l’esecuzione in prova. Al centro ci sono le Time Cells — celle temporali dove ogni azione ha una scadenza ed è eseguita dal codice su Solana.',
-        'how.title':'Come Funziona',
-        'how.scheme':'Schema: Crea una cella → Inserisci le condizioni → Attendi la scadenza → Il codice registra l’esecuzione → Il tempo diventa prova.',
-        'benefits.title':'Vantaggi di ECNOVA',
-        'benefits.a1t':'Esecuzione — il tempo lavora da solo.',
-        'benefits.a2t':'Trasparenza — tutto on-chain e aperto.',
-        'benefits.a3t':'Deflazione — ogni esecuzione brucia una parte dei token ECNOVA.',
-        'air.title':'AirDrop — Impara per Guadagnare',
-        'air.text':'ECNOVA AirDrop è Proof-of-Learning: studia la blockchain e l’idea del tempo, svolgi brevi attività e ottieni punti ECNOVA che diventano NFT temporali.',
-        'air.cta1':'Inizia ad imparare e partecipa all’AirDrop',
-        'air.cta2':'Scopri di più su Proof-of-Learning',
-        'wp.title':'White Paper',
-        'wp.text':'La specifica tecnica e filosofica completa di ECNOVA è disponibile per il download.',
-        'wp.cta':'Scarica il White Paper (PDF)',
-        'contacts.title':'Contatti e Community',
-        'subscribe.placeholder':'La tua email',
-        'subscribe.btn':'Iscriviti agli aggiornamenti',
-        'energy.title':'Aggiungi energia ECNOVA',
-        'energy.text1':'Chiunque può aggiungere un po’ di energia al sistema ECNOVA.',
-        'energy.text2':'I fondi sono destinati allo sviluppo del protocollo, all’infrastruttura e all’audit.',
-        'energy.addrlabel':'Indirizzo Solana:',
-        'energy.copy':'Copia indirizzo',
-        'energy.disclaimer':'Nota bene: non è un’offerta di investimento. Tutti i trasferimenti sono volontari.',
-        'footer.privacy':'Privacy Policy',
-        'footer.terms':'Terms of Use',
-        'footer.legal':'Legal & Disclaimer'
+        'nav.home':'Home','nav.about':'About','nav.invest':'Invest','nav.roadmap':'Roadmap','nav.contacts':'Contatti',
+        'hero.title':'ECNOVA — Execution as Trust','hero.subtitle':'Time-as-Proof Protocol on Solana.',
+        'hero.cta.learn':'Scopri di più','hero.cta.buy':'Acquista ora','hero.motto':'Non inseguiamo le mode — cresciamo nel tempo.',
+        'about.title':'Informazioni su ECNOVA',
+        'about.text':'Costruiamo un meccanismo del tempo, non una piramide finanziaria. ECNOVA è uno spazio in cui l’esecuzione diventa fiducia e il tempo diventa valore.',
+        'invest.title':'Avvio silenzioso. Liquidità limitata. Tempo reale.',
+        'invest.p1':'ECNOVA parte in modo graduale e consapevole.',
+        'invest.p2':'La liquidità nelle coppie è ridotta — non è un errore, è una scarsità intenzionale.',
+        'invest.p3':'Chi compra ora è un early holder che dà valore al tempo, non alla speculazione.',
+        'invest.p4':'Non promettiamo crescite o rendimenti. Solo partecipazione e fiducia.',
+        'invest.cta':'💱 Acquista ECNOVA',
+        'invest.signature':'Se lo capisci — puoi acquistare. Se no — puoi aspettare. Il tempo lo dirà.',
+        'mini.jup':'Vedi su Jupiter','mini.ray':'Pool Raydium','mini.orca':'Pool Orca','mini.expl':'Explorer',
+        'roadmap.title':'ECNOVA Roadmap 2026 – 2028',
+        'roadmap.desc':'Un percorso triennale da un avvio manuale a una DAO autonoma con tecnologia del tempo sotto licenza. Il piano bilancia realismo ingegneristico e crescita pacata.',
+        'roadmap.btn':'📘 Apri la Roadmap completa',
+        'roadmap.repo':'Apri la sezione /docs/',
+        'footer.copy':'© ECNOVA Protocol, 2025 – Execution as Trust.',
+        'footer.tg':'Telegram','footer.x':'X / Twitter','footer.wp':'White Paper','footer.contact':'Contatti',
+        'footer.phrase':'“Puoi sostenere ECNOVA — senza promesse, solo fiducia.”'
       }
     };
 
-    // Apply translation to all [data-i18n] & placeholder for [data-i18n-placeholder]
-    function setLang(lang) {
-      var dict = I18N[lang] || I18N['ru'];
-      document.documentElement.setAttribute('lang', lang);
-      // text nodes
-      document.querySelectorAll('[data-i18n]').forEach(function(node) {
-        var key = node.getAttribute('data-i18n');
-        if (dict[key]) node.textContent = dict[key];
+    function setLang(lang){
+      const active = t[lang] ? lang : 'ru';
+      document.documentElement.setAttribute('lang', active);
+      // Update texts
+      $$('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[active][key]) el.textContent = t[active][key];
       });
-      // placeholders
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(node){
-        var key = node.getAttribute('data-i18n-placeholder');
-        if (dict[key]) node.setAttribute('placeholder', dict[key]);
+      // Toggle active buttons
+      $$('.lang button').forEach(btn => {
+        const isActive = btn.getAttribute('data-lang') === active;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
-      // mark buttons
-      document.querySelectorAll('.lang button').forEach(function(btn){
-        var active = btn.getAttribute('data-lang') === lang;
-        btn.classList.toggle('active', active);
-        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-      // Adjust QR alt if needed (not critical)
-      var qr = document.getElementById('qr');
-      if (qr) {
-        var altText = {'ru':'QR-code ECNOVA кошелёк','en':'QR-code ECNOVA wallet','it':'QR-code portafoglio ECNOVA'}[lang] || 'QR-code ECNOVA wallet';
-        qr.setAttribute('alt', altText);
-      }
+      // Persist + reflect in URL
+      try { localStorage.setItem('ecnova_lang', active); } catch(e){}
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', active);
+      history.replaceState({}, '', url);
+      // Refresh internal links to keep ?lang=
+      updateLinks(active);
     }
 
-    // Init language switcher controls
-    document.querySelectorAll('.lang button').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var lang = btn.getAttribute('data-lang');
-        setLang(lang);
+    function updateLinks(lang){
+      $$('a[data-keep-lang="true"]').forEach(a => {
+        try{
+          const href = a.getAttribute('href') || '';
+          if (href.startsWith('#')) {
+            // Anchor in the same page: keep only ?lang in address bar; href remains anchor
+            return;
+          }
+          // Internal relative link (e.g., buy.html) -> append ?lang
+          const isExternal = /^https?:\/\//i.test(href);
+          if (!isExternal) {
+            const url = new URL(href, window.location.origin);
+            url.searchParams.set('lang', lang);
+            a.setAttribute('href', url.pathname + url.search + url.hash);
+          }
+        }catch(e){/* noop */}
       });
-    });
+    }
 
-    // Keep RU as default on initial load (exact phrases).
-    setLang('ru');
+    // Listeners
+    $$('.lang button').forEach(btn => btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang'))));
+
+    // Init: from ?lang, then localStorage, else RU
+    (function init(){
+      const urlLang = new URL(window.location.href).searchParams.get('lang');
+      let storeLang = null;
+      try { storeLang = localStorage.getItem('ecnova_lang'); } catch(e){}
+      setLang(urlLang || storeLang || 'ru');
+    })();
   </script>
 </body>
 </html>
