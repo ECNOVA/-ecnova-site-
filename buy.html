@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ECNOVA — Execution as Trust · Buy · Support · Roadmap</title>
+  <meta name="description" content="ECNOVA — Execution as Trust. Support the project or become an early holder. Buy, provide liquidity, view on explorer, open the roadmap." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==============================
+       ECNOVA — Buy · Support · Roadmap
+       - Minimal neon calm on deep dark background
+       - RU / EN / IT language switch (top-right)
+       ============================== */
+    :root {
+      --bg: #0e0e0e;
+      --text: #ffffff;
+      --muted: #d0d0d0;
+      --accent: #00ffcc;   /* turquoise glow */
+      --purple: #7d3cff;   /* secondary accent */
+      --card: #151515;     /* slightly lighter section */
+      --stroke: #242424;
+      --radius: 16px;
+      --shadow-btn: 0 0 20px rgba(0,255,204,0.55);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      /* Ambient glow */
+      background-image:
+        radial-gradient(1200px 520px at 50% -12%, rgba(0,255,204,0.15), rgba(0,255,204,0) 60%),
+        radial-gradient(900px 360px at 90% -18%, rgba(125,60,255,0.12), rgba(125,60,255,0) 60%);
+      background-repeat: no-repeat;
+    }
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+    header { position: relative; padding: 28px 0 8px; }
+    .lang {
+      position: absolute; right: 0; top: 18px;
+      display: flex; gap: 8px;
+    }
+    .lang button {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--stroke); border-radius: 10px;
+      padding: 6px 10px; cursor: pointer;
+      transition: border-color .2s ease, box-shadow .2s ease, color .2s ease;
+    }
+    .lang button.active { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 20px rgba(0,255,204,0.25); }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 6vw, 40px);
+      letter-spacing: .2px;
+      text-shadow: 0 0 10px var(--accent);
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: clamp(15px, 3.2vw, 18px);
+      margin: 0 0 18px;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin: 16px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    .group {
+      margin-top: 10px;
+      padding-top: 8px;
+    }
+    .group-label {
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: .2px;
+      margin-bottom: 10px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: .2px;
+      text-decoration: none;
+      transition: transform .06s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-btn); text-decoration: none; }
+    .btn.primary { background: var(--accent); color: #0e0e0e; }
+    .btn.purple { border-color: var(--purple); }
+    .btn span.emoji { font-size: 18px; }
+
+    .signature {
+      margin-top: 18px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px dashed var(--stroke);
+      padding-top: 12px;
+    }
+
+    @media (max-width: 880px) {
+      .row { grid-template-columns: 1fr; }
+      .lang { position: static; justify-content: flex-end; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <!-- Language Switcher -->
+      <div class="lang" aria-label="Language switcher">
+        <button type="button" class="active" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="it" aria-pressed="false">IT</button>
+      </div>
+
+      <!-- Title & Subtitle -->
+      <h1 data-i18n="title">ECNOVA — Execution as Trust</h1>
+      <p class="subtitle" data-i18n="subtitle">Support the project or become an early holder.</p>
+    </header>
+
+    <!-- Action Sections -->
+    <div class="section">
+
+      <!-- Row 1: Buy -->
+      <div class="group">
+        <div class="group-label" data-i18n="group.buy">💱 Buy ECNOVA (Jupiter)</div>
+        <div class="row">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://jup.ag/tokens/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" data-i18n="btn.buy">
+            <span class="emoji">💱</span><span>Buy ECNOVA (Jupiter)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Row 2: Pools -->
+      <div class="group">
+        <div class="group-label" data-i18n="group.pools">🌊 Liquidity Pools:</div>
+        <div class="row">
+          <a class="btn" target="_blank" rel="noopener" href="https://raydium.io/liquidity-pools/?sort_by=liquidity&token=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM">
+            <span class="emoji">🌊</span><span>Raydium</span>
+          </a>
+          <a class="btn purple" target="_blank" rel="noopener" href="https://www.orca.so/pools?tokens=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM">
+            <span class="emoji">🌊</span><span>Orca</span>
+          </a>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Row 3: Explorer + Roadmap -->
+      <div class="group">
+        <div class="group-label" data-i18n="group.explorer">🔍 View on Explorer:</div>
+        <div class="row">
+          <a class="btn" target="_blank" rel="noopener" href="https://explorer.solana.com/address/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM/metadata">
+            <span class="emoji">🔍</span><span>Solana Explorer</span>
+          </a>
+          <a class="btn" target="_blank" rel="noopener" href="https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM">
+            <span class="emoji">🔍</span><span>SolScan</span>
+          </a>
+          <a class="btn" target="_blank" rel="noopener" href="/docs/ECNOVA_Roadmap_2026-2028.pdf" data-i18n="btn.roadmap">
+            <span class="emoji">📘</span><span>Open Roadmap 2026–2028</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Signature -->
+      <p class="signature" data-i18n="signature">“You can support ECNOVA — no promises, only trust.”</p>
+    </div>
+  </div>
+
+  <script>
+    // ===== Simple i18n with persistence (localStorage) =====
+    const STORAGE_KEY = 'ecnova_lang';
+    const qs = (sel, ctx=document) => ctx.querySelector(sel);
+    const qsa = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+    const dict = {
+      en: {
+        title: "ECNOVA — Execution as Trust",
+        subtitle: "Support the project or become an early holder.",
+        "group.buy": "💱 Buy ECNOVA (Jupiter)",
+        "btn.buy": "Buy ECNOVA (Jupiter)",
+        "group.pools": "🌊 Liquidity Pools:",
+        "group.explorer": "🔍 View on Explorer:",
+        "btn.roadmap": "Open Roadmap 2026–2028",
+        signature: "“You can support ECNOVA — no promises, only trust.”",
+      },
+      ru: {
+        title: "ECNOVA — Execution as Trust",
+        subtitle: "Поддержите проект или станьте ранним держателем.",
+        "group.buy": "💱 Купить ECNOVA (Jupiter)",
+        "btn.buy": "Купить ECNOVA (Jupiter)",
+        "group.pools": "🌊 Пулы ликвидности:",
+        "group.explorer": "🔍 Посмотреть в Explorer:",
+        "btn.roadmap": "Открыть RoadMap 2026–2028",
+        signature: "«Вы можете поддержать ECNOVA — без обещаний, но с доверием.»",
+      },
+      it: {
+        title: "ECNOVA — Execution as Trust",
+        subtitle: "Sostieni il progetto o diventa un early holder.",
+        "group.buy": "💱 Acquista ECNOVA (Jupiter)",
+        "btn.buy": "Acquista ECNOVA (Jupiter)",
+        "group.pools": "🌊 Pool di liquidità:",
+        "group.explorer": "🔍 Visualizza su Explorer:",
+        "btn.roadmap": "Apri RoadMap 2026–2028",
+        signature: "“Puoi sostenere ECNOVA — senza promesse, solo fiducia.”",
+      }
+    };
+
+    function setLang(lang){
+      const active = dict[lang] ? lang : 'en';
+      document.documentElement.setAttribute('lang', active);
+      // text nodes
+      qsa('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[active][key]) {
+          el.textContent = dict[active][key];
+        }
+      });
+      // Toggle active buttons
+      qsa('.lang button').forEach(btn => {
+        const isActive = btn.getAttribute('data-lang') === active;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      try { localStorage.setItem(STORAGE_KEY, active); } catch(e){}
+      // keep shareable ?lang= in URL (no reload)
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', active);
+      window.history.replaceState({}, '', url);
+    }
+
+    // Event listeners for switcher
+    qsa('.lang button').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    // Initialize from ?lang=, then localStorage, else RU by default (site origin)
+    (function initLang(){
+      const url = new URL(window.location.href);
+      const fromQuery = url.searchParams.get('lang');
+      const fromStore = (() => { try { return localStorage.getItem(STORAGE_KEY); } catch(e){ return null; } })();
+      setLang(fromQuery || fromStore || 'ru');
+    })();
+  </script>
+</body>
+</html>
