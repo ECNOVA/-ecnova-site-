@@ -21,29 +21,26 @@ Notes:
 =============================================================================
 -->
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ECNOVA — Execution as Trust · Time‑as‑Proof on Solana</title>
-  <meta name="description" content="ECNOVA — Time‑as‑Proof protocol on Solana. Time Cells, App Shell (DApp), Attention Validation (PoR‑Engine), DAO governance, ARX buyback, and roadmap 2026–2028." />
-  <meta name="theme-color" content="#0e0e0e" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="ECNOVA — Execution as Trust" />
-  <meta property="og:description" content="Time‑as‑Proof Protocol on Solana. Create Time Cells, verify attention, execute in time." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ecnova.io/" />
-  <meta property="og:image" content="/assets/og-ecnova.png" />
-
-  <!-- Favicon (replace with your final files when ready) -->
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-  <!-- Google Fonts (allowed external) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ECNOVA — Execution as Trust · Time‑as‑Proof on Solana</title>
+<meta content="ECNOVA — Time‑as‑Proof protocol on Solana. Time Cells, App Shell (DApp), Attention Validation (PoR‑Engine), DAO governance, ARX buyback, and roadmap 2026–2028." name="description"/>
+<meta content="#0e0e0e" name="theme-color"/>
+<!-- Open Graph -->
+<meta content="ECNOVA — Execution as Trust" property="og:title"/>
+<meta content="Time‑as‑Proof Protocol on Solana. Create Time Cells, verify attention, execute in time." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://ecnova.io/" property="og:url"/>
+<meta content="/assets/og-ecnova.png" property="og:image"/>
+<!-- Favicon (replace with your final files when ready) -->
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<!-- Google Fonts (allowed external) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
     :root{
       --bg:#0e0e0e;
       --card:#151515;
@@ -137,259 +134,304 @@ Notes:
     /* Legal block styling */
     .legal p{margin:8px 0}
     .legal .note{font-size:12px;opacity:.85}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <div class="nav-left">
-        <button class="burger" id="burger" aria-label="Menu">☰</button>
-        <div class="logo">
-          <span class="grad">ECNOVA</span>
-        </div>
-      </div>
-      <nav id="mainNav">
-        <ul>
-          <li><a href="#home" data-i18n="nav_home">Home</a></li>
-          <li><a href="#about" data-i18n="nav_about">About</a></li>
-          <li><a href="#dapp" data-i18n="nav_dapp">DApp</a></li>
-          <li><a href="#buy" data-i18n="nav_buy">Buy</a></li>
-          <li><a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a></li>
-          <li><a href="#airdrop" data-i18n="nav_airdrop">AirDrop</a></li>
-          <li><a href="#dao" data-i18n="nav_dao">DAO</a></li>
-          <li><a href="#whitepaper" data-i18n="nav_whitepaper">White Paper</a></li>
-          <li><a href="#contacts" data-i18n="nav_contacts">Contacts</a></li>
-          <li><a href="#legal" data-i18n="nav_legal">Legal</a></li>
-        </ul>
-      </nav>
-      <div class="lang-switch">
-        <span class="mini subtle">RU | EN | IT</span>
-        <button class="lang-btn" data-lang="ru">RU</button>
-        <button class="lang-btn" data-lang="en" aria-current="true">EN</button>
-        <button class="lang-btn" data-lang="it">IT</button>
-      </div>
-    </div>
-  </header>
+  
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container hero-inner">
-      <div>
-        <h1 data-i18n="hero_title">ECNOVA — Execution as Trust</h1>
-        <p data-i18n="hero_subtitle">Time‑as‑Proof Protocol on Solana.</p>
-        <div class="cta">
-          <a class="btn btn-outline" href="#about" data-i18n="hero_cta_learn">Learn More</a>
-          <a class="btn btn-primary" href="#buy" data-i18n="hero_cta_buy">Buy Now</a>
-        </div>
-        <p class="mini tagline" data-i18n="hero_tagline">We don’t chase trends — we grow in time.</p>
-      </div>
-      <div class="card">
-        <h3 data-i18n="about_title">About ECNOVA</h3>
-        <p data-i18n="about_text">
+/* === ECNOVA Unified Gradient Button === */
+.ecnova-gradient-btn {
+  background: linear-gradient(90deg, #7D3CFF, #3BC7FF, #00FFCC);
+  color: #ffffff !important;
+  border-radius: 12px;
+  border: none;
+  padding: 10px 26px;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0,255,200,0.4);
+  box-shadow: 0 0 18px rgba(0,255,200,0.25);
+  transition: all .25s ease;
+  display: inline-block;
+}
+.ecnova-gradient-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 36px rgba(0,255,200,0.45);
+}
+.ecnova-gradient-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 20px rgba(125,60,255,0.35);
+}
+/* Preserve existing spacing if any buttons were flex children */
+.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+</style>
+<style>
+/* === ECNOVA v1.2 UI Fix: gradient styles for primary actions & active nav === */
+.ecnova-gradient-btn,
+a.ecnova-gradient-btn,
+button.ecnova-gradient-btn {
+  background: linear-gradient(90deg, #7D3CFF, #3BC7FF, #00FFCC);
+  color: #fff !important;
+  border-radius: 12px;
+  text-shadow: 0 0 6px rgba(0,255,200,0.4);
+  border: none;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  will-change: transform, filter;
+}
+.ecnova-gradient-btn:hover, .ecnova-gradient-btn:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(0,255,200,0.25);
+  filter: saturate(1.05);
+}
+/* Active nav link gets the same gradient treatment */
+nav a.active, header nav a.active, .menu a.active {
+  background: linear-gradient(90deg, #7D3CFF, #3BC7FF, #00FFCC);
+  color: #fff !important;
+  border-radius: 12px;
+  text-shadow: 0 0 6px rgba(0,255,200,0.4);
+}
+/* Hero actions centering helper */
+.hero-actions, .hero-buttons, .hero-cta, .hero__actions, .cta-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+</style></head>
+<body>
+<header>
+<div class="container nav">
+<div class="nav-left">
+<button aria-label="Menu" class="burger" id="burger">☰</button>
+<div class="logo">
+<span class="grad">ECNOVA</span>
+</div>
+</div>
+<nav id="mainNav">
+<ul>
+<li><a data-i18n="nav_home" href="#home">Home</a></li>
+<li><a data-i18n="nav_about" href="#about">About</a></li>
+<li><a data-i18n="nav_dapp" href="#dapp">DApp</a></li>
+<li><a class="ecnova-gradient-btn" data-i18n="nav_buy" href="/buy.html" role="button">Владеть</a></li>
+<li><a data-i18n="nav_roadmap" href="#roadmap">Roadmap</a></li>
+<li><a data-i18n="nav_airdrop" href="#airdrop">AirDrop</a></li>
+<li><a data-i18n="nav_dao" href="#dao">DAO</a></li>
+<li><a data-i18n="nav_whitepaper" href="#whitepaper">White Paper</a></li>
+<li><a data-i18n="nav_contacts" href="#contacts">Contacts</a></li>
+<li><a data-i18n="nav_legal" href="#legal">Legal</a></li>
+</ul>
+</nav>
+<div class="lang-switch">
+<span class="mini subtle">RU | EN | IT</span>
+<button class="lang-btn" data-lang="ru">RU</button>
+<button aria-current="true" class="lang-btn" data-lang="en">EN</button>
+<button class="lang-btn" data-lang="it">IT</button>
+</div>
+</div>
+</header>
+<!-- Hero -->
+<section class="hero" id="home">
+<div class="container hero-inner">
+<div>
+<h1 data-i18n="hero_title">ECNOVA — Execution as Trust</h1>
+<p data-i18n="hero_subtitle">Time‑as‑Proof Protocol on Solana.</p>
+<div class="cta hero-cta">
+<a class="btn btn-outline ecnova-gradient-btn" data-i18n="hero_cta_learn" href="#about" role="button">Learn More</a>
+</div>
+<p class="mini tagline" data-i18n="hero_tagline">We don’t chase trends — we grow in time.</p>
+</div>
+<div class="card">
+<h3 data-i18n="about_title">About ECNOVA</h3>
+<p data-i18n="about_text">
           ECNOVA translates execution time into an on‑chain artifact called a Time Cell.
           Time Cells have participants, assets (optional), rules, and a due_slot; settlement is permissionless.
         </p>
-        <div class="badge"><span>Solana</span><span class="kbd">slot‑based due</span><span class="kbd">permissionless</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2 data-i18n="about_title_2">About the Protocol</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3 data-i18n="about_cell_title">Time Cells</h3>
-          <p data-i18n="about_cell_text">
+<div class="badge"><span>Solana</span><span class="kbd">slot‑based due</span><span class="kbd">permissionless</span></div>
+</div>
+</div>
+<div class="actions"><button class="ecnova-gradient-btn" id="shareBtn">Поделиться</button></div></section>
+<!-- About -->
+<section id="about">
+<div class="container">
+<h2 data-i18n="about_title_2">About the Protocol</h2>
+<div class="grid-2">
+<div class="card">
+<h3 data-i18n="about_cell_title">Time Cells</h3>
+<p data-i18n="about_cell_text">
             A Time Cell is a PDA account with due_slot, terms_hash and statuses (INIT→ACTIVE→DUE→SETTLED|DISPUTED|EXPIRED).
             Deadlines are in Solana slots; human‑readable time is UI‑only.
           </p>
-          <p class="mini" data-i18n="about_cell_phrase">In ECNOVA there is no “later” — only executed or not executed.</p>
-        </div>
-        <div class="card">
-          <h3 data-i18n="about_layers_title">Layers</h3>
-          <p data-i18n="about_layers_text">
+<p class="mini" data-i18n="about_cell_phrase">In ECNOVA there is no “later” — only executed or not executed.</p>
+</div>
+<div class="card">
+<h3 data-i18n="about_layers_title">Layers</h3>
+<p data-i18n="about_layers_text">
             Attention Layer (PoR‑Engine + RAG) validates human participation. App Shell is the user hub.
             DAO governs treasury under timelock; core programs are immutable.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DApp -->
-  <section id="dapp">
-    <div class="container">
-      <h2 data-i18n="dapp_title">DApp — App Shell</h2>
-      <p data-i18n="dapp_text">
+</div>
+</div>
+</div>
+</section>
+<!-- DApp -->
+<section id="dapp">
+<div class="container">
+<h2 data-i18n="dapp_title">DApp — App Shell</h2>
+<p data-i18n="dapp_text">
         ECNOVA App Shell (Time Execution Hub): My Vesting, Create Time Cell, Dashboard, DAO panel, Buyback Tracker.
         Tech: React + Solana RPC + Wallet Adapter. Attention check is performed before sensitive actions.
       </p>
-      <div class="cta">
-        <a class="btn btn-primary" href="/app" data-i18n="dapp_button" target="_blank" rel="noopener">Visit the Application</a>
-        <span class="mini muted" data-i18n="dapp_note">The DApp opens in a separate repository at <span class="kbd">/app</span>.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Buy -->
-  <section id="buy">
-    <div class="container">
-      <h2 data-i18n="buy_title">Quiet Start · Limited Liquidity · Real Time.</h2>
-      <div class="grid-2">
-        <div class="card">
-          <p data-i18n="buy_p1">ECNOVA starts quietly and consciously.</p>
-          <p data-i18n="buy_p2">Liquidity is small by design — a limited offer for those who understand the value of time.</p>
-          <p data-i18n="buy_p3">We make no promises of growth — only participation and trust.</p>
-          <p class="mini" data-i18n="buy_signature">If you understand — buy. If not — wait. Time will show.</p>
-          <div class="cta">
-            <a class="btn btn-primary" data-i18n="buy_btn" href="https://jup.ag/tokens/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" target="_blank" rel="noopener">Buy ECNOVA</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3 data-i18n="buy_links_heading">Links</h3>
-          <div class="links-row">
-            <a class="link-btn" target="_blank" rel="noopener" href="https://jup.ag/tokens/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" data-i18n="buy_link_jup">View on Jupiter</a>
-            <a class="link-btn" target="_blank" rel="noopener" href="https://raydium.io/liquidity-pools/?sort_by=liquidity&token=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" data-i18n="buy_link_ray">Raydium Pool</a>
-            <a class="link-btn" target="_blank" rel="noopener" href="https://www.orca.so/pools?tokens=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" data-i18n="buy_link_orca">Orca Pool</a>
-            <a class="link-btn" target="_blank" rel="noopener" href="https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" data-i18n="buy_link_explorer">Explorer (Solscan)</a>
-            <a class="link-btn" target="_blank" rel="noopener" href="/docs/ECNOVA_Roadmap_2026-2028.pdf" data-i18n="buy_link_roadmap">Open Roadmap</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Roadmap -->
-  <section id="roadmap">
-    <div class="container">
-      <h2 data-i18n="roadmap_title">ECNOVA Roadmap 2026–2028</h2>
-      <p data-i18n="roadmap_text">
+<div class="cta">
+<a class="btn btn-primary ecnova-gradient-btn" data-i18n="dapp_button" href="/app" rel="noopener" role="button" target="_blank">Visit the Application</a>
+<span class="mini muted" data-i18n="dapp_note">The DApp opens in a separate repository at <span class="kbd">/app</span>.</span>
+</div>
+</div>
+</section>
+<!-- Buy -->
+<section id="buy">
+<div class="container">
+<h2 data-i18n="buy_title">Quiet Start · Limited Liquidity · Real Time.</h2>
+<div class="grid-2">
+<div class="card">
+<p data-i18n="buy_p1">ECNOVA starts quietly and consciously.</p>
+<p data-i18n="buy_p2">Liquidity is small by design — a limited offer for those who understand the value of time.</p>
+<p data-i18n="buy_p3">We make no promises of growth — only participation and trust.</p>
+<p class="mini" data-i18n="buy_signature">If you understand — buy. If not — wait. Time will show.</p>
+<div class="cta">
+<a class="btn btn-primary ecnova-gradient-btn" data-i18n="buy_btn" href="https://jup.ag/tokens/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" rel="noopener" role="button" target="_blank">Buy ECNOVA</a>
+</div>
+</div>
+<div class="card">
+<h3 data-i18n="buy_links_heading">Links</h3>
+<div class="links-row">
+<a class="link-btn ecnova-gradient-btn" data-i18n="buy_link_jup" href="https://jup.ag/tokens/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" rel="noopener" role="button" target="_blank">View on Jupiter</a>
+<a class="link-btn ecnova-gradient-btn" data-i18n="buy_link_ray" href="https://raydium.io/liquidity-pools/?sort_by=liquidity&amp;token=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" rel="noopener" role="button" target="_blank">Raydium Pool</a>
+<a class="link-btn ecnova-gradient-btn" data-i18n="buy_link_orca" href="https://www.orca.so/pools?tokens=7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" rel="noopener" role="button" target="_blank">Orca Pool</a>
+<a class="link-btn ecnova-gradient-btn" data-i18n="buy_link_explorer" href="https://solscan.io/token/7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM" rel="noopener" role="button" target="_blank">Explorer (Solscan)</a>
+<a class="link-btn ecnova-gradient-btn" data-i18n="buy_link_roadmap" href="/docs/ECNOVA_Roadmap_2026-2028.pdf" rel="noopener" role="button" target="_blank">Open Roadmap</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Roadmap -->
+<section id="roadmap">
+<div class="container">
+<h2 data-i18n="roadmap_title">ECNOVA Roadmap 2026–2028</h2>
+<p data-i18n="roadmap_text">
         ECNOVA moves through time from manual launch to DAO autonomy. Every milestone proves that execution is trust.
       </p>
-      <a class="btn btn-outline" href="/docs/ECNOVA_Roadmap_2026-2028.pdf" target="_blank" rel="noopener" data-i18n="roadmap_btn">📘 Open Full Roadmap</a>
-    </div>
-  </section>
-
-  <!-- AirDrop -->
-  <section id="airdrop">
-    <div class="container">
-      <h2 data-i18n="air_title">AirDrop ECNOVA — Proof of Learning</h2>
-      <p data-i18n="air_subtitle">Learn blockchain and time — earn ECNOVA points.</p>
-      <div class="grid-2">
-        <div class="card">
-          <p data-i18n="air_desc">
+<a class="btn btn-outline ecnova-gradient-btn" data-i18n="roadmap_btn" href="/docs/ECNOVA_Roadmap_2026-2028.pdf" rel="noopener" role="button" target="_blank">📘 Open Full Roadmap</a>
+</div>
+</section>
+<!-- AirDrop -->
+<section id="airdrop">
+<div class="container">
+<h2 data-i18n="air_title">AirDrop ECNOVA — Proof of Learning</h2>
+<p data-i18n="air_subtitle">Learn blockchain and time — earn ECNOVA points.</p>
+<div class="grid-2">
+<div class="card">
+<p data-i18n="air_desc">
             ECNOVA AirDrop is a participation-through-learning model.
             You complete a short course, pass micro‑tests, collect Time Points and convert them into Time‑NFT and ECNOVA.
           </p>
-          <h3 data-i18n="air_steps_title">How it works</h3>
-          <ol class="muted">
-            <li data-i18n="air_s1">Connect wallet (Phantom or Solflare).</li>
-            <li data-i18n="air_s2">Complete mini‑course on blockchain and ECNOVA basics.</li>
-            <li data-i18n="air_s3">Earn Time Points.</li>
-            <li data-i18n="air_s4">Convert points to Time‑NFT and token after the campaign.</li>
-          </ol>
-          <a class="btn btn-primary" href="#dapp" data-i18n="air_btn">Join AirDrop</a>
-        </div>
-        <div class="card">
-          <h3>PoR‑Engine</h3>
-          <p data-i18n="air_por">
+<h3 data-i18n="air_steps_title">How it works</h3>
+<ol class="muted">
+<li data-i18n="air_s1">Connect wallet (Phantom or Solflare).</li>
+<li data-i18n="air_s2">Complete mini‑course on blockchain and ECNOVA basics.</li>
+<li data-i18n="air_s3">Earn Time Points.</li>
+<li data-i18n="air_s4">Convert points to Time‑NFT and token after the campaign.</li>
+</ol>
+<a class="btn btn-primary ecnova-gradient-btn" data-i18n="air_btn" href="#dapp" role="button">Join AirDrop</a>
+</div>
+<div class="card">
+<h3>PoR‑Engine</h3>
+<p data-i18n="air_por">
             Before any reward, Attention Layer runs Proof‑of‑Reading. Results are recorded to a Time Cell.
           </p>
-          <p class="mini muted" data-i18n="air_warn">⚠️ ECNOVA never asks for seed phrases or private keys. Use only the official site.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DAO -->
-  <section id="dao">
-    <div class="container">
-      <h2 data-i18n="dao_title">DAO Governance</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3 data-i18n="dao_g1">Realms / SPL Governance</h3>
-          <p data-i18n="dao_p1">DAO votes via SPL Governance (Realms). Treasury actions are timelocked ≥ 48h.</p>
-        </div>
-        <div class="card">
-          <h3 data-i18n="dao_g2">Immutable Core</h3>
-          <p data-i18n="dao_p2">Core programs (Time Cells, Due Queue, RRV, ARX) are immutable (upgrade authority revoked).</p>
-        </div>
-        <div class="card">
-          <h3 data-i18n="dao_g3">Licensing</h3>
-          <p data-i18n="dao_p3">DAO issues NFT‑Licenses for PoR API. Royalties accounted to treasury and partially routed to ARX.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- White Paper -->
-  <section id="whitepaper">
-    <div class="container">
-      <h2 data-i18n="wp_title">White Paper</h2>
-      <p data-i18n="wp_text">Download the latest specification of ECNOVA Protocol (v6.3).</p>
-      <a class="btn btn-outline" href="/docs/ECNOVA_White_Paper_v6.3.pdf" target="_blank" rel="noopener" data-i18n="wp_btn">Download v6.3</a>
-    </div>
-  </section>
-
-  <!-- Legal -->
-  <section id="legal" class="legal">
-    <div class="container">
-      <h2 data-i18n="legal_title">Legal & Compliance Notice</h2>
-      <p data-i18n="legal_p1">
+<p class="mini muted" data-i18n="air_warn">⚠️ ECNOVA never asks for seed phrases or private keys. Use only the official site.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- DAO -->
+<section id="dao">
+<div class="container">
+<h2 data-i18n="dao_title">DAO Governance</h2>
+<div class="grid-3">
+<div class="card">
+<h3 data-i18n="dao_g1">Realms / SPL Governance</h3>
+<p data-i18n="dao_p1">DAO votes via SPL Governance (Realms). Treasury actions are timelocked ≥ 48h.</p>
+</div>
+<div class="card">
+<h3 data-i18n="dao_g2">Immutable Core</h3>
+<p data-i18n="dao_p2">Core programs (Time Cells, Due Queue, RRV, ARX) are immutable (upgrade authority revoked).</p>
+</div>
+<div class="card">
+<h3 data-i18n="dao_g3">Licensing</h3>
+<p data-i18n="dao_p3">DAO issues NFT‑Licenses for PoR API. Royalties accounted to treasury and partially routed to ARX.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- White Paper -->
+<section id="whitepaper">
+<div class="container">
+<h2 data-i18n="wp_title">White Paper</h2>
+<p data-i18n="wp_text">Download the latest specification of ECNOVA Protocol (v6.3).</p>
+<a class="btn btn-outline ecnova-gradient-btn" data-i18n="wp_btn" href="/docs/ECNOVA_White_Paper_v6.3.pdf" rel="noopener" role="button" target="_blank">Download v6.3</a>
+</div>
+</section>
+<!-- Legal -->
+<section class="legal" id="legal">
+<div class="container">
+<h2 data-i18n="legal_title">Legal &amp; Compliance Notice</h2>
+<p data-i18n="legal_p1">
         ECNOVA is a technical utility protocol. The ECNOVA token is a utility token used for fees and protocol access; 
         it does not grant rights to equity, dividends or future profits.
       </p>
-      <p data-i18n="legal_p2">
+<p data-i18n="legal_p2">
         Buyback/burn via ARX is an automatic technical mechanism for protocol stabilization, not a financial return promise.
       </p>
-      <p data-i18n="legal_p3">
+<p data-i18n="legal_p3">
         Where applicable, ECNOVA will publish a crypto‑asset whitepaper and risk disclosures in line with local regulations (e.g., MiCA). 
         Partners using PoR API must observe KYC/AML as required.
       </p>
-      <p class="note" data-i18n="legal_note">This page is informational only and does not constitute financial, legal or investment advice.</p>
-    </div>
-  </section>
-
-  <!-- Contacts -->
-  <section id="contacts">
-    <div class="container">
-      <h2 data-i18n="contacts_title">Contacts</h2>
-      <div class="grid-2">
-        <div class="card">
-          <p><strong>Email:</strong> <a href="mailto:ecnova.project@gmail.com">ecnova.project@gmail.com</a></p>
-          <p><strong>Telegram:</strong> <a href="https://t.me/EcnovaDAO" target="_blank" rel="noopener">@EcnovaDAO</a></p>
-          <p><strong>X / Twitter:</strong> <a href="https://x.com/EcnovaDAO" target="_blank" rel="noopener">@EcnovaDAO</a></p>
-          <div class="address-row">
-            <span class="mini">Solana:</span>
-            <span class="address" id="solAddr">DumR1fSvHVJz9nYw1ZkvdYinLX4hNzdoMS4Xph3KSfqC</span>
-            <button class="btn btn-outline" id="copyBtn" data-i18n="contacts_copy">Copy</button>
-          </div>
-        </div>
-        <div class="card">
-          <p class="mini muted" data-i18n="contacts_note">The QR encodes the Solana address above.</p>
-          <img class="qr" alt="ECNOVA Solana address QR" id="qrImg" width="180" height="180"/>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div data-i18n="footer_copyright">© ECNOVA Protocol, 2025 – Execution as Trust.</div>
-      <div class="footer-links">
-        <a href="https://t.me/EcnovaDAO" target="_blank" rel="noopener">Telegram</a>
-        <a href="https://x.com/EcnovaDAO" target="_blank" rel="noopener">X / Twitter</a>
-        <a href="#whitepaper" data-i18n="nav_whitepaper">White Paper</a>
-        <a href="#legal" data-i18n="nav_legal">Legal</a>
-        <a href="#contacts" data-i18n="nav_contacts">Contacts</a>
-      </div>
-      <div class="tagline" data-i18n="footer_phrase">You can support ECNOVA — no promises, only trust.</div>
-    </div>
-  </footer>
-
-  <script>
+<p class="note" data-i18n="legal_note">This page is informational only and does not constitute financial, legal or investment advice.</p>
+</div>
+</section>
+<!-- Contacts -->
+<section id="contacts">
+<div class="container">
+<h2 data-i18n="contacts_title">Contacts</h2>
+<div class="grid-2">
+<div class="card">
+<p><strong>Email:</strong> <a href="mailto:ecnova.project@gmail.com">ecnova.project@gmail.com</a></p>
+<p><strong>Telegram:</strong> <a href="https://t.me/EcnovaDAO" rel="noopener" target="_blank">@EcnovaDAO</a></p>
+<p><strong>X / Twitter:</strong> <a href="https://x.com/EcnovaDAO" rel="noopener" target="_blank">@EcnovaDAO</a></p>
+<div class="address-row">
+<span class="mini">Solana:</span>
+<span class="address" id="solAddr">DumR1fSvHVJz9nYw1ZkvdYinLX4hNzdoMS4Xph3KSfqC</span>
+<button class="btn btn-outline ecnova-gradient-btn" data-i18n="contacts_copy" id="copyBtn">Copy</button>
+</div>
+</div>
+<div class="card">
+<p class="mini muted" data-i18n="contacts_note">The QR encodes the Solana address above.</p>
+<img alt="ECNOVA Solana address QR" class="qr" height="180" id="qrImg" width="180"/>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<div data-i18n="footer_copyright">© ECNOVA Protocol, 2025 – Execution as Trust.</div>
+<div class="footer-links">
+<a href="https://t.me/EcnovaDAO" rel="noopener" target="_blank">Telegram</a>
+<a href="https://x.com/EcnovaDAO" rel="noopener" target="_blank">X / Twitter</a>
+<a data-i18n="nav_whitepaper" href="#whitepaper">White Paper</a>
+<a data-i18n="nav_legal" href="#legal">Legal</a>
+<a data-i18n="nav_contacts" href="#contacts">Contacts</a>
+</div>
+<div class="tagline" data-i18n="footer_phrase">You can support ECNOVA — no promises, only trust.</div>
+</div>
+</footer>
+<script>
     // ---------- Mobile nav
     const burger = document.getElementById('burger');
     const mainNav = document.getElementById('mainNav');
@@ -654,5 +696,30 @@ Notes:
       btn.addEventListener("click",() => setLang(btn.dataset.lang));
     });
   </script>
+
+<script>
+  const shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      const data = {
+        title: 'ECNOVA — Execution as Trust',
+        text: 'Первый протокол времени и исполнения на Solana. Время = доверие.',
+        url: window.location.href
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(data);
+        } else {
+          throw new Error('Web Share API unavailable');
+        }
+      } catch (err) {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+        } catch (e) {}
+        alert("Ссылка скопирована: " + window.location.href);
+      }
+    });
+  }
+</script>
 </body>
 </html>
