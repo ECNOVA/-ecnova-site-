@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ECNOVA · Обновление URI метадаты</title>
+<style>
+  :root{color-scheme:dark;font-family:-apple-system,BlinkMacSystemFont,Inter,Arial,sans-serif;background:#071019;color:#e9f7f4}
+  body{margin:0;padding:22px;max-width:650px;margin-inline:auto;line-height:1.5}
+  h1{font-size:1.45rem;margin:10px 0}p{color:#bad3ce}code{overflow-wrap:anywhere;color:#c5fff0}
+  .box{background:#10232b;border:1px solid #2a5155;border-radius:15px;padding:18px;margin:16px 0}
+  .row{margin:12px 0}.label{color:#9ab5b0;font-size:.88rem}.value{overflow-wrap:anywhere}
+  button{display:block;width:100%;border:0;border-radius:12px;background:#63ecc7;color:#062017;font-size:1rem;font-weight:700;padding:14px;margin:12px 0}
+  button:disabled{opacity:.42}.error{color:#ffaaa7}a{color:#8affd6}small{color:#9eb8b4}
+</style></head><body>
+<p><a href="https://ecnova.io/">← ecnova.io</a></p>
+<h1>Обновление метадаты ECNOVA</h1>
+<p>Откройте эту страницу во встроенном браузере <strong>Phantom или Backpack</strong> на телефоне с вашим кошельком. Страница не запрашивает seed или приватный ключ.</p>
+<div class="box">
+  <div class="row"><div class="label">Mint — без изменений</div><div class="value"><code>7jScap4a4kzaZBz4zxDigGcEGKPovruWhRixxZUmGcoM</code></div></div>
+  <div class="row"><div class="label">Право подписи</div><div class="value"><code>fcZnAUSMaaWdtj4vvLNLr1SN4hkUsv76HA7ZTZRckzM</code></div></div>
+  <div class="row"><div class="label">Только поле URI: было</div><div class="value"><code>https://arweave.net/E1uizaiblT4CuUZBOwG2Wh1fJAIl2X7-AfHu0WyMl9o/metadata.json</code></div></div>
+  <div class="row"><div class="label">Станет</div><div class="value"><a href="https://ecnova.io/token/metadata.json" target="_blank" rel="noopener"><code>https://ecnova.io/token/metadata.json</code></a></div></div>
+  <small>Имя EconovaChain, символ ECNOVA, изображение, полномочия, mint и mutable сохраняются. Токены не переводятся. Кошелёк оплатит только сетевую комиссию, показанную до подписи.</small>
+</div>
+<div class="box">
+  <div id="wallet">Кошелёк не подключён.</div>
+  <div id="chain">Запись сети не прочитана.</div>
+  <div id="simulation">Симуляция не выполнена.</div>
+  <button id="connect">1. Подключить кошелёк</button>
+  <button id="prepare" disabled>2. Проверить JSON, запись и транзакцию</button>
+  <button id="sign" disabled>3. Подписать одно обновление URI</button>
+  <p id="status" role="status">Подпись возможна только после проверки.</p>
+  <div id="result"></div>
+</div>
+<p><small>Если кошелёк показывает другой адрес, неожиданную операцию или ошибку — не подписывайте. После отправки не повторяйте транзакцию, пока не будет проверен результат сети.</small></p>
+<script src="./metadata-sign.bundle.js"></script>
+</body></html>
