@@ -58,7 +58,7 @@
     "faq.three.h": "Как токен связан с этими условиями?",
     "faq.three.p": "Токен участвует в ресурсной модели экосистемы. Фиксированные ECNOVA- и смешанные предложения B/C и полезной работы сохраняются на согласованных условиях. Владение токеном — не право услуги, не доказательство оплаты и не полномочия на чужие средства. Доход держателя и будущий курс не обещаны.",
     "contacts.h": "Следующий шаг и ссылки",
-    "contacts.note": "Выберите бриф услуги или отклик на полезную работу. Подготовьте локально; адрес приёма, checkout и запуск программы не выбраны.",
+    "contacts.note": "Здесь доступны сведения о работе, продуктах и токене. Публичная форма обращения, checkout и запуск программы пока не выбраны.",
     "roadmap.h": "Дорожная карта ECNOVA",
     "roadmap.note": "Подготовленная локальная поставка, условные предложения и реальные внешние результаты разделены. Черновик не подтверждает продажу, выплату, листинг и публичный запуск.",
     "roadmap.asof": "Обновлено 26 сентября 2026",
@@ -87,9 +87,9 @@
     "roadmap.5.outcome": "Учитывать в прежних материалах: отправлено → содержательный ответ → принятый пилот → оплата → исполнено. Черновики, лайки, регистрации и держатели — не клиенты. Публиковать содержательный прогресс и выбирать работу по результатам и остатку ресурса.",
     "hero.service": "О сервисе квитанций",
     "hero.asof": "Редакция сайтов F10 · 26 сентября 2026",
-    "contacts.brief": "Подготовить бриф",
-    "contacts.work": "Выбрать полезную работу",
-    "contacts.wallet": "Инструкция Wallet / Scalp"
+    "contacts.brief": "Условия A100",
+    "contacts.work": "О полезной работе",
+    "contacts.wallet": "Wallet / Scalp — состояние"
   },
   "en": {
     "eco.ecosystem": "Ecosystem",
@@ -128,7 +128,7 @@
     "faq.three.h": "How does the token relate to these terms?",
     "faq.three.p": "The token supports the ecosystem resource model. Fixed ECNOVA or mixed B/C and work proposals remain possible under agreed terms. Holding a token is not service entitlement, payment proof or authority over someone else’s funds. No token-holder income or future price is promised.",
     "contacts.h": "Next step and links",
-    "contacts.note": "Choose a service brief or a useful-work reply. Prepare it locally; no receiving address, checkout or program launch is selected.",
+    "contacts.note": "Read about the work, products and token here. A public contact form, checkout and program launch have not been selected yet.",
     "roadmap.h": "ECNOVA roadmap",
     "roadmap.note": "Prepared local delivery, conditional proposals and actual external results remain distinct. No draft establishes a sale, payment, listing or public launch.",
     "roadmap.asof": "Updated 26 September 2026",
@@ -157,9 +157,9 @@
     "roadmap.5.outcome": "Track sent → substantive reply → accepted pilot → payment → delivered in the existing records. Drafts, likes, registrations and holders are not clients. Publish substantive progress and choose further work from accepted results and remaining resources.",
     "hero.service": "Explore the receipt service",
     "hero.asof": "F10 website edition · 26 September 2026",
-    "contacts.brief": "Prepare a brief",
-    "contacts.work": "Choose useful work",
-    "contacts.wallet": "Wallet / Scalp guide"
+    "contacts.brief": "A100 terms",
+    "contacts.work": "About useful work",
+    "contacts.wallet": "Wallet / Scalp status"
   },
   "it": {
     "eco.ecosystem": "Ecosistema",
@@ -198,7 +198,7 @@
     "faq.three.h": "Come si collega il token a queste condizioni?",
     "faq.three.p": "Il token sostiene il modello di risorse dell’ecosistema. Offerte B/C e lavoro in ECNOVA fisso o misto restano possibili con condizioni concordate. Possedere token non prova pagamento, diritto al servizio o autorità sui fondi altrui. Nessun reddito del titolare o prezzo futuro è promesso.",
     "contacts.h": "Prossimo passo e link",
-    "contacts.note": "Scegliere il brief del servizio o una proposta di lavoro utile. Prepararla localmente; destinatario, checkout e lancio del programma non sono selezionati.",
+    "contacts.note": "Qui sono disponibili informazioni su lavoro, prodotti e token. Il modulo pubblico, il checkout e il lancio del programma non sono ancora stati scelti.",
     "roadmap.h": "Roadmap di ECNOVA",
     "roadmap.note": "Distribuzione locale, proposte condizionate e risultati esterni effettivi restano distinti. Una bozza non prova vendite, pagamenti, listing o lancio pubblico.",
     "roadmap.asof": "Aggiornato il 26 settembre 2026",
@@ -227,9 +227,9 @@
     "roadmap.5.outcome": "Registrare nei materiali esistenti: inviato → risposta sostanziale → pilota accettato → pagamento → consegnato. Bozze, like, registrazioni e titolari non sono clienti. Pubblicare progressi utili e scegliere il seguito secondo risultati e risorse residue.",
     "hero.service": "Scopri il servizio di ricevute",
     "hero.asof": "Edizione siti F10 · 26 settembre 2026",
-    "contacts.brief": "Preparare un brief",
-    "contacts.work": "Scegliere lavoro utile",
-    "contacts.wallet": "Guida Wallet / Scalp"
+    "contacts.brief": "Condizioni A100",
+    "contacts.work": "Sul lavoro utile",
+    "contacts.wallet": "Stato Wallet / Scalp"
   }
 };
     function setLanguage(lang){
@@ -240,7 +240,7 @@
         if(value!==undefined)el.textContent=value;
       });
       document.documentElement.lang=language;
-      const sitePaths={ru:{ecosystem:'#about',network:'#network',brief:'#contacts',work:'#roadmap',tools:'#faq'},en:{ecosystem:'#about',network:'#network',brief:'#contacts',work:'#roadmap',tools:'#faq'},it:{ecosystem:'#about',network:'#network',brief:'#contacts',work:'#roadmap',tools:'#faq'}};
+      const sitePaths={ru:{ecosystem:'#about',network:'#network',brief:'#faq',work:'#roadmap',tools:'#network'},en:{ecosystem:'#about',network:'#network',brief:'#faq',work:'#roadmap',tools:'#network'},it:{ecosystem:'#about',network:'#network',brief:'#faq',work:'#roadmap',tools:'#network'}};
       for(const [surface,path] of Object.entries(sitePaths[language]))document.querySelectorAll('[data-surface="'+surface+'"]').forEach(link=>{link.href=path});
       document.querySelectorAll('[data-lang]').forEach(button=>{
         button.setAttribute('aria-pressed',String(button.dataset.lang===language));
