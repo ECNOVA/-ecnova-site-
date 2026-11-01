@@ -1,13 +1,21 @@
-# EconovaChain · ECNOVA — local public-copy edition
+# EconovaChain · ECNOVA
 
-Version: 2026.09.27-local.1. Prepared 28 September 2026 (Europe/Rome).
+Static public website for the ECNOVA wallet, verifiable receipt network and Scalp Advisor. The project is founder-led; a DAO is not being established at this stage.
 
-Based on the existing published repository ECNOVA/-ecnova-site-, branch token-site-20260927, commit 47db634966d7f292104d63c1760142e56687ec64. No new repository or branch selection is needed. Publication is authorized by the owner on 28 September 2026. Confirm the deployed commit and live file hashes before treating a release as published.
+- Published branch: `token-site-20260927` in `ECNOVA/-ecnova-site-`.
+- Current mint: `FpCidwpKM2DP65eVyTkeqQ3R82w75foejx5wZV8dirQ2`.
+- Initial issuance: 1,000,000,000 ECNOVA, 9 decimals, Solana mainnet-beta.
+- Mint, freeze and metadata-update authorities are retained by the owner. The initial issuance is not an irreversible supply cap.
+- Public route: `index.html`; RU/EN/IT translations share one language setting.
+- No build dependencies, wallet connection or transaction-signing code.
 
-Open index.html locally. Main visitor routes: index.html, buy.html (six observed pools), airdrop.html (contribution terms), coming-soon.html (product information). RU/EN/IT share one language choice and retain it across routes. For a local HTTP preview use Python's http.server bound to 127.0.0.1 against this directory. No build dependencies.
+Public token metadata and image:
 
-The published design, logo and token directory are preserved. Do not replace token/metadata.json, its recovery file, the PNG or signing assets when applying this content-only update. The older signing pages are inherited public files, not part of the visitor path and not an instruction to sign again.
+| Path | SHA-256 |
+| --- | --- |
+| `token/releases/2026-11-01-v2/metadata.json` | `a4c179ab93f116c7441e056629d9fe1f3b32a56a7b2601ccdfd4cfe778b64c5c` |
+| `token/releases/2026-11-01-v2/icon.jpg` | `92b1f348c3e06e99e84e8ae8c95bd5c624be3add162f5aaedf486087b56e537e` |
 
-Apply only the paths in SITE-DELTA.json from evidence/TOKEN-SITE-CURRENT-20260927 as the approved content-only change. Before publication compare the remote head and the live metadata with the saved source; preserve intervening changes. Rollback restores only these changed paths from that source, without reverting later metadata or token operations. Verify Pages against the resulting commit and open the three visitor routes.
+Open `index.html` directly, or serve this directory with a static HTTP server. No package installation or build step is required.
 
-По-русски: откройте index.html; страницы «Пулы и обмен» и «Участие» доступны из меню. Это выбранная редакция сайта. Владелец поручил публикацию28.09 в существующей ветке token-site-20260927; подтверждение результата хранится в журнале проекта. Прежняя опубликованная версия сохранена рядом с отчётом; содержимое token/ не менялось.
+For publication, use the configured branch and domain in `CNAME`. Verify the deployed page, RU/EN/IT language switching, links and both asset hashes above.
