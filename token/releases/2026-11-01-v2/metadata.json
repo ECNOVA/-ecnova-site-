@@ -1,7 +1,7 @@
 {
   "name": "EconovaChain",
   "symbol": "ECNOVA",
-  "description": "EconovaChain объединяет кошелёк ECNOVA, сеть проверяемых квитанций и трейдерскую платформу Scalp Advisor. ECNOVA предназначен для развития этих продуктов, привлечения полезной работы и применения в согласованных услугах экосистемы. Проект развивается под управлением основателя; DAO на текущем этапе не создаётся. Сеть квитанций позволяет сохранять проверяемые подтверждения данных и независимо проверять их офлайн. Её документация и интеграционные примеры предназначены для размещения на GitHub.",
+  "description": "ECNOVA is the token of the EconovaChain ecosystem on Solana. The ecosystem brings together the ECNOVA Wallet, TimeLayer — a network for verifiable digital receipts — and Scalp, a social network for traders. EconovaChain develops tools for managing digital assets, analyzing markets, and independently verifying the integrity of digital records, including those used in AI agent workflows.",
   "image": "https://ecnova.io/token/releases/2026-11-01-v2/icon.jpg",
   "properties": {
     "files": [
