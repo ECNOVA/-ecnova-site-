@@ -13,7 +13,7 @@ Public token metadata and image:
 
 | Path | SHA-256 |
 | --- | --- |
-| `token/releases/2026-11-01-v2/metadata.json` | `a4c179ab93f116c7441e056629d9fe1f3b32a56a7b2601ccdfd4cfe778b64c5c` |
+| `token/releases/2026-11-01-v2/metadata.json` | `512a1915004457a9ea817bdcc591835fe3ae05a25a1d5ff196a368a4ebe6ea84` |
 | `token/releases/2026-11-01-v2/icon.jpg` | `92b1f348c3e06e99e84e8ae8c95bd5c624be3add162f5aaedf486087b56e537e` |
 
 Open `index.html` directly, or serve this directory with a static HTTP server. No package installation or build step is required.
