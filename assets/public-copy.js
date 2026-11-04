@@ -165,9 +165,9 @@ const messages={
     "it": "Emissione iniziale · 1 novembre 2026"
   },
   "authority": {
-    "ru": "Полномочия выпуска, заморозки счетов и изменения метаданных пока сохраняются у владельца. Миллиард — объём первичного выпуска; при сохранённом праве эмиссии это не технический предел.",
-    "en": "The owner currently retains minting, account-freezing and metadata-update authorities. One billion is the initial issuance; while mint authority is retained, it is not a technical supply cap.",
-    "it": "Il titolare conserva per ora le autorità di emissione, congelamento dei conti e aggiornamento dei metadati. Un miliardo è l’emissione iniziale; mantenendo l’autorità di emissione, non è un limite tecnico all’offerta."
+    "ru": "Полномочия дополнительного выпуска и заморозки счетов безвозвратно отозваны. Дополнительная эмиссия невозможна. Первичный выпуск — 1 000 000 000 ECNOVA. Право обновления метаданных сохраняется у владельца.",
+    "en": "Minting and account-freezing authorities have been permanently revoked. No additional tokens can be minted. The initial issuance was 1,000,000,000 ECNOVA. The owner retains metadata-update authority.",
+    "it": "Le autorità di emissione e congelamento dei conti sono state revocate definitivamente. Non è possibile emettere altri token. L’emissione iniziale è stata di 1.000.000.000 ECNOVA. Il titolare conserva l’autorità di aggiornamento dei metadati."
   },
   "metadata": {
     "ru": "Открыть метаданные",
@@ -196,8 +196,8 @@ const messages={
   },
   "r1.p": {
     "ru": "Новый ECNOVA выпущен и оформлен. Здесь указаны его точный mint, метаданные и действующие полномочия.",
-    "en": "The new ECNOVA has been issued with its metadata. This page identifies its exact mint, metadata and retained authorities.",
-    "it": "Il nuovo ECNOVA è stato emesso con i suoi metadati. Questa pagina riporta il mint esatto, i metadati e le autorità mantenute."
+    "en": "The new ECNOVA has been issued with its metadata. This page identifies its exact mint, metadata and current authority status.",
+    "it": "Il nuovo ECNOVA è stato emesso con i suoi metadati. Questa pagina riporta il mint esatto, i metadati e lo stato attuale delle autorità."
   },
   "r2.h": {
     "ru": "02 · Продукты",
