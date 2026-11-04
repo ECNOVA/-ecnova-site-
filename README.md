@@ -5,7 +5,7 @@ Static public website for the ECNOVA wallet, verifiable receipt network and Scal
 - Published branch: `token-site-20260927` in `ECNOVA/-ecnova-site-`.
 - Current mint: `FpCidwpKM2DP65eVyTkeqQ3R82w75foejx5wZV8dirQ2`.
 - Initial issuance: 1,000,000,000 ECNOVA, 9 decimals, Solana mainnet-beta.
-- Mint, freeze and metadata-update authorities are retained by the owner. The initial issuance is not an irreversible supply cap.
+- Mint and freeze authorities have been permanently revoked; no additional tokens can be minted. The owner retains metadata-update authority. The initial issuance was 1,000,000,000 ECNOVA.
 - Public route: `index.html`; RU/EN/IT translations share one language setting.
 - No build dependencies, wallet connection or transaction-signing code.
 
