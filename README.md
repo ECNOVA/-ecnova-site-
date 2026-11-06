@@ -13,6 +13,7 @@ Static, multilingual public website for ECNOVA Wallet, TimeLayer verifiable digi
 - Social preview: `assets/glass-social-20261106.png`. Token logos use the unchanged official icon. Earlier assets remain in the repository for compatibility.
 - TimeLayer links in the hero and detailed section both open the official network site directly; RU uses `/ru/`, EN and IT use the root.
 - Community links recovered from the original site archives: ECNOVA X/Telegram/email, plus separately labelled TimeLayer Telegram/X/Instagram/TikTok/Reddit/GitHub/Hacker News/email. Reddit may block automated access and TikTok may require sign-in.
+- Public positioning explicitly includes people and AI agent systems. The wallet section describes agent configuration, operating limits and owner-controlled signing as development direction; it does not claim live delegated execution or cryptographic agent binding. TimeLayer covers independently verifiable records, while Scalp remains a social network for traders. The agent workflow link uses `#agents`; `#roadmap` remains available.
 - Legacy anchors retained: `#about`, `#network`, `#token`, `#role`, `#receipts`, `#roadmap`, `#participate`, `#faq`, `#whitepaper`, `#contacts`.
 - Decorative SVG orbits do not intercept pointer events. All content is visible without JavaScript; reduced-motion preferences are respected.
 
